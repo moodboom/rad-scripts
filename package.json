@@ -6,8 +6,8 @@
   "//": "  1) Copy and update this to a new project folder",
   "//": "  2) Copy setup.js into the folder, and update, then run it [node setup.js].",
 
-  "name": "reusable",
-  "description": "moodboom's reusable utilities",
+  "name": "rad-scripts",
+  "description": "moodboom's rad scripts: reusable node functions for rapid app dev, continuous integration setup, and any other task.",
   "author": "Michael Behrns-Miller <moodboom@gmail.com>",
   "version": "1.0.0",
   "homepage": "http://bitpost.com",

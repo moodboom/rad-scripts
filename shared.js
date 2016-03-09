@@ -195,52 +195,7 @@ var runsteps = function (candidates,steps,verbosity) {
 
     var steps = 
     [
-        /* 
-        // DB is coming...
-
-        {   name: 'svn DB Power Flow'   , folder: 'DesignBase/Trunk/Power Flow'                            , cmd: 'svn up'                                                                                      },
-        // may not be needeed...
-        {   name: 'svn DB Short Circuit', folder: 'DesignBase/Trunk/Short Circuit'                         , cmd: 'svn up'                                                                                      },
-        {   name: 'svn DB Pascal'       , folder: 'DesignBase/Trunk/Pascal'                                , cmd: 'svn up'                                                                                      },
-
-        {   name: 'svn DB Editor'       , folder: 'DesignBase/Trunk/Editor'                                , cmd: 'svn up'                                                                                      },
-        {   name: 'svn DB Build Devices', folder: 'DesignBase/Trunk/Build Devices'                         , cmd: 'svn up'                                                                                      },
-        {   name: 'svn DB Shared'       , folder: 'DesignBase/Trunk/Shared'                                , cmd: 'svn up'                                                                                      },
-
-        // Includes: PDC, edsaevent, edsaannot, ArcHeat, Transient
-        {   name: 'svn DB Drawing'      , folder: 'DesignBase/Trunk/Drawing'                               , cmd: 'svn up'                                                                                      },
-        */
-
-        {   name: 'svn EPAG'            , folder: 'EPAG/Trunk'                , cmd: 'svn up'                                                                                                                   },
-        {   name: 'pre EPAG'            , folder: '.'                         , cmd: 'EPAG\\Trunk\\PreBuildStepGW.bat'                                                                                          },
-        {   name: 'build EPAG'          , folder: 'EPAG/Trunk'                , cmd: $msbuild + ' EPAG.sln /property:Configuration=TeamCity'                                                                    },
-        {   name: 'build D4CRDriver61'  , folder: 'EPAG/Trunk/D4CRDriver61'   , cmd: $msbuild + ' D4CRDriver61.sln /property:Configuration=TeamCity'                                                            },
-        
-        // MDM I don't have VS2008 installed at the moment, skip the build of this component...
-        // Make sure the three binaries are available here: C:\CODE\EPAG\Trunk\D4CRDriver52\TeamCity
-        // {   name: 'build D4CRDriver52'  , folder: 'EPAG/Trunk/D4CRDriver52'   , cmd: $msbuild2008 + ' D4CRDriver52.sln /property:Configuration=TeamCity'    },
-
-        {   name: 'test clean'          , folder: 'EPAG/Trunk'                , cmd: 'if exist TestResults\ rmdir /S /Q TestResults'                        },
-        {   name: 'test EPAG framework' , folder: 'EPAG/Trunk'                , cmd: $mstest + ' ' + '"/testcontainer:C:\\CODE\\EPAG\\Trunk\\Testing\\FrameworkTests\\bin\\Release\\FrameworkTests.dll"'        },
-        {   name: 'test EPAG persist'   , folder: 'EPAG/Trunk'                , cmd: $mstest + ' ' + '"/testcontainer:C:\\CODE\\EPAG\\Trunk\\Testing\\PersistenceTests\\bin\\Release\\PersistenceTests.dll"'    },
-        {   name: 'test EPAG wsm'       , folder: 'EPAG/Trunk'                , cmd: $mstest + ' ' + '"/testcontainer:C:\\CODE\\EPAG\\Trunk\\Testing\\WSMTest\\bin\\Release\\WSMTest.dll"'                      },
-        {   name: 'post EPAG'           , folder: '.'                         , cmd: 'EPAG\\Trunk\\PostBuildStepGW.bat'                                                                                         },
-
-        {   name: 'svn DesignView'      , folder: 'DesignView/Trunk'          , cmd: 'svn up'                                                                                                                   },
-        {   name: 'build DesignView'    , folder: 'DesignView/Trunk'          , cmd: $msbuild + ' PaladinWebClient.sln /property:Configuration=Release'                                                         },
-
-        {   name: 'svn Paladin Reports' , folder: 'Paladin Reports/Trunk'     , cmd: 'svn up'                                                                                                                   },
-        {   name: 'build PR'            , folder: 'Paladin Reports/Trunk'     , cmd: $msbuild + ' Paladin_Reports.sln /property:Configuration=Release'                                                          },
-
-        {   name: 'svn PL'              , folder: 'PaladinLiveInstaller/Trunk'                           , cmd: 'svn up'                                                                                        },
-        {   name: 'svn PL DB components', folder: 'PaladinLiveInstaller/Trunk/DesignBaseComponents'      , cmd: 'svn up'                                                                                        },
-        {   name: 'svn PL DV help'      , folder: 'PaladinLiveInstaller/Trunk/DesignViewHtmlHelp'        , cmd: 'svn up'                                                                                        },
-        {   name: 'svn PL docs'         , folder: 'PaladinLiveInstaller/Trunk/PaladinLiveDocumentation'  , cmd: 'svn up'                                                                                        },
-        {   name: 'pre PL'              , folder: '.'                           , cmd: 'PaladinLiveInstaller\\Trunk\\PreBuildStepPI.bat'                                                                        },
-        {   name: 'build PL'            , folder: 'PaladinLiveInstaller/Trunk'  , cmd: $msbuild + ' PaladinLiveInstaller.sln /property:Configuration=Release'                                                   },
-        {   name: 'post PL'             , folder: '.'                           , cmd: 'PaladinLiveInstaller\\Trunk\\PostBuildStepPI.bat'                                                                       },
-
-        {   name: 'test PL'             , folder: '.'                           , cmd: 'ContinuousIntegration\\Trunk\\scripts\\windows\\BuildMachine\\StartCI_local.bat'                                        },
+        {   name: 'svn get', folder: 'MyCode'                         , cmd: 'svn up'                                                                                      },
     ];
 
     for (var i = 0;i < steps.length;i++) {

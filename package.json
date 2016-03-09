@@ -10,7 +10,7 @@
   "description": "moodboom's rad scripts: reusable node functions for rapid app dev, continuous integration setup, and any other task.",
   "author": "Michael Behrns-Miller <moodboom@gmail.com>",
   "url": "git://github.com/moodboom/rad-scripts.git",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "http://bitpost.com",
   "license": "MIT",
 
@@ -29,7 +29,6 @@
   "bin": {
     "git-sync"                  : "git-sync.js",
     "get-svn-rev"               : "get-svn-rev.js",
-    "get-svn-last-changed-rev"  : "get-svn-last-changed-rev.js",
-    "run-command"               : "run-command.js"
+    "get-svn-last-changed-rev"  : "get-svn-last-changed-rev.js"
   }
 }

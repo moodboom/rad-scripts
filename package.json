@@ -27,8 +27,8 @@
   },
 
   "bin": {
-    "git-sync"                  : "git-sync.js",
-    "get-svn-rev"               : "get-svn-rev.js",
-    "get-svn-last-changed-rev"  : "get-svn-last-changed-rev.js"
+    "git-sync"                  : "git-sync-cmd.js",
+    "get-svn-rev"               : "get-svn-rev-cmd.js",
+    "get-svn-last-changed-rev"  : "get-svn-last-changed-rev-cmd.js"
   }
 }

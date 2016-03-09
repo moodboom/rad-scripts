@@ -1,7 +1,14 @@
 'use strict';
 
-var shared = require('./shared.js');
-var git_sync = require('./git-sync.js');
+// Here we define all the functions that should be available 
+// when another script does this:   
+//
+//      var rad = require('rad-scripts');
+//
+var run_utils = require('./run-utils.js');
+var folder_utils = require('./folder-utils.js');
+var version_control = require('./version-control.js');
 
-exports.shared = shared;
-exports.git_sync = git_sync;
+exports.run_utils = run_utils;
+exports.folder_utils = folder_utils;
+exports.version_control = version_control;

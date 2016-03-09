@@ -1,6 +1,6 @@
 {
 
-  "//": "this is how you comment JSON in Node.js, pretty stupid eh??",
+  "//": "FYI this is how you comment JSON in Node.js",
 
   "//": "For new projects: ",
   "//": "  1) Copy and update this to a new project folder",
@@ -9,6 +9,7 @@
   "name": "rad-scripts",
   "description": "moodboom's rad scripts: reusable node functions for rapid app dev, continuous integration setup, and any other task.",
   "author": "Michael Behrns-Miller <moodboom@gmail.com>",
+  "url": "git://github.com/moodboom/rad-scripts.git",
   "version": "1.0.0",
   "homepage": "http://bitpost.com",
   "license": "MIT",

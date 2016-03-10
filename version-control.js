@@ -37,12 +37,14 @@ var git_sync = function(folder,comment)
 
             exec(cmd2, function(error, stdout, stderr) {
                 if (error) {
+                    console.log(folder + " failed...");
                     console.log(stdout);
                     console.log(stderr);
                     console.log('==================== GIT PULL FAILED ====================\n');
                 } else {
                     exec(cmd3, function(error, stdout, stderr) {
                         if (error) {
+                            console.log(folder + " failed...");
                             console.log(stdout);
                             console.log(stderr);
                             console.log('==================== GIT PUSH FAILED ====================\n');

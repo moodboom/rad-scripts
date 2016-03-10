@@ -6,7 +6,9 @@ var git_sync = function(folder,comment)
 {
     var exec = require('child_process').exec;
 
-    // MDM NOTE: NEVER prompt/pause/sleep within "sub"-scripts run by parent scripts.
+    // DEBUG
+    console.log(process.cwd());
+    console.log(folder);
 
     process.chdir(folder);
 

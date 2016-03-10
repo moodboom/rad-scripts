@@ -21,4 +21,4 @@ if (args.length > 0)
 }
 
 var version_control = require('./version-control.js');
-version_control.git_sync('.',comment);
+version_control.git_sync(process.cwd(),comment);

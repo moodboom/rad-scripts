@@ -4,9 +4,18 @@
 // =========== git_sync: commits, then pulls, then pushes to the default remote repo ============
 var git_sync = function(folder,comment)
 {
+    var exec = require('child_process').exec;
+
     // MDM NOTE: NEVER prompt/pause/sleep within "sub"-scripts run by parent scripts.
 
     process.chdir(folder);
+
+    // If comment is anything other than blank, build a proper comment format that we can slap on the end of cmd.
+    if (comment.length > 0)
+    {
+        comment = " -m \"" + comment + "\"";
+
+    }
 
     // Run these in order.  That means nest the calls, w00t!
     var cmd1 = 'git commit -a' + comment;

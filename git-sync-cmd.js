@@ -11,14 +11,13 @@ var args = process.argv.slice(2);
 var comment = "";
 if (args.length > 0)
 {
+    // Build a comment if args are provided.
+    // We take all args and automatically mash them together into one comment string.
     args.forEach(function(val,index,array){ 
-        if (index == 0) 
-        { comment += " -m \""; } 
-        else
+        if (index != 0) 
         { comment += " "; } 
         comment += val; 
     });
-    comment += "\"";
 }
 
 var version_control = require('./version-control.js');

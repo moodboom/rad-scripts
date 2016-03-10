@@ -54,7 +54,7 @@ var git_sync = function(folder,comment)
                             // console.log('==================== SYNC COMPLETE ====================\n');
                             // console.log("<=> * [" + process.cwd() + "] " + cmd1 + " && " + cmd2 + " && " + cmd3);
 
-                            console.log("<=> " + process.cwd());
+                            console.log("<=> " + folder);
                         }
                     });
                 }

@@ -30,26 +30,26 @@ var git_sync = function(folder,comment)
         // I can't BELIEVE I used that as my primary editor for years!!  Think globally, EDIT LOCALLY.
         if (stderr) {
 
-            console.log(stdout);
+            if (stdout.length > 0 ) console.log(stdout);
             console.log(stderr);
 
         } else {
 
             exec(cmd2, function(error, stdout, stderr) {
                 if (error) {
-                    console.log('=========================================================\n');
-                    console.log('FAIL: ' + folder);
-                    console.log('=========================================================\n');
-                    console.log(stdout);
-                    console.log(stderr);
+                    console.log('=========================================================');
+                    console.log('PULL FAIL: ' + folder);
+                    console.log('=========================================================');
+                    if (stdout.length > 0 ) console.log(stdout);
+                    if (stderr.length > 0 ) console.log(stderr);
                 } else {
                     exec(cmd3, function(error, stdout, stderr) {
                         if (error) {
-                            console.log('=========================================================\n');
-                            console.log('FAIL: ' + folder);
-                            console.log('=========================================================\n');
-                            console.log(stdout);
-                            console.log(stderr);
+                            console.log('=========================================================');
+                            console.log('PUSH FAIL: ' + folder);
+                            console.log('=========================================================');
+                            if (stdout.length > 0 ) console.log(stdout);
+                            if (stderr.length > 0 ) console.log(stderr);
                         } else
                         {
                             // MDM Eventually remove this chatter.

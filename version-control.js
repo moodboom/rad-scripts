@@ -38,7 +38,7 @@ var git_sync = function(folder,comment)
             exec(cmd2, function(error, stdout, stderr) {
                 if (error) {
                     console.log('=========================================================\n');
-                    console.log('FAIL': folder);
+                    console.log('FAIL: ' + folder);
                     console.log('=========================================================\n');
                     console.log(stdout);
                     console.log(stderr);
@@ -46,7 +46,7 @@ var git_sync = function(folder,comment)
                     exec(cmd3, function(error, stdout, stderr) {
                         if (error) {
                             console.log('=========================================================\n');
-                            console.log('FAIL': folder);
+                            console.log('FAIL: ' + folder);
                             console.log('=========================================================\n');
                             console.log(stdout);
                             console.log(stderr);

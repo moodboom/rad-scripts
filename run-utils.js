@@ -116,7 +116,21 @@ var runsteps = function (candidates,steps,verbosity) {
     }
 }
 
+var combine_params = function(params) {
+    var result = "";
+    if (params.length > 0)
+    {
+        params.forEach(function(val,index,array){ 
+            if (index != 0) { result += " "; } 
+            result += val; 
+        });
+    }
+    return result;
+}
+
+
 module.exports.run_command_sync = run_command_sync;
 module.exports.run_command = run_command;
 module.exports.run_command_fire_and_forget = run_command_fire_and_forget;
 module.exports.runsteps = runsteps;
+module.exports.combine_params = combine_params;

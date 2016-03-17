@@ -18,7 +18,7 @@ var git_sync = function(folder,comment)
     }
 
     // Run these in order.  
-    // Make sure the final task specifies the target folder since these will be called async.
+    // Make sure the task specifies the full target folder since these will be called async.
     // i.e., don't use process.cwd()...
     var cmd1 = 'cd ' + folder + ' && git commit -a' + comment;
     var cmd2 = 'cd ' + folder + ' && git pull';
@@ -68,6 +68,66 @@ var git_sync = function(folder,comment)
 }
 
 
+// =========== git_sync: commits, then pulls, then pushes to the default remote repo ============
+var git_clone = function(remote_repo,local_folder)
+{
+    // TODO
+    // Use run_steps if needed
+    /*
+    var exec = require('child_process').exec;
+
+    // Run these in order.  
+    // Make sure the task specifies the full target folder since these will be called async.
+    // i.e., don't use process.cwd()...
+    var cmd1 = 'cd ' + folder + ' && git commit -a' + comment;
+    var cmd2 = 'cd ' + folder + ' && git pull';
+    var cmd3 = 'cd ' + folder + ' && git push';
+
+    exec(cmd1, function(error, stdout, stderr) {
+
+        // Sometimes stupid emacs fails with "emacs: standard input is not a tty".
+        // I can't BELIEVE I used that as my primary editor for years!!  Think globally, EDIT LOCALLY.
+        if (stderr) {
+
+            if (stdout.length > 0 ) console.log(stdout);
+            console.log(stderr);
+
+        } else {
+
+            exec(cmd2, function(error, stdout, stderr) {
+                if (error) {
+                    console.log('=========================================================');
+                    console.log('PULL FAIL: ' + folder);
+                    console.log('=========================================================');
+                    if (stdout.length > 0 ) console.log(stdout);
+                    if (stderr.length > 0 ) console.log(stderr);
+                } else {
+                    exec(cmd3, function(error, stdout, stderr) {
+                        if (error) {
+                            console.log('=========================================================');
+                            console.log('PUSH FAIL: ' + folder);
+                            console.log('=========================================================');
+                            if (stdout.length > 0 ) console.log(stdout);
+                            if (stderr.length > 0 ) console.log(stderr);
+                        } else
+                        {
+                            // MDM Eventually remove this chatter.
+                            // console.log(stdout);
+                            // console.log(stderr);
+                            // console.log('==================== SYNC COMPLETE ====================\n');
+                            // console.log("<=> * [" + process.cwd() + "] " + cmd1 + " && " + cmd2 + " && " + cmd3);
+
+                            console.log("<=> " + folder);
+                        }
+                    });
+                }
+            });
+        }
+    });
+    */
+}
+
+
 // =========== svn_last_changed_rev: gets the SVN "last changed rev" for the current folder, as a string ============
 var svn_last_changed_rev = function () {
 
@@ -101,5 +161,6 @@ var svn_rev = function () {
 
 
 module.exports.git_sync = git_sync;
+module.exports.git_clone = git_clone;
 module.exports.svn_last_changed_rev = svn_last_changed_rev;
 module.exports.svn_rev = svn_rev;

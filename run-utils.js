@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
 // =========== run_command: run one command and get output ============
-// Run a command and get the output.
-// Sync version, this is the most useful.
+// Run a command synchronously and get the output when it finishes.
 // Usage:
 // var lsout = run_command_sync( "ls", ["-l"]);
 var run_command_sync = function (cmd, args ) {
@@ -21,8 +20,7 @@ var run_command_sync = function (cmd, args ) {
 
 
 // =========== run_command: run one command and get output ============
-// Run a command and get the output.
-// sync version; you have to provide a callback function
+// Run a command asynchronously and get the output when it finishes in a callback.
 // Usage:
 // run_cmd( "ls", ["-l"], function(text) { console.log (text) });
 var run_command = function (cmd, args, callBack ) {
@@ -36,11 +34,13 @@ var run_command = function (cmd, args, callBack ) {
 }
 
 
+// needed?
+/*
 // =========== justLogResponse ============
 // This function is used to just log a command response,
 // swallowing any errors, assuming this is part of a process that should carry on.
 // It expects that the standard output of the command includes any necessary carriage returns; ie, none are added.
-var run_command_fire_and_forget = function (error, stdout, stderr) { 
+var justLogResponse = function (error, stdout, stderr) { 
     if (error) { 
         console.log(stdout);
         console.log(stderr);
@@ -50,6 +50,7 @@ var run_command_fire_and_forget = function (error, stdout, stderr) {
         process.stdout.write(stdout);
     } 
 }    
+*/
 
 
 // =========== runsteps: run a specific set of commands in specific directories ============
@@ -131,6 +132,5 @@ var combine_params = function(params) {
 
 module.exports.run_command_sync = run_command_sync;
 module.exports.run_command = run_command;
-module.exports.run_command_fire_and_forget = run_command_fire_and_forget;
 module.exports.runsteps = runsteps;
 module.exports.combine_params = combine_params;

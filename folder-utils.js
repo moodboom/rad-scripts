@@ -2,19 +2,12 @@
 
 var fs = require('fs');
 
-// Example for improving cdfirst
-/*
-// =========== cdscripts ============
-var cdscripts = function () {
+
+// =========== cdfirst: change to first found folder ============
+var cdfirst = function (candidates) {
+
     // NOTE that this is the way to get "home", cross-platform, if it is ever needed.
     // var homedir = (process.platform === 'win32') ? process.env.HOMEPATH : process.env.HOME;
-
-    // we check the list in order, first match wins
-    var candidates = 
-    [
-        'D:/Michael\'s Data/development/scripts',   // WARNING: ALWAYS escape the single quote (even if in double quotes) or node barfs!  FUCKSAKE
-        '/home/m/development/scripts',
-    ];
 
     for (var i = 0;i < candidates.length;i++) {
 
@@ -27,14 +20,8 @@ var cdscripts = function () {
         catch (err) {
         }
     }
-};
-*/
 
-// =========== cdfirst: change to first found folder ============
-var cdfirst = function (candidates) {
-
-    // TODO
-
+    console.log("ERROR: No candidate folder found");
 };
 
 

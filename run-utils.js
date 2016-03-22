@@ -19,6 +19,30 @@ var run_command_sync = function (cmd, args ) {
 }
 
 
+// =========== run_command_sync_to_console: run one command and let output immediately flow to console ============
+var run_command_sync_to_console = function (cmd) {
+    var execSync = require('child_process').execSync;
+
+    // VERBOSE: this shows output as commands execute...
+    execSync(cmd, {stdio:[0,1,2]}, function(error, stdout, stderr) {
+
+    // QUIET: minimal output until an error is hit...
+    // execSync(steps[i].cmd, function(error, stdout, stderr) {
+
+        if (error) {
+
+            console.log('======= RUN ERROR =======');
+
+            // Output should have already gone...
+            // console.log(stdout);
+            // console.log(stderr);
+
+            throw error;
+        }
+    });
+}
+
+
 // =========== run_command: run one command and get output ============
 // Run a command asynchronously and get the output when it finishes in a callback.
 // Usage:
@@ -34,30 +58,11 @@ var run_command = function (cmd, args, callBack ) {
 }
 
 
-// needed?
-/*
-// =========== justLogResponse ============
-// This function is used to just log a command response,
-// swallowing any errors, assuming this is part of a process that should carry on.
-// It expects that the standard output of the command includes any necessary carriage returns; ie, none are added.
-var justLogResponse = function (error, stdout, stderr) { 
-    if (error) { 
-        console.log(stdout);
-        console.log(stderr);
-        console.log("=== SEE ERROR ABOVE ===");
-    } else { 
-        // We don't use console.log() here because it adds \n.
-        process.stdout.write(stdout);
-    } 
-}    
-*/
-
-
 // =========== runsteps: run a specific set of commands in specific directories ============
 var runsteps = function (candidates,steps,verbosity) {
 
     // TODO, example follows...
-    
+
     var exec = require('child_process').exec;
     var execSync = require('child_process').execSync;
     var fs = require('fs');
@@ -70,7 +75,7 @@ var runsteps = function (candidates,steps,verbosity) {
     var $msbuild2008 = 'C:/Windows/Microsoft.NET/Framework/v3.5/MSBuild.exe';
     var $mstest = '\"D:/Program Files (x86)/Microsoft Visual Studio 10.0/Common7/IDE/MSTest.exe\"';
 
-    var steps = 
+    var steps =
     [
         {   name: 'svn get', folder: 'MyCode'                         , cmd: 'svn up'                                                                                      },
     ];
@@ -81,35 +86,13 @@ var runsteps = function (candidates,steps,verbosity) {
         // ignore failures until we find one that works
         try {
             console.log('step: ' + steps[i].name);
+            logfile.write('step: ' + steps[i].name);
 
             shared.cdbase();
             process.chdir(steps[i].folder);
             // console.log(process.cwd());
 
-            // VERBOSE: this shows output as commands execute...
-            execSync(steps[i].cmd, {stdio:[0,1,2]}, function(error, stdout, stderr) {
-            
-            // QUIET: minimal output until an error is hit...
-            // execSync(steps[i].cmd, function(error, stdout, stderr) {
-
-                logfile.write('======' + steps[i].name + '======');
-
-                if (error) {
-                    logfile.write(stdout);
-                    logfile.write(stderr);
-                    logfile.write('==================== CI ERROR ====================\n');
-                    
-                    console.log('======= CI ERROR =======\n');
-                    console.log('See log.txt for details.');
-
-                    throw error;
-                }
-
-                // Log the details.  No need to bother the user.
-                logfile.write(stdout);
-
-            });
-
+            run_command_sync_to_console(steps[i].cmd);
         }
         catch (err) {
             // console.log(err);
@@ -121,9 +104,9 @@ var combine_params = function(params) {
     var result = "";
     if (params.length > 0)
     {
-        params.forEach(function(val,index,array){ 
-            if (index != 0) { result += " "; } 
-            result += val; 
+        params.forEach(function(val,index,array){
+            if (index != 0) { result += " "; }
+            result += val;
         });
     }
     return result;
@@ -131,6 +114,7 @@ var combine_params = function(params) {
 
 
 module.exports.run_command_sync = run_command_sync;
+module.exports.run_command_sync_to_console = run_command_sync_to_console;
 module.exports.run_command = run_command;
 module.exports.runsteps = runsteps;
 module.exports.combine_params = combine_params;

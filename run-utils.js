@@ -59,26 +59,20 @@ var run_command = function (cmd, args, callBack ) {
 
 
 // =========== runsteps: run a specific set of commands in specific directories ============
-var runsteps = function (candidates,steps,verbosity) {
-
-    // TODO, example follows...
+// Given: steps, an array of {name,folder,cmd} objects, eg:
+//
+//      var my_steps =
+//      [
+//          { name: 'update Project'        , folder: '.'       , cmd: 'git pull'       },
+//          { name: 'build Project'         , folder: '.'       , cmd: 'make'           },
+//      ];
+//
+// This function runs the requested steps synchronously, logging output to console as it goes.
+var runsteps = function (steps) {
 
     var exec = require('child_process').exec;
     var execSync = require('child_process').execSync;
     var fs = require('fs');
-    var shared = require('./shared.js');
-
-    shared.cdbase();
-    var logfile = fs.createWriteStream('log.txt');
-
-    var $msbuild = 'C:/Windows/Microsoft.NET/Framework/v4.0.30319/MSBuild.exe';
-    var $msbuild2008 = 'C:/Windows/Microsoft.NET/Framework/v3.5/MSBuild.exe';
-    var $mstest = '\"D:/Program Files (x86)/Microsoft Visual Studio 10.0/Common7/IDE/MSTest.exe\"';
-
-    var steps =
-    [
-        {   name: 'svn get', folder: 'MyCode'                         , cmd: 'svn up'                                                                                      },
-    ];
 
     for (var i = 0;i < steps.length;i++) {
 
@@ -86,15 +80,15 @@ var runsteps = function (candidates,steps,verbosity) {
         // ignore failures until we find one that works
         try {
             console.log('step: ' + steps[i].name);
-            logfile.write('step: ' + steps[i].name);
 
-            shared.cdbase();
             process.chdir(steps[i].folder);
             // console.log(process.cwd());
 
             run_command_sync_to_console(steps[i].cmd);
         }
         catch (err) {
+            // For now, fail silently and keep going.
+            // The errors will have been logged to console.
             // console.log(err);
         }
     }

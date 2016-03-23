@@ -21,7 +21,9 @@ var cdfirst = function (candidates) {
         }
     }
 
-    console.log("ERROR: No candidate folder found");
+    var msg = "ERROR: No candidate folder found";
+    console.log(msg);
+    return msg;
 };
 
 

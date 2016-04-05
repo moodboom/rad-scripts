@@ -132,27 +132,20 @@ var build_semantic_version = function (major,minor,patch,build,lastVersionFolder
 
     var fs = require('fs');
     var args = process.argv.slice(2);
-    var shared = require('./shared.js');
-    var go = require('./run_steps.js');
 
-    var b  = build;
-
-    // Now change to the versions folder.
-    shared.cdscripts();
     process.chdir(lastVersionFolder);
-
-    // Write the new build version.
-    fs.writeFileSync('build.txt', b, 'utf-8');
 
     var m  = parseInt(fs.readFileSync('major.txt', 'utf-8'));
     var n  = parseInt(fs.readFileSync('minor.txt', 'utf-8'));
     var p  = parseInt(fs.readFileSync('patch.txt', 'utf-8'));
+    var b  = parseInt(fs.readFileSync('build.txt', 'utf-8'));
 
     // Compare to parameters
     // If different, adjust and save
     var m2 = major;
     var n2 = minor;
     var p2 = patch;
+    var b2 = build;
 
     if (m2 != m)
     {
@@ -162,7 +155,7 @@ var build_semantic_version = function (major,minor,patch,build,lastVersionFolder
             ||	n2 != 0
             ||	p2 != 0
         ) {
-            console.log('New major version provided incorrectly: old('+m+'.'+n+'.'+p+'.'+b+") new("+m2+'.'+n2+'.'+p2+'...'+')');
+            console.log('New major version provided incorrectly: old('+m+'.'+n+'.'+p+'.'+b+") new("+m2+'.'+n2+'.'+p2+'.'+b2+')');
             process.exit(1);
         }
 
@@ -181,11 +174,11 @@ var build_semantic_version = function (major,minor,patch,build,lastVersionFolder
                 n2 != n + 1
             ||	p2 != 0
         ) {
-            console.log('New minor version provided incorrectly: old('+m+'.'+n+'.'+p+'.'+b+") new("+m2+'.'+n2+'.'+p2+'...'+')');
+            console.log('New minor version provided incorrectly: old('+m+'.'+n+'.'+p+'.'+b+") new("+m2+'.'+n2+'.'+p2+'.'+b2+')');
             process.exit(1);
         }
 
-        // Reset p b
+        // Reset p
         n = n2;
         p = 0;
         fs.writeFileSync('minor.txt', n, 'utf-8');
@@ -196,15 +189,18 @@ var build_semantic_version = function (major,minor,patch,build,lastVersionFolder
         // Validate
         if ( p2 != p + 1 )
         {
-            console.log('New patch version provided incorrectly: old('+m+'.'+n+'.'+p+'.'+b+") new("+m2+'.'+n2+'.'+p2+'...'+')');
+            console.log('New patch version provided incorrectly: old('+m+'.'+n+'.'+p+'.'+b+") new("+m2+'.'+n2+'.'+p2+'.'+b+')');
             process.exit(1);
         }
 
-        // Reset b
         p = p2;
         fs.writeFileSync('patch.txt', p, 'utf-8');
 
     }
+
+    // Write the new build version.
+    b = b2;
+    fs.writeFileSync('build.txt', b, 'utf-8');
 
     return m+'.'+n+'.'+p+'.'+b;
 }

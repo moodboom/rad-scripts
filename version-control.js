@@ -17,7 +17,7 @@ var git_sync = function(folder,comment)
 
     }
 
-    // Run these in order.  
+    // Run these in order.
     // Make sure the task specifies the full target folder since these will be called async.
     // i.e., don't use process.cwd()...
     var cmd1 = 'cd ' + folder + ' && git commit -a' + comment;
@@ -73,7 +73,7 @@ var git_clone = function(remote_repo,local_folder)
 {
     var exec = require('child_process').exec;
 
-    // Run these in order.  
+    // Run these in order.
     // Make sure the task specifies the full target folder since these will be called async.
     // i.e., don't use process.cwd()...
     var cmd1 = 'git clone ' + remote_repo + ' ' + local_folder;
@@ -125,7 +125,91 @@ var svn_rev = function () {
 }
 
 
+// ============ build_semantic_version: builds "next" historical semver, with validation using stored result ===============
+var build_semantic_version = function (major,minor,patch,build,lastVersionFolder) {
+
+    var fs = require('fs');
+    var args = process.argv.slice(2);
+    var shared = require('./shared.js');
+    var go = require('./run_steps.js');
+
+    var b  = build;
+
+    // Now change to the versions folder.
+    shared.cdscripts();
+    process.chdir(lastVersionFolder);
+
+    // Write the new build version.
+    fs.writeFileSync('build.txt', b, 'utf-8');
+
+    var m  = parseInt(fs.readFileSync('major.txt', 'utf-8'));
+    var n  = parseInt(fs.readFileSync('minor.txt', 'utf-8'));
+    var p  = parseInt(fs.readFileSync('patch.txt', 'utf-8'));
+
+    // Compare to parameters
+    // If different, adjust and save
+    var m2 = major;
+    var n2 = minor;
+    var p2 = patch;
+
+    if (m2 != m)
+    {
+        // Validate
+        if (
+                m2 != m + 1
+            ||	n2 != 0
+            ||	p2 != 0
+        ) {
+            console.log('New major version provided incorrectly: old('+m+'.'+n+'.'+p+'.'+b+") new("+m2+'.'+n2+'.'+p2+'...'+')');
+            process.exit(1);
+        }
+
+        // Reset n p
+        m = m2;
+        n = 0;
+        p = 0;
+        fs.writeFileSync('major.txt', m, 'utf-8');
+        fs.writeFileSync('minor.txt', n, 'utf-8');
+        fs.writeFileSync('patch.txt', p, 'utf-8');
+
+    } else if (n2 != n) {
+
+        // Validate
+        if (
+                n2 != n + 1
+            ||	p2 != 0
+        ) {
+            console.log('New minor version provided incorrectly: old('+m+'.'+n+'.'+p+'.'+b+") new("+m2+'.'+n2+'.'+p2+'...'+')');
+            process.exit(1);
+        }
+
+        // Reset p b
+        n = n2;
+        p = 0;
+        fs.writeFileSync('minor.txt', n, 'utf-8');
+        fs.writeFileSync('patch.txt', p, 'utf-8');
+
+    } else if (p2 != p) {
+
+        // Validate
+        if ( p2 != p + 1 )
+        {
+            console.log('New patch version provided incorrectly: old('+m+'.'+n+'.'+p+'.'+b+") new("+m2+'.'+n2+'.'+p2+'...'+')');
+            process.exit(1);
+        }
+
+        // Reset b
+        p = p2;
+        fs.writeFileSync('patch.txt', p, 'utf-8');
+
+    }
+
+    return m+'.'+n+'.'+p+'.'+b;
+}
+
 module.exports.git_sync = git_sync;
 module.exports.git_clone = git_clone;
 module.exports.svn_last_changed_rev = svn_last_changed_rev;
 module.exports.svn_rev = svn_rev;
+module.exports.build_semantic_version = build_semantic_version;
+

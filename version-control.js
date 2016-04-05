@@ -96,7 +96,8 @@ var git_clone = function(remote_repo,local_folder)
 // =========== svn_last_changed_rev: gets the SVN "last changed rev" for the current folder, as a string ============
 var svn_last_changed_rev = function () {
 
-    var run = exports.run_command_sync;
+    var ru = require('./run_utils.js');
+    var run = ru.run_command_sync;
 
     var svn_info = run("svn", ["info"]);
 
@@ -112,7 +113,8 @@ var svn_last_changed_rev = function () {
 // =========== svn_rev: gets the SVN current revision for the current repo, as a string ============
 var svn_rev = function () {
 
-    var run = exports.run_command_sync;
+    var ru = require('./run_utils.js');
+    var run = ru.run_command_sync;
 
     var svn_info = run("svn", ["info"]);
 

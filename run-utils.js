@@ -73,6 +73,7 @@ var runsteps = function (steps) {
     var exec = require('child_process').exec;
     var execSync = require('child_process').execSync;
     var fs = require('fs');
+    var path = require('path');
 
     for (var i = 0;i < steps.length;i++) {
 
@@ -81,7 +82,7 @@ var runsteps = function (steps) {
         try {
             console.log('step: ' + steps[i].name);
 
-            process.chdir(steps[i].folder);
+            process.chdir(path.normalize(steps[i].folder);
             // console.log(process.cwd());
 
             run_command_sync_to_console(steps[i].cmd);

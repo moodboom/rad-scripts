@@ -18,7 +18,7 @@ var git_sync = function(folder,comment)
     }
 
     var changes = git_changes(folder);
-    if (changes.length())
+    if (changes.length)
 	{
         // If comment is anything other than blank, build a proper comment format that we can slap on the end of cmd.
         if (comment.length > 0)

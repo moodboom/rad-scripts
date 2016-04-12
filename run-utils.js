@@ -19,27 +19,27 @@ var run_command_sync = function (cmd, args ) {
 }
 
 
-// =========== run_command_sync_to_console: run one command and let output immediately flow to console ============
-var run_command_sync_to_console = function (cmd,verbosity) {
+//=========== run_command_sync_to_console: run one command and let output immediately flow to console ============
+var run_command_sync_to_console = function (cmd) {
     var execSync = require('child_process').execSync;
+    execSync(cmd, {stdio:[0,1,2]}, function(error, stdout, stderr) {
+        if (error) {
+            console.log('======= RUN ERROR =======');
+            throw error;
+        }
+    });
+}
 
-    if (verbosity != "quiet")
-    {
-        // This shows output as commands execute...
-        execSync(cmd, {stdio:[0,1,2]}, function(error, stdout, stderr) {
-            if (error) {
-                console.log('======= RUN ERROR =======');
-                throw error;
-            }
-        });
-    } else {
-        execSync(cmd, function(error, stdout, stderr) {
-	        if (error) {
-	            console.log('======= RUN ERROR =======');
-	            throw error;
-	        }
-	    });
-   	}
+
+//=========== run_command_quietly: runs without output unless error ============
+var run_command_quietly = function (cmd) {
+    var execSync = require('child_process').execSync;
+    execSync(cmd, function(error, stdout, stderr) {
+        if (error) {
+            console.log('======= RUN ERROR =======');
+            throw error;
+        }
+    });
 }
 
 
@@ -92,7 +92,11 @@ var runsteps = function (steps,verbosity) {
 
             process.chdir(path.normalize(steps[i].folder));
             
-            run_command_sync_to_console(steps[i].cmd,verbosity);
+        	if (verbosity != "quiet") {
+        		run_command_sync_to_console(steps[i].cmd);
+        	} else {
+        		run_command_quietly(steps[i].cmd);
+        	}
         }
         catch (err) {
             if (verbosity == "verbose") {
@@ -117,6 +121,7 @@ var combine_params = function(params) {
 
 module.exports.run_command_sync = run_command_sync;
 module.exports.run_command_sync_to_console = run_command_sync_to_console;
+module.exports.run_command_quietly = run_command_quietly; 
 module.exports.run_command = run_command;
 module.exports.runsteps = runsteps;
 module.exports.combine_params = combine_params;

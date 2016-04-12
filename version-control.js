@@ -33,7 +33,8 @@ var git_sync = function(folder,comment)
     	 	{ name: 'push'  , folder: folder, cmd: 'cd ' + folder + ' && git push'					} 
         	 
         ];
-        ru.runsteps(tasks,"quiet");
+        var verbosity = "quiet";
+        ru.runsteps(tasks,verbosity);
 
 	} else {
 		

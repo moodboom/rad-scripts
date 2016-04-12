@@ -81,6 +81,7 @@ var runsteps = function (steps,verbosity) {
         // ignore failures until we find one that works
         try {
         	
+        	console.log('verbosity = ' + verbosity);
         	if (verbosity != "quiet") {
                 console.log('step: ' + steps[i].name);
         	}

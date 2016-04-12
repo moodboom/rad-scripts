@@ -43,7 +43,7 @@ var git_sync = function(folder,comment)
     	 	{ name: 'pull'  , folder: folder, cmd: 'cd ' + folder + ' && git pull' 					}, 
         	 
         ];
-        ru.runsteps(tasks);
+        ru.runsteps(tasks,"quiet");
 	}
 }
 

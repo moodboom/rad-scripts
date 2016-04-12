@@ -1,70 +1,49 @@
 #!/usr/bin/env node
 
+var ru = require('./run-utils.js');
+
+
+//=========== git_changes: gets any changes in the current folder; returns blank if none ============
+var git_changes = function(folder) {
+    var run = ru.run_command_sync;
+    return run("git", ["status", "-uno", "--porcelain"]);
+}
+
 
 // =========== git_sync: commits, then pulls, then pushes to the default remote repo ============
 var git_sync = function(folder,comment)
 {
-    var exec = require('child_process').exec;
-
-    // DEBUG
-    // console.log(process.cwd());
-    // console.log(folder);
-
-    // If comment is anything other than blank, build a proper comment format that we can slap on the end of cmd.
-    if (comment.length > 0)
-    {
-        comment = " -m \"" + comment + "\"";
-
+    Array.prototype.plus = function (other_array) {
+        other_array.forEach(function(v) {this.push(v)}, this);    
     }
 
-    // Run these in order.
-    // Make sure the task specifies the full target folder since these will be called async.
-    // i.e., don't use process.cwd()...
-    var cmd1 = 'cd ' + folder + ' && git commit -a' + comment;
-    var cmd2 = 'cd ' + folder + ' && git pull';
-    var cmd3 = 'cd ' + folder + ' && git push';
-
-    exec(cmd1, function(error, stdout, stderr) {
-
-        // Sometimes stupid emacs fails with "emacs: standard input is not a tty".
-        // I can't BELIEVE I used that as my primary editor for years!!  Think globally, EDIT LOCALLY.
-        if (stderr) {
-
-            if (stdout.length > 0 ) console.log(stdout);
-            console.log(stderr);
-
-        } else {
-
-            exec(cmd2, function(error, stdout, stderr) {
-                if (error) {
-                    console.log('=========================================================');
-                    console.log('PULL FAIL: ' + folder);
-                    console.log('=========================================================');
-                    if (stdout.length > 0 ) console.log(stdout);
-                    if (stderr.length > 0 ) console.log(stderr);
-                } else {
-                    exec(cmd3, function(error, stdout, stderr) {
-                        if (error) {
-                            console.log('=========================================================');
-                            console.log('PUSH FAIL: ' + folder);
-                            console.log('=========================================================');
-                            if (stdout.length > 0 ) console.log(stdout);
-                            if (stderr.length > 0 ) console.log(stderr);
-                        } else
-                        {
-                            // MDM Eventually remove this chatter.
-                            // console.log(stdout);
-                            // console.log(stderr);
-                            // console.log('==================== SYNC COMPLETE ====================\n');
-                            // console.log("<=> * [" + process.cwd() + "] " + cmd1 + " && " + cmd2 + " && " + cmd3);
-
-                            console.log("<=> " + folder);
-                        }
-                    });
-                }
-            });
+    var changes = git_changes(folder);
+    if (changes.length())
+	{
+        // If comment is anything other than blank, build a proper comment format that we can slap on the end of cmd.
+        if (comment.length > 0)
+        {
+            comment = " -m \"" + comment + "\"";
         }
-    });
+
+        var tasks = 
+        [
+    	  	{ name: 'commit', folder: folder, cmd: 'cd ' + folder + ' && git commit -a' + comment 	}, 
+    	 	{ name: 'pull'  , folder: folder, cmd: 'cd ' + folder + ' && git pull' 					}, 
+    	 	{ name: 'push'  , folder: folder, cmd: 'cd ' + folder + ' && git push'					} 
+        	 
+        ];
+        ru.runsteps(tasks);
+
+	} else {
+		
+        var tasks = 
+        [
+    	 	{ name: 'pull'  , folder: folder, cmd: 'cd ' + folder + ' && git pull' 					}, 
+        	 
+        ];
+        ru.runsteps(tasks);
+	}
 }
 
 
@@ -96,7 +75,6 @@ var git_clone = function(remote_repo,local_folder)
 // =========== svn_last_changed_rev: gets the SVN "last changed rev" for the current folder, as a string ============
 var svn_last_changed_rev = function () {
 
-    var ru = require('./run-utils.js');
     var run = ru.run_command_sync;
 
     var svn_info = run("svn", ["info"]);
@@ -205,6 +183,7 @@ var build_semantic_version = function (major,minor,patch,build,lastVersionFolder
     return m+'.'+n+'.'+p+'.'+b;
 }
 
+module.exports.git_changes = git_changes;
 module.exports.git_sync = git_sync;
 module.exports.git_clone = git_clone;
 module.exports.svn_last_changed_rev = svn_last_changed_rev;

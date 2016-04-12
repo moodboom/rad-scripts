@@ -20,26 +20,26 @@ var run_command_sync = function (cmd, args ) {
 
 
 // =========== run_command_sync_to_console: run one command and let output immediately flow to console ============
-var run_command_sync_to_console = function (cmd) {
+var run_command_sync_to_console = function (cmd,verbosity) {
     var execSync = require('child_process').execSync;
 
-    // VERBOSE: this shows output as commands execute...
-    execSync(cmd, {stdio:[0,1,2]}, function(error, stdout, stderr) {
-
-    // QUIET: minimal output until an error is hit...
-    // execSync(steps[i].cmd, function(error, stdout, stderr) {
-
-        if (error) {
-
-            console.log('======= RUN ERROR =======');
-
-            // Output should have already gone...
-            // console.log(stdout);
-            // console.log(stderr);
-
-            throw error;
-        }
-    });
+    if (verbosity != "quiet")
+    {
+        // This shows output as commands execute...
+        execSync(cmd, {stdio:[0,1,2]}, function(error, stdout, stderr) {
+            if (error) {
+                console.log('======= RUN ERROR =======');
+                throw error;
+            }
+        });
+    } else {
+        execSync(cmd, function(error, stdout, stderr) {
+	        if (error) {
+	            console.log('======= RUN ERROR =======');
+	            throw error;
+	        }
+	    });
+   	}
 }
 
 
@@ -68,6 +68,10 @@ var run_command = function (cmd, args, callBack ) {
 //      ];
 //
 // This function runs the requested steps synchronously, logging output to console as it goes.
+// Verbosity can be:
+//		"quiet"		no output
+//		undefined	normal output - the step name and command output are logged to console
+//		"verbose"	more output - step name, folder, command output
 var runsteps = function (steps,verbosity) {
 
     var exec = require('child_process').exec;
@@ -77,22 +81,18 @@ var runsteps = function (steps,verbosity) {
 
     for (var i = 0;i < steps.length;i++) {
 
-        // SYNCHRONOUS change wd
-        // ignore failures until we find one that works
         try {
         	
-        	console.log('verbosity = ' + verbosity);
         	if (verbosity != "quiet") {
                 console.log('step: ' + steps[i].name);
         	}
-
-            process.chdir(path.normalize(steps[i].folder));
-            
             if (verbosity == "verbose") {
                 console.log('cd: ' + process.cwd());
             }
 
-            run_command_sync_to_console(steps[i].cmd);
+            process.chdir(path.normalize(steps[i].folder));
+            
+            run_command_sync_to_console(steps[i].cmd,verbosity);
         }
         catch (err) {
             if (verbosity == "verbose") {

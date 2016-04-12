@@ -68,7 +68,7 @@ var run_command = function (cmd, args, callBack ) {
 //      ];
 //
 // This function runs the requested steps synchronously, logging output to console as it goes.
-var runsteps = function (steps) {
+var runsteps = function (steps,verbosity) {
 
     var exec = require('child_process').exec;
     var execSync = require('child_process').execSync;
@@ -80,17 +80,23 @@ var runsteps = function (steps) {
         // SYNCHRONOUS change wd
         // ignore failures until we find one that works
         try {
-            console.log('step: ' + steps[i].name);
+        	
+        	if (verbosity != "quiet") {
+                console.log('step: ' + steps[i].name);
+        	}
 
             process.chdir(path.normalize(steps[i].folder));
-            // console.log(process.cwd());
+            
+            if (verbosity == "verbose") {
+                console.log('cd: ' + process.cwd());
+            }
 
             run_command_sync_to_console(steps[i].cmd);
         }
         catch (err) {
-            // For now, fail silently and keep going.
-            // The errors will have been logged to console.
-            // console.log(err);
+            if (verbosity == "verbose") {
+            	console.log(err);
+            }
         }
     }
 }

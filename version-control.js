@@ -24,13 +24,19 @@ var git_sync = function(folder,comment)
         other_array.forEach(function(v) {this.push(v)}, this);    
     }
 
+    var changes = git_changes(folder);
+    var remote_changes = git_remote_changes(folder);
+    
+    // If comment is anything other than blank, build a proper comment format that we can slap on the end of cmd.
+    if (comment.length > 0)
+    {
+        comment = " -m \"" + comment + "\"";
+    }
+
     var commit_task = [{ name: 'commit', folder: folder, cmd: 'cd ' + folder + ' && git commit -a' + comment 	}];
     var pull_task   = [{ name: 'pull'  , folder: folder, cmd: 'cd ' + folder + ' && git pull'                   }]; 
     var push_task   = [{ name: 'push'  , folder: folder, cmd: 'cd ' + folder + ' && git push'                   }]; 
 
-    var changes = git_changes(folder);
-    var remote_changes = git_remote_changes(folder);
-    
     // Build tasks.
     var tasks = [];
     if (changes.length       ) { tasks.plus(commit_task); }
@@ -46,12 +52,6 @@ var git_sync = function(folder,comment)
     if (tasks.length) {
 
         console.log(blip + ' ' + folder);
-
-        // If comment is anything other than blank, build a proper comment format that we can slap on the end of cmd.
-        if (changes.length && comment.length > 0)
-        {
-            comment = " -m \"" + comment + "\"";
-        }
 
         // ru.runsteps(tasks,"quiet");
         ru.runsteps(tasks);

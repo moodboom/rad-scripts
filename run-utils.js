@@ -12,6 +12,16 @@ var run_command_sync_to_console = function (cmd) {
 }
 
 
+//=========== run_command_async_to_console: async run one command and dump output to console when complete ============
+var run_command_async_to_console = function (cmd) {
+    var exec = require('child_process').exec;
+    exec(cmd, function(error, stdout, stderr) {
+        if (stdout.length > 0 ) console.log(stdout);
+        if (stderr.length > 0 ) console.log(stderr);
+    });
+}
+
+
 //=========== run_command_quietly: runs without output unless error ============
 var run_command_quietly = function (cmd) {
     var execSync = require('child_process').execSync;
@@ -32,7 +42,7 @@ var run_command = function (cmd, callBack ) {
 
     // TODO this needs work, spawn isn't cooperating yet...
 
-    
+
 
     // DEBUG
     // run_command_sync_to_console(cmd);
@@ -153,14 +163,9 @@ var runsteps = function (steps,verbosity,async) {
 
             process.chdir(path.normalize(steps[i].folder));
             
-            // TODO run_command needs work
-            /*
             if (async) {
-                run_command(steps[i].cmd,function(text) { console.log(text); });
-            } else 
-            */
-
-            if (verbosity != "quiet") {
+                run_command_async_to_console(steps[i].cmd);
+            } else if (verbosity != "quiet") {
         		run_command_sync_to_console(steps[i].cmd);
         	} else {
         		run_command_quietly(steps[i].cmd);
@@ -189,6 +194,7 @@ var combine_params = function(params) {
 
 module.exports.run_command_sync = run_command_sync;
 module.exports.run_command_sync_to_console = run_command_sync_to_console;
+module.exports.run_command_async_to_console = run_command_async_to_console;
 module.exports.run_command_quietly = run_command_quietly; 
 module.exports.run_command = run_command;
 module.exports.runsteps = runsteps;

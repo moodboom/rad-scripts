@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env nodeold
 
 var ru = require('./run-utils.js');
 
@@ -10,40 +10,51 @@ var git_changes = function(folder) {
 }
 
 
-// =========== git_sync: commits, then pulls, then pushes to the default remote repo ============
+//=========== git_remote_changes: returns if remote changes exist, blank if none ============
+var git_remote_changes = function(folder) {
+    ru.run_command_quietly('git remote update');
+    return ru.run_command_sync( "git", ["log","HEAD..HEAD@{u}","--oneline"]);
+}
+
+
+// =========== git_sync: commits, then pulls, then pushes to the default remote repo, as needed ============
 var git_sync = function(folder,comment)
 {
     Array.prototype.plus = function (other_array) {
         other_array.forEach(function(v) {this.push(v)}, this);    
     }
 
+    var commit_task = [{ name: 'commit', folder: folder, cmd: 'cd ' + folder + ' && git commit -a' + comment 	}];
+    var pull_task   = [{ name: 'pull'  , folder: folder, cmd: 'cd ' + folder + ' && git pull'                   }]; 
+    var push_task   = [{ name: 'push'  , folder: folder, cmd: 'cd ' + folder + ' && git push'                   }]; 
+
     var changes = git_changes(folder);
-    if (changes.length)
-	{
+    var remote_changes = git_remote_changes(folder);
+    
+    // Build tasks.
+    var tasks = [];
+    if (changes.length       ) { tasks.plus(commit_task); }
+    if (remote_changes.length) { tasks.plus(pull_task  ); }
+    if (changes.length       ) { tasks.plus(push_task  ); }
+
+    // Build blip.
+    var blip = "";
+         if (changes.length && remote_changes.length) { blip = '<->'; }
+    else if (changes.length                         ) { blip = '-->'; }
+    else if (remote_changes.length                  ) { blip = '<--'; }
+
+    if (tasks.length) {
+
+        console.log(blip + ' ' + folder);
+
         // If comment is anything other than blank, build a proper comment format that we can slap on the end of cmd.
-        if (comment.length > 0)
+        if (changes.length && comment.length > 0)
         {
             comment = " -m \"" + comment + "\"";
         }
 
-        var tasks = 
-        [
-    	  	{ name: 'commit', folder: folder, cmd: 'cd ' + folder + ' && git commit -a' + comment 	}, 
-    	 	{ name: 'pull'  , folder: folder, cmd: 'cd ' + folder + ' && git pull' 					}, 
-    	 	{ name: 'push'  , folder: folder, cmd: 'cd ' + folder + ' && git push'					} 
-        	 
-        ];
-        var verbosity = "quiet";
-        ru.runsteps(tasks,verbosity);
-
-	} else {
-		
-        var tasks = 
-        [
-    	 	{ name: 'pull'  , folder: folder, cmd: 'cd ' + folder + ' && git pull' 					}, 
-        	 
-        ];
-        ru.runsteps(tasks,"quiet");
+        // ru.runsteps(tasks,"quiet");
+        ru.runsteps(tasks);
 	}
 }
 

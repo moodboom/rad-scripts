@@ -30,6 +30,10 @@ var run_command_quietly = function (cmd) {
 // run_command( "ls -l", function(text) { console.log (text) });
 var run_command = function (cmd, callBack ) {
 
+    // TODO this needs work, spawn isn't cooperating yet...
+
+    
+
     // DEBUG
     // run_command_sync_to_console(cmd);
 
@@ -52,33 +56,19 @@ var run_command = function (cmd, callBack ) {
     // DEBUG: 
     // console.log('cmd args: ' + cmd + ' ----- ' + args);
 
+    var args = cmd.split(" ").slice(1);
+    for (var i = 0;i < args.length;i++) {
+        args[i] = trim(args[i]);
+    }
+    cmd = cmd.split(" ",1).trim();
+
     // DEBUG this works!
     // var args = ["status"];
-    cmd = "git";
+    // cmd = "git";
 
-    // DEBUG
-    var args = ["commit","-a","-m",'"synctrouble"'];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // DEBUG this works!
+    // cmd = "git";
+    // var args = ["commit","-a","-m",'"synctrouble"'];
 
 
 
@@ -163,9 +153,14 @@ var runsteps = function (steps,verbosity,async) {
 
             process.chdir(path.normalize(steps[i].folder));
             
+            // TODO run_command needs work
+            /*
             if (async) {
                 run_command(steps[i].cmd,function(text) { console.log(text); });
-            } else if (verbosity != "quiet") {
+            } else 
+            */
+
+            if (verbosity != "quiet") {
         		run_command_sync_to_console(steps[i].cmd);
         	} else {
         		run_command_quietly(steps[i].cmd);

@@ -48,9 +48,10 @@ var git_sync = function(folder,comment)
          if (changes.length && remote_changes.length) { blip = '<->'; }
     else if (changes.length                         ) { blip = '-->'; }
     else if (remote_changes.length                  ) { blip = '<--'; }
+    else                                              { blip = '---'; }
 
-    if (tasks.length) {
-
+    // if (tasks.length) 
+    {
         console.log(blip + ' ' + folder);
 
         // ru.runsteps(tasks,"quiet");

@@ -33,7 +33,10 @@ var run_command = function (cmd, callBack ) {
     // DEBUG
     // run_command_sync_to_console(cmd);
 
+
+
     // Ignorant spawn absolutely whines if you don't split out the arguments.
+    /*
     var spawnargs = require('spawn-args');
     var args = cmd.split(" ").slice(1);
     var argstring = "";
@@ -44,31 +47,57 @@ var run_command = function (cmd, callBack ) {
     args = spawnargs(argstring);
 
     cmd = cmd.split(" ",1);
+    */
 
     // DEBUG: 
     // console.log('cmd args: ' + cmd + ' ----- ' + args);
 
     // DEBUG this works!
-    // args = ["status"];
-    // cmd = "git";
+    // var args = ["status"];
+    cmd = "git";
 
     // DEBUG
-    args = ["commit","-a","-m",'"synctrouble"'];
-    cmd = "git";
+    var args = ["commit","-a","-m",'"synctrouble"'];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // DEBUG: 
-    console.log('cmd args: ' + cmd + ' ----- ' + args);
+    // console.log('cmd args: ' + cmd + ' ----- ' + args);
 
     var spawn = require('child_process').spawn;
     
     var child = spawn(cmd, args);
     // var child = spawn(cmd, args, {stdio: "inherit"});
+    
+    // THIS SHIT BREAKS EVERYTHING SILENTLY
+    /*
     if (error) {
         console.log(error.stack);
         console.log('Error code: '+error.code);
         console.log('Signal received: '+error.signal);
     }
+    */
 
     var resp = "";
     child.stdout.on('data', function (buffer) { resp += buffer.toString() });

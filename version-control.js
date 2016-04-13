@@ -9,7 +9,7 @@ var git_changes = function(folder) {
     // Steps will be called synchronously so we can use cd.
     process.chdir(folder);
 
-    return ru.run_command_sync("git", ["status", "-uno", "--porcelain"]);
+    return ru.run_command_sync("git status -uno --porcelain");
 }
 
 
@@ -20,7 +20,7 @@ var git_remote_changes = function(folder) {
     process.chdir(folder);
 
     ru.run_command_quietly('git remote update');
-    return ru.run_command_sync( "git", ["log","HEAD..HEAD@{u}","--oneline"]);
+    return ru.run_command_sync("git log HEAD..HEAD@{u} --oneline");
 }
 
 
@@ -40,9 +40,9 @@ var git_sync = function(folder,comment)
         comment = " -m \"" + comment + "\"";
     }
 
-    var commit_task = [{ name: 'commit', folder: folder, cmd: 'cd ' + folder + ' && git commit -a' + comment 	}];
-    var pull_task   = [{ name: 'pull'  , folder: folder, cmd: 'cd ' + folder + ' && git pull'                   }]; 
-    var push_task   = [{ name: 'push'  , folder: folder, cmd: 'cd ' + folder + ' && git push'                   }]; 
+    var commit_task = [{ name: 'commit', folder: folder, cmd: 'git commit -a' + comment    }];
+    var pull_task   = [{ name: 'pull'  , folder: folder, cmd: 'git pull'                   }]; 
+    var push_task   = [{ name: 'push'  , folder: folder, cmd: 'git push'                   }]; 
 
     // Build tasks.
     var tasks = [];
@@ -58,11 +58,14 @@ var git_sync = function(folder,comment)
     else                                              { blip = '---'; }
 
     console.log(blip + ' ' + folder);
+
+    /*
     if (tasks.length) {
         console.log('-----------------------');
 	}
+    */
 
-    ru.runsteps(tasks,'verbose','async');
+    ru.runsteps(tasks,'quiet','async');
 }
 
 

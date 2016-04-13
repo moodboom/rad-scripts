@@ -1,24 +1,5 @@
 #!/usr/bin/env node
 
-// =========== run_command: run one command and get output ============
-// Run a command synchronously and get the output when it finishes.
-// Usage:
-// var lsout = run_command_sync( "ls", ["-l"]);
-var run_command_sync = function (cmd, args ) {
-    var ss = require('child_process').spawnSync;
-    var outp = ss(cmd, args, { encoding : 'utf8' });
-    return outp.stdout;
-
-    // From here:
-    //  http://stackoverflow.com/questions/32393250/nodejs-child-process-spawnsync-or-child-process-spawn-wrapped-in-yieldable-gener
-    // More example cde:
-    // var ls = cp.spawnSync('ls', ['-l', '/usr'], { encoding : 'utf8' });
-    // uncomment the following if you want to see everything returned by the spawnSync command
-    // console.log('ls: ' , ls);
-    // console.log('stdout here: \n' + ls.stdout);
-}
-
-
 //=========== run_command_sync_to_console: run one command and let output immediately flow to console ============
 var run_command_sync_to_console = function (cmd) {
     var execSync = require('child_process').execSync;
@@ -46,8 +27,20 @@ var run_command_quietly = function (cmd) {
 // =========== run_command: run one command and get output ============
 // Run a command asynchronously and get the output when it finishes in a callback.
 // Usage:
-// run_command( "ls", ["-l"], function(text) { console.log (text) });
-var run_command = function (cmd, args, callBack ) {
+// run_command( "ls -l", function(text) { console.log (text) });
+var run_command = function (cmd, callBack ) {
+
+    // DEBUG
+    run_command_sync_to_console(cmd);
+
+    /*
+    // Ignorant spawn absolutely whines if you don't split out the arguments.
+    var args = cmd.split(" ").slice(1);
+    cmd = cmd.split(" ",1);
+
+    // DEBUG: 
+    console.log(process.cwd());
+    console.log('cmd args: ' + cmd + ' ----- ' + args);
 
     var spawn = require('child_process').spawn;
     var child = spawn(cmd, args);
@@ -55,6 +48,31 @@ var run_command = function (cmd, args, callBack ) {
 
     child.stdout.on('data', function (buffer) { resp += buffer.toString() });
     child.stdout.on('end', function() { callBack (resp) });
+    */
+}
+
+
+// =========== run_command_sync: run one command and get output ============
+// Run a command synchronously and get the output when it finishes.
+// Usage:
+// var lsout = run_command_sync( "ls", ["-l"]);
+var run_command_sync = function (cmd) {
+
+    // Ignorant spawn absolutely whines if you don't split out the arguments.
+    var args = cmd.split(" ").slice(1);
+    cmd = cmd.split(" ",1);
+
+    var ss = require('child_process').spawnSync;
+    var outp = ss(cmd, args, { encoding : 'utf8' });
+    return outp.stdout;
+
+    // From here:
+    //  http://stackoverflow.com/questions/32393250/nodejs-child-process-spawnsync-or-child-process-spawn-wrapped-in-yieldable-gener
+    // More example cde:
+    // var ls = cp.spawnSync('ls', ['-l', '/usr'], { encoding : 'utf8' });
+    // uncomment the following if you want to see everything returned by the spawnSync command
+    // console.log('ls: ' , ls);
+    // console.log('stdout here: \n' + ls.stdout);
 }
 
 
@@ -67,16 +85,14 @@ var run_command = function (cmd, args, callBack ) {
 //          { name: 'build Project'         , folder: '.'       , cmd: 'make'           },
 //      ];
 //
-// This function runs the requested steps synchronously, logging output to console as it goes.
+// This function runs the requested steps.
 // Verbosity can be:
 //		"quiet"		no output
 //		undefined	normal output - the step name and command output are logged to console
 //		"verbose"	more output - step name, folder, command output
+// Define async to get asynchronous execution.
 var runsteps = function (steps,verbosity,async) {
 
-    var exec = require('child_process').exec;
-    var execSync = require('child_process').execSync;
-    var fs = require('fs');
     var path = require('path');
 
     for (var i = 0;i < steps.length;i++) {
@@ -93,7 +109,7 @@ var runsteps = function (steps,verbosity,async) {
             process.chdir(path.normalize(steps[i].folder));
             
             if (async) {
-                run_command(steps[i].cmd, [],function(text) { /*console.log(text)*/ });
+                run_command(steps[i].cmd,function(text) { console.log(text) });
             } else if (verbosity != "quiet") {
         		run_command_sync_to_console(steps[i].cmd);
         	} else {

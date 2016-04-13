@@ -31,9 +31,8 @@ var run_command_quietly = function (cmd) {
 var run_command = function (cmd, callBack ) {
 
     // DEBUG
-    run_command_sync_to_console(cmd);
+    // run_command_sync_to_console(cmd);
 
-    /*
     // Ignorant spawn absolutely whines if you don't split out the arguments.
     var args = cmd.split(" ").slice(1);
     cmd = cmd.split(" ",1);
@@ -42,13 +41,12 @@ var run_command = function (cmd, callBack ) {
     console.log(process.cwd());
     console.log('cmd args: ' + cmd + ' ----- ' + args);
 
-    var spawn = require('child_process').spawn;
-    var child = spawn(cmd, args);
+    var spawn = require('child_process').spawnSync;
+    var child = spawn(cmd, args, { encoding : 'utf8' });
     var resp = "";
 
     child.stdout.on('data', function (buffer) { resp += buffer.toString() });
     child.stdout.on('end', function() { callBack (resp) });
-    */
 }
 
 
@@ -109,7 +107,7 @@ var runsteps = function (steps,verbosity,async) {
             process.chdir(path.normalize(steps[i].folder));
             
             if (async) {
-                run_command(steps[i].cmd,function(text) { console.log(text) });
+                run_command(steps[i].cmd,function(text) { console.log(text); });
             } else if (verbosity != "quiet") {
         		run_command_sync_to_console(steps[i].cmd);
         	} else {

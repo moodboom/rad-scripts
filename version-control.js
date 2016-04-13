@@ -57,15 +57,12 @@ var git_sync = function(folder,comment)
     else if (remote_changes.length                  ) { blip = '<<<'; }
     else                                              { blip = '---'; }
 
-    // if (tasks.length) 
-    {
+    console.log(blip + ' ' + folder);
+    if (tasks.length) {
         console.log('-----------------------');
-        console.log(blip + ' ' + folder);
-        console.log('-----------------------');
-
-        // ru.runsteps(tasks,"quiet");
-        ru.runsteps(tasks);
 	}
+
+    ru.runsteps(tasks,'verbose','async');
 }
 
 

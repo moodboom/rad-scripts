@@ -53,13 +53,15 @@ var git_sync = function(folder,comment)
     // Build blip.
     var blip = "";
          if (changes.length && remote_changes.length) { blip = '<=>'; }
-    else if (changes.length                         ) { blip = '-->'; }
-    else if (remote_changes.length                  ) { blip = '<--'; }
+    else if (changes.length                         ) { blip = '>>>'; }
+    else if (remote_changes.length                  ) { blip = '<<<'; }
     else                                              { blip = '---'; }
 
     // if (tasks.length) 
     {
+        console.log('-----------------------');
         console.log(blip + ' ' + folder);
+        console.log('-----------------------');
 
         // ru.runsteps(tasks,"quiet");
         ru.runsteps(tasks);

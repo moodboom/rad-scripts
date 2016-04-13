@@ -46,7 +46,7 @@ var run_command_quietly = function (cmd) {
 // =========== run_command: run one command and get output ============
 // Run a command asynchronously and get the output when it finishes in a callback.
 // Usage:
-// run_cmd( "ls", ["-l"], function(text) { console.log (text) });
+// run_command( "ls", ["-l"], function(text) { console.log (text) });
 var run_command = function (cmd, args, callBack ) {
 
     var spawn = require('child_process').spawn;
@@ -72,7 +72,7 @@ var run_command = function (cmd, args, callBack ) {
 //		"quiet"		no output
 //		undefined	normal output - the step name and command output are logged to console
 //		"verbose"	more output - step name, folder, command output
-var runsteps = function (steps,verbosity) {
+var runsteps = function (steps,verbosity,async) {
 
     var exec = require('child_process').exec;
     var execSync = require('child_process').execSync;
@@ -92,7 +92,9 @@ var runsteps = function (steps,verbosity) {
 
             process.chdir(path.normalize(steps[i].folder));
             
-        	if (verbosity != "quiet") {
+            if (async) {
+                run_command(steps[i].cmd, [],function(text) { /*console.log(text)*/ });
+            } else if (verbosity != "quiet") {
         		run_command_sync_to_console(steps[i].cmd);
         	} else {
         		run_command_quietly(steps[i].cmd);

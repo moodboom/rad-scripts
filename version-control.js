@@ -45,7 +45,7 @@ var git_sync = function(folder,comment)
 
     // Build blip.
     var blip = "";
-         if (changes.length && remote_changes.length) { blip = '<->'; }
+         if (changes.length && remote_changes.length) { blip = '<=>'; }
     else if (changes.length                         ) { blip = '-->'; }
     else if (remote_changes.length                  ) { blip = '<--'; }
     else                                              { blip = '---'; }

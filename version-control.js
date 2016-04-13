@@ -5,13 +5,20 @@ var ru = require('./run-utils.js');
 
 //=========== git_changes: gets any changes in the current folder; returns blank if none ============
 var git_changes = function(folder) {
-    var run = ru.run_command_sync;
-    return run("git", ["status", "-uno", "--porcelain"]);
+
+    // Steps will be called synchronously so we can use cd.
+    process.chdir(folder);
+
+    return ru.run_command_sync("git", ["status", "-uno", "--porcelain"]);
 }
 
 
 //=========== git_remote_changes: returns if remote changes exist, blank if none ============
 var git_remote_changes = function(folder) {
+
+    // Steps will be called synchronously so we can use cd.
+    process.chdir(folder);
+
     ru.run_command_quietly('git remote update');
     return ru.run_command_sync( "git", ["log","HEAD..HEAD@{u}","--oneline"]);
 }

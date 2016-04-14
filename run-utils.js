@@ -40,9 +40,12 @@ var run_command_quietly = function (cmd) {
 // run_command( "ls -l", function(text) { console.log (text) });
 var run_command = function (cmd, callBack ) {
 
+    var fullargs = spawnargs(cmd);
+    cmd = fullargs[0];
+    var args = fullargs.slice(1);
+
+    
     // TODO this needs work, spawn isn't cooperating yet...
-
-
 
     // DEBUG
     // run_command_sync_to_console(cmd);
@@ -58,7 +61,6 @@ var run_command = function (cmd, callBack ) {
         argstring += args[i] + ' ';
     }
     console.log('argstring: ' + argstring);
-    args = spawnargs(argstring);
 
     cmd = cmd.split(" ",1);
     */
@@ -66,12 +68,17 @@ var run_command = function (cmd, callBack ) {
     // DEBUG: 
     // console.log('cmd args: ' + cmd + ' ----- ' + args);
 
+
+    // STRAIGHT COMMAND PARSING, doesn't work either
+    /*
     var args = cmd.split(" ").slice(1);
     for (var i = 0;i < args.length;i++) {
         args[i] = trim(args[i]);
     }
     cmd = cmd.split(" ",1).trim();
+    */
 
+    
     // DEBUG this works!
     // var args = ["status"];
     // cmd = "git";

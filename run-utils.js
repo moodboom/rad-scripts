@@ -171,7 +171,13 @@ var runsteps = function (steps,verbosity,async) {
             process.chdir(path.normalize(steps[i].folder));
             
             if (async) {
+                
+                // TODO
+                //run_command(steps[i].cmd, function(text) { console.log (text) });
+                
+                // Workaround
                 run_command_async_to_console(steps[i].cmd);
+                
             } else if (verbosity != "quiet") {
         		run_command_sync_to_console(steps[i].cmd);
         	} else {

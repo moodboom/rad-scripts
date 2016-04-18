@@ -1,8 +1,18 @@
 #!/usr/bin/env node
 
+
+var exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
+
+// MDM NOTE that node v0.12 or higher is required for this.
+var execSync = require('child_process').execSync;
+var spawnSync = require('child_process').spawnSync;
+
+var spawnargs = require('spawn-args');
+
+
 //=========== run_command_sync_to_console: run one command and let output immediately flow to console ============
 var run_command_sync_to_console = function (cmd) {
-    var execSync = require('child_process').execSync;
     execSync(cmd, {stdio:[0,1,2]}, function(error, stdout, stderr) {
         if (error) {
             console.log('======= RUN ERROR =======');
@@ -14,7 +24,6 @@ var run_command_sync_to_console = function (cmd) {
 
 //=========== run_command_async_to_console: async run one command and dump output to console when complete ============
 var run_command_async_to_console = function (cmd) {
-    var exec = require('child_process').exec;
     exec(cmd, function(error, stdout, stderr) {
         if (stdout.length > 0 ) console.log(stdout);
         if (stderr.length > 0 ) console.log(stderr);
@@ -24,7 +33,6 @@ var run_command_async_to_console = function (cmd) {
 
 //=========== run_command_quietly: runs without output unless error ============
 var run_command_quietly = function (cmd) {
-    var execSync = require('child_process').execSync;
     execSync(cmd, function(error, stdout, stderr) {
         if (error) {
             console.log('======= RUN ERROR =======');
@@ -44,7 +52,7 @@ var run_command = function (cmd, callBack ) {
     cmd = fullargs[0];
     var args = fullargs.slice(1);
 
-    
+
     // TODO this needs work, spawn isn't cooperating yet...
 
     // DEBUG
@@ -65,7 +73,7 @@ var run_command = function (cmd, callBack ) {
     cmd = cmd.split(" ",1);
     */
 
-    // DEBUG: 
+    // DEBUG:
     // console.log('cmd args: ' + cmd + ' ----- ' + args);
 
 
@@ -78,7 +86,7 @@ var run_command = function (cmd, callBack ) {
     cmd = cmd.split(" ",1).trim();
     */
 
-    
+
     // DEBUG this works!
     // var args = ["status"];
     // cmd = "git";
@@ -89,14 +97,14 @@ var run_command = function (cmd, callBack ) {
 
 
 
-    // DEBUG: 
+    // DEBUG:
     // console.log('cmd args: ' + cmd + ' ----- ' + args);
 
     var spawn = require('child_process').spawn;
-    
+
     var child = spawn(cmd, args);
     // var child = spawn(cmd, args, {stdio: "inherit"});
-    
+
     // THIS SHIT BREAKS EVERYTHING SILENTLY
     /*
     if (error) {
@@ -120,12 +128,12 @@ var run_command = function (cmd, callBack ) {
 // var lsout = run_command_sync( "ls", ["-l"]);
 var run_command_sync = function (cmd) {
 
-    // Ignorant spawn absolutely whines if you don't split out the arguments.
-    var args = cmd.split(" ").slice(1);
-    cmd = cmd.split(" ",1);
+    var fullargs = spawnargs(cmd);
+    cmd = fullargs[0];
+    var args = fullargs.slice(1);
 
-    var ss = require('child_process').spawnSync;
-    var outp = ss(cmd, args, { encoding : 'utf8' });
+    var spawnSync = require('child_process').spawnSync;
+    var outp = spawnSync(cmd, args, { encoding : 'utf8' });
     return outp.stdout;
 
     // From here:
@@ -160,7 +168,7 @@ var runsteps = function (steps,verbosity,async) {
     for (var i = 0;i < steps.length;i++) {
 
         try {
-        	
+
         	if (verbosity != "quiet") {
                 console.log('step: ' + steps[i].name);
         	}
@@ -169,15 +177,15 @@ var runsteps = function (steps,verbosity,async) {
             }
 
             process.chdir(path.normalize(steps[i].folder));
-            
+
             if (async) {
-                
+
                 // TODO
                 //run_command(steps[i].cmd, function(text) { console.log (text) });
-                
+
                 // Workaround
                 run_command_async_to_console(steps[i].cmd);
-                
+
             } else if (verbosity != "quiet") {
         		run_command_sync_to_console(steps[i].cmd);
         	} else {
@@ -208,7 +216,7 @@ var combine_params = function(params) {
 module.exports.run_command_sync = run_command_sync;
 module.exports.run_command_sync_to_console = run_command_sync_to_console;
 module.exports.run_command_async_to_console = run_command_async_to_console;
-module.exports.run_command_quietly = run_command_quietly; 
+module.exports.run_command_quietly = run_command_quietly;
 module.exports.run_command = run_command;
 module.exports.runsteps = runsteps;
 module.exports.combine_params = combine_params;

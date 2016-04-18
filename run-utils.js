@@ -136,7 +136,7 @@ var runsteps = function (steps,verbosity,async) {
 
                 run_command(steps[i].cmd, function(text) {
                     console.log ('------------------------------');
-                    console.log(steps[i].cmd);
+                    // console.log(steps[i].cmd);
                     console.log ('------------------------------');
                     console.log (text)
                 });

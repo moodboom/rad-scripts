@@ -50,21 +50,20 @@ var git_sync = function(folder,comment)
     if (remote_changes.length) { tasks.plus(pull_task  ); }
     if (changes.length       ) { tasks.plus(push_task  ); }
 
-    // Build blip.
-    var blip = "";
-         if (changes.length && remote_changes.length) { blip = '<=>'; }
-    else if (changes.length                         ) { blip = '>>>'; }
-    else if (remote_changes.length                  ) { blip = '<<<'; }
-    else                                              { blip = '---'; }
-
-    console.log(blip + ' ' + folder);
-
-    /*
     if (tasks.length) {
-        console.log('-----------------------');
-	}
-    */
+    
+        // Build blip.
+        var blip = "";
+             if (changes.length && remote_changes.length) { blip = '<=>'; }
+        else if (changes.length                         ) { blip = '>>>'; }
+        else if (remote_changes.length                  ) { blip = '<<<'; }
+        else                                              { blip = '---'; }
 
+        console.log('----------------------------------');
+        console.log(blip + ' ' + folder);
+        console.log('----------------------------------');
+    }
+        
     ru.runsteps(tasks,'quiet','async');
 }
 

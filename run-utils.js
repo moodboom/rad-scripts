@@ -137,7 +137,7 @@ var runsteps = function (steps,verbosity,async) {
 
                 run_command(step.cmd, function(text) {
                     console.log ('------------------------------');
-                    console.log(step.cmd);
+                    console.log(step.folder);
                     console.log ('------------------------------');
                     console.log (text)
                 });

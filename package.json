@@ -13,8 +13,6 @@
   "preferGlobal": true,
 
   "dependencies": { "spawn-args": "^0.1.0" },
-  "// NOTE: aws is huge, not needed atm" : "",
-  "// {\"aws-sdk\": \"^2.2.12\" }" : "",
 
   "devDependencies": {},
 

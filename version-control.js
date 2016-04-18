@@ -28,12 +28,12 @@ var git_remote_changes = function(folder) {
 var git_sync = function(folder,comment)
 {
     Array.prototype.plus = function (other_array) {
-        other_array.forEach(function(v) {this.push(v)}, this);    
+        other_array.forEach(function(v) {this.push(v)}, this);
     }
 
     var changes = git_changes(folder);
     var remote_changes = git_remote_changes(folder);
-    
+
     // If comment is anything other than blank, build a proper comment format that we can slap on the end of cmd.
     if (comment.length > 0)
     {
@@ -41,8 +41,8 @@ var git_sync = function(folder,comment)
     }
 
     var commit_task = [{ name: 'commit', folder: folder, cmd: 'git commit -a' + comment    }];
-    var pull_task   = [{ name: 'pull'  , folder: folder, cmd: 'git pull'                   }]; 
-    var push_task   = [{ name: 'push'  , folder: folder, cmd: 'git push'                   }]; 
+    var pull_task   = [{ name: 'pull'  , folder: folder, cmd: 'git pull'                   }];
+    var push_task   = [{ name: 'push'  , folder: folder, cmd: 'git push'                   }];
 
     // Build tasks.
     var tasks = [];
@@ -51,7 +51,7 @@ var git_sync = function(folder,comment)
     if (changes.length       ) { tasks.plus(push_task  ); }
 
     if (tasks.length) {
-    
+
         // Build blip.
         var blip = "";
              if (changes.length && remote_changes.length) { blip = '<=>'; }
@@ -63,8 +63,8 @@ var git_sync = function(folder,comment)
         console.log(blip + ' ' + folder);
         console.log('----------------------------------');
     }
-        
-    ru.runsteps(tasks,'quiet','async');
+
+    ru.runsteps(tasks,'quiet');
 }
 
 

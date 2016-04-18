@@ -52,41 +52,6 @@ var run_command = function (cmd, callBack ) {
     cmd = fullargs[0];
     var args = fullargs.slice(1);
 
-
-    // TODO this needs work, spawn isn't cooperating yet...
-
-    // DEBUG
-    // run_command_sync_to_console(cmd);
-
-
-
-    // Ignorant spawn absolutely whines if you don't split out the arguments.
-    /*
-    var spawnargs = require('spawn-args');
-    var args = cmd.split(" ").slice(1);
-    var argstring = "";
-    for (var i = 0;i < args.length;i++) {
-        argstring += args[i] + ' ';
-    }
-    console.log('argstring: ' + argstring);
-
-    cmd = cmd.split(" ",1);
-    */
-
-    // DEBUG:
-    // console.log('cmd args: ' + cmd + ' ----- ' + args);
-
-
-    // STRAIGHT COMMAND PARSING, doesn't work either
-    /*
-    var args = cmd.split(" ").slice(1);
-    for (var i = 0;i < args.length;i++) {
-        args[i] = trim(args[i]);
-    }
-    cmd = cmd.split(" ",1).trim();
-    */
-
-
     // DEBUG this works!
     // var args = ["status"];
     // cmd = "git";
@@ -95,8 +60,6 @@ var run_command = function (cmd, callBack ) {
     // cmd = "git";
     // var args = ["commit","-a","-m",'"synctrouble"'];
 
-
-
     // DEBUG:
     // console.log('cmd args: ' + cmd + ' ----- ' + args);
 
@@ -104,15 +67,6 @@ var run_command = function (cmd, callBack ) {
 
     var child = spawn(cmd, args);
     // var child = spawn(cmd, args, {stdio: "inherit"});
-
-    // THIS SHIT BREAKS EVERYTHING SILENTLY
-    /*
-    if (error) {
-        console.log(error.stack);
-        console.log('Error code: '+error.code);
-        console.log('Signal received: '+error.signal);
-    }
-    */
 
     var resp = "";
     child.stdout.on('data', function (buffer) { resp += buffer.toString() });
@@ -180,11 +134,15 @@ var runsteps = function (steps,verbosity,async) {
 
             if (async) {
 
-                // TODO
-                //run_command(steps[i].cmd, function(text) { console.log (text) });
+                run_command(steps[i].cmd, function(text) {
+                    console.log ('------------------------------');
+                    console.log(steps[i].cmd);
+                    console.log ('------------------------------');
+                    console.log (text)
+                });
 
-                // Workaround
-                run_command_async_to_console(steps[i].cmd);
+                // Workaround during testing
+                // run_command_async_to_console(steps[i].cmd);
 
             } else if (verbosity != "quiet") {
         		run_command_sync_to_console(steps[i].cmd);

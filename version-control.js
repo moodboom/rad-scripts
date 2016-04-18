@@ -48,9 +48,9 @@ var git_sync = function(folder,comment)
     var tasks = [];
     if (changes.length       ) { tasks.plus(commit_task); }
     if (remote_changes.length) { tasks.plus(pull_task  ); }
-    if (changes.length       ) { tasks.plus(push_task  ); }
+    /* if (changes.length ) */ { tasks.plus(push_task  ); }   // Always push in case we already committed something
 
-    if (tasks.length) {
+    if (tasks.length > 1) {
 
         // Build blip.
         var blip = "";

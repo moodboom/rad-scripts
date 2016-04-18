@@ -119,24 +119,25 @@ var runsteps = function (steps,verbosity,async) {
 
     var path = require('path');
 
-    for (var i = 0;i < steps.length;i++) {
+    steps.forEach(function(step,i) {
+    // for (var i = 0;i < steps.length;i++) {
 
         try {
 
         	if (verbosity != "quiet") {
-                console.log('step: ' + steps[i].name);
+                console.log('step: ' + step.name);
         	}
             if (verbosity == "verbose") {
                 console.log('cd: ' + process.cwd());
             }
 
-            process.chdir(path.normalize(steps[i].folder));
+            process.chdir(path.normalize(step.folder));
 
             if (async) {
 
-                run_command(steps[i].cmd, function(text) {
+                run_command(step.cmd, function(text) {
                     console.log ('------------------------------');
-                    // console.log(steps[i].cmd);
+                    console.log(step.cmd);
                     console.log ('------------------------------');
                     console.log (text)
                 });
@@ -145,9 +146,9 @@ var runsteps = function (steps,verbosity,async) {
                 // run_command_async_to_console(steps[i].cmd);
 
             } else if (verbosity != "quiet") {
-        		run_command_sync_to_console(steps[i].cmd);
+        		run_command_sync_to_console(step.cmd);
         	} else {
-        		run_command_quietly(steps[i].cmd);
+        		run_command_quietly(step.cmd);
         	}
         }
         catch (err) {
@@ -155,7 +156,7 @@ var runsteps = function (steps,verbosity,async) {
             	console.log(err);
             }
         }
-    }
+    });
 }
 
 var combine_params = function(params) {

@@ -64,7 +64,6 @@ var git_sync = function(folder,comment)
         console.log('----------------------------------');
     }
 
-    // ru.runsteps(tasks,'quiet','async');
     ru.runsteps(tasks);
 }
 

@@ -90,14 +90,6 @@ var run_command_sync = function (cmd) {
     var spawnSync = require('child_process').spawnSync;
     var outp = spawnSync(cmd, args, { encoding : 'utf8' });
     return outp.stdout;
-
-    // From here:
-    //  http://stackoverflow.com/questions/32393250/nodejs-child-process-spawnsync-or-child-process-spawn-wrapped-in-yieldable-gener
-    // More example cde:
-    // var ls = cp.spawnSync('ls', ['-l', '/usr'], { encoding : 'utf8' });
-    // uncomment the following if you want to see everything returned by the spawnSync command
-    // console.log('ls: ' , ls);
-    // console.log('stdout here: \n' + ls.stdout);
 }
 
 

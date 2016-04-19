@@ -98,7 +98,7 @@ var svn_last_changed_rev = function () {
 
     var run = ru.run_command_sync;
 
-    var svn_info = run("svn", ["info"]);
+    var svn_info = run("svn info");
 
     // extract the "Last Changed Rev"
     var regx = /^Last Changed Rev: (.*)$/gm;
@@ -112,10 +112,9 @@ var svn_last_changed_rev = function () {
 // =========== svn_rev: gets the SVN current revision for the current repo, as a string ============
 var svn_rev = function () {
 
-    var ru = require('./run-utils.js');
     var run = ru.run_command_sync;
 
-    var svn_info = run("svn", ["info"]);
+    var svn_info = run("svn info");
 
     // extract the "Last Changed Rev"
     var regx = /^Revision: (.*)$/gm;

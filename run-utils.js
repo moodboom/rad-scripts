@@ -120,7 +120,6 @@ var runsteps = function (steps,verbosity,async) {
     var path = require('path');
 
     steps.forEach(function(step,i) {
-    // for (var i = 0;i < steps.length;i++) {
 
         try {
 
@@ -146,8 +145,13 @@ var runsteps = function (steps,verbosity,async) {
                 // run_command_async_to_console(steps[i].cmd);
 
             } else if (verbosity != "quiet") {
+
+                console.log ('------------------------------');
+                console.log(step.folder);
+                console.log ('------------------------------');
         		run_command_sync_to_console(step.cmd);
-        	} else {
+
+            } else {
         		run_command_quietly(step.cmd);
         	}
         }

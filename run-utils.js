@@ -116,10 +116,6 @@ var runsteps = function (steps,verbosity,async) {
 
         try {
 
-            if (verbosity == "verbose") {
-                console.log('step: ' + step.name);
-            }
-
             process.chdir(path.normalize(step.folder));
 
             if (async) {
@@ -127,7 +123,7 @@ var runsteps = function (steps,verbosity,async) {
                 run_command(step.cmd, function(text) {
                     if (verbosity == "verbose") {
                         console.log ('------------------------------');
-                        console.log(step.folder);
+                        console.log('step: ' + step.name);
                         console.log ('------------------------------');
                         console.log(step.folder + '> ' + step.cmd);
                     }
@@ -141,7 +137,7 @@ var runsteps = function (steps,verbosity,async) {
 
                 if (verbosity == "verbose") {
                     console.log ('------------------------------');
-                    console.log('step: ' + step.folder);
+                    console.log('step: ' + step.name);
                     console.log ('------------------------------');
                     console.log(step.folder + '> ' + step.cmd);
                 }

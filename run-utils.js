@@ -124,11 +124,8 @@ var runsteps = function (steps,verbosity,async) {
 
         try {
 
-        	if (verbosity != "quiet") {
-                console.log('step: ' + step.name);
-        	}
             if (verbosity == "verbose") {
-                console.log('cd: ' + process.cwd());
+                console.log('step: ' + step.name);
             }
 
             process.chdir(path.normalize(step.folder));

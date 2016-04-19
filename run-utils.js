@@ -45,7 +45,7 @@ var run_command_quietly = function (cmd) {
 // =========== run_command: run one command and get output ============
 // Run a command asynchronously and get the output when it finishes in a callback.
 // Usage:
-// run_command( "ls -l", function(text) { console.log (text) });
+// run_command( "ls -l", function(err,text) { console.log (text) });
 var run_command = function (cmd, callBack ) {
 
     var fullargs = spawnargs(cmd);
@@ -69,10 +69,11 @@ var run_command = function (cmd, callBack ) {
     // var child = spawn(cmd, args, {stdio: "inherit"});
 
     var resp = "";
+    var errr = "";
     child.stdout.on('data', function (buffer) { resp += buffer.toString() });
-    child.stderr.on('data', function (buffer) { resp += 'ERROR: ' + buffer.toString() });
+    child.stderr.on('data', function (buffer) { errr += buffer.toString() });
 
-    child.stdout.on('end', function() { callBack (resp) });
+    child.stdout.on('end', function() { callBack (errr, resp) });
 }
 
 
@@ -112,7 +113,7 @@ var run_command_sync = function (cmd) {
 // This function runs the requested steps.
 // Verbosity can be:
 //		"quiet"		no output
-//		undefined	normal output - the step name and command output are logged to console
+//		undefined	normal output - the command output is logged to console
 //		"verbose"	more output - step name, folder, command output
 // Define async to get asynchronous execution.
 var runsteps = function (steps,verbosity,async) {
@@ -146,9 +147,11 @@ var runsteps = function (steps,verbosity,async) {
 
             } else if (verbosity != "quiet") {
 
-                console.log ('------------------------------');
-                console.log(step.folder);
-                console.log ('------------------------------');
+                if (verbosity == "verbose") {
+                    console.log ('------------------------------');
+                    console.log(step.folder);
+                    console.log ('------------------------------');
+                }
         		run_command_sync_to_console(step.cmd);
 
             } else {

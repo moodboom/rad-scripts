@@ -93,6 +93,13 @@ var git_clone = function(remote_repo,local_folder)
 }
 
 
+// =========== git_description: gets the git description, which includes tag, commit count, and current hash prefix, as a string ============
+var git_description = function () {
+
+    return ru.run_command_sync("git describe --always --tags");
+}
+
+
 // =========== svn_last_changed_rev: gets the SVN "last changed rev" for the current folder, as a string ============
 var svn_last_changed_rev = function () {
 
@@ -206,6 +213,7 @@ var build_semantic_version = function (major,minor,patch,build,lastVersionFolder
 module.exports.git_changes = git_changes;
 module.exports.git_sync = git_sync;
 module.exports.git_clone = git_clone;
+module.exports.git_description = git_description;
 module.exports.svn_last_changed_rev = svn_last_changed_rev;
 module.exports.svn_rev = svn_rev;
 module.exports.build_semantic_version = build_semantic_version;

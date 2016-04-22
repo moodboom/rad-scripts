@@ -96,7 +96,7 @@ var git_clone = function(remote_repo,local_folder)
 // =========== git_description: gets the git description, which includes tag, commit count, and current hash prefix, as a string ============
 var git_description = function () {
 
-    return ru.run_command_sync("git describe --always --tags");
+    return ru.run_command_sync("git describe --always --tags").trim();
 }
 
 

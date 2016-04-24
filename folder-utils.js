@@ -8,7 +8,7 @@ var cdfolder = function (folder) {
 
         // SYNCHRONOUS change wd and catch any error
         try {
-            process.chdir(candidates[i]);
+            process.chdir(folder);
             return process.cwd();
         }
         catch (err) {

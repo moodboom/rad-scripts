@@ -3,6 +3,19 @@
 var fs = require('fs');
 
 
+// =========== exists: returns true if the folder or file exists ============
+var cdfolder = function (folder) {
+
+        // SYNCHRONOUS change wd and catch any error
+        try {
+            process.chdir(candidates[i]);
+            return process.cwd();
+        }
+        catch (err) {
+            return false;
+        }
+}
+
 // =========== cdfirst: change to first found folder ============
 var cdfirst = function (candidates) {
 
@@ -11,13 +24,9 @@ var cdfirst = function (candidates) {
 
     for (var i = 0;i < candidates.length;i++) {
 
-        // SYNCHRONOUS change wd
         // ignore failures until we find one that works
-        try {
-            process.chdir(candidates[i]);
-            return process.cwd();
-        }
-        catch (err) {
+        if (cdfolder(candidates[i])) {
+          return process.cwd();
         }
     }
 
@@ -78,6 +87,7 @@ var walksubdirs = function(dir, done) {
 };
 
 
+module.exports.cdfolder = cdfolder;
 module.exports.cdfirst = cdfirst;
 module.exports.walk = walk;
 module.exports.walksubdirs = walksubdirs;

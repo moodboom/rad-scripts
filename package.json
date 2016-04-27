@@ -22,6 +22,11 @@
 
   "bin": {
     "git-sync"                  : "git-sync-cmd.js",
+    "git-version"               : "git-version-cmd.js",
+    "git-next-version"          : "git-next-version-cmd.js",
+    "git-tag-major"             : "git-tag-major-cmd.js",
+    "git-tag-minor"             : "git-tag-minor-cmd.js",
+    "git-tag-patch"             : "git-tag-patch-cmd.js",
     "get-svn-rev"               : "get-svn-rev-cmd.js",
     "get-svn-last-changed-rev"  : "get-svn-last-changed-rev-cmd.js"
   }

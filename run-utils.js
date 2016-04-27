@@ -80,7 +80,7 @@ var run_command = function (cmd, callBack ) {
 // =========== run_command_sync: run one command and get output ============
 // Run a command synchronously and get the output when it finishes.
 // Usage:
-// var lsout = run_command_sync( "ls", ["-l"]);
+// var lsout = run_command_sync("ls -l");
 var run_command_sync = function (cmd) {
 
     var fullargs = spawnargs(cmd);
@@ -89,7 +89,11 @@ var run_command_sync = function (cmd) {
 
     var spawnSync = require('child_process').spawnSync;
     var outp = spawnSync(cmd, args, { encoding : 'utf8' });
-    return outp.stdout;
+    
+    // Return all output.  Put any error output last.
+    var result = outp.stdout;
+    if (outp.stderr.length > 0) { result += "\n" + outp.stderr; }
+    return result;
 }
 
 

@@ -146,7 +146,7 @@ var git_tag_minor = function(message) {
     var desc = git_version();
     if (desc.substr(0,7) == "Unknown") return desc;
 
-    var tokens = desc.match(/([0-9]+).([0-9]+).[0-9]+.[0-9]+).+/);
+    var tokens = desc.match(/([0-9]+).([0-9]+).[0-9]+.[0-9]+./);
     var major = tokens[1];
     var minor = parseInt(tokens[2]) + 1;
     if (minor == null) return "Unable to tag";
@@ -161,7 +161,7 @@ var git_tag_patch = function(message) {
     var desc = git_version();
     if (desc.substr(0,7) == "Unknown") return desc;
 
-    var tokens = desc.match(/([0-9]+).([0-9]+).([0-9]+).[0-9]+).+/);
+    var tokens = desc.match(/([0-9]+).([0-9]+).([0-9]+).[0-9]+./);
     var major = tokens[1];
     var minor = tokens[2];
     var patch = parseInt(tokens[3]) + 1;

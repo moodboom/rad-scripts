@@ -106,6 +106,19 @@ var git_version = function () {
 }
 
 
+// =========== git_version_clean: gets the git version stripped to MAJOR.MINOR.PATCH ============
+var git_version_clean = function () {
+
+    var desc = git_version();
+
+    var tokens = desc.match(/(^[0-9]*.[0-9]*.[0-9]*)/);
+    if (tokens != null)
+        return tokens[1];
+
+    return desc;
+}
+
+
 // =========== git_next_version: gets the git version, then strips hash and increments the commit count by one ============
 var git_next_version = function () {
 
@@ -290,6 +303,7 @@ module.exports.git_changes = git_changes;
 module.exports.git_sync = git_sync;
 module.exports.git_clone = git_clone;
 module.exports.git_version = git_version;
+module.exports.git_version_clean = git_version_clean;
 module.exports.git_next_version = git_next_version;
 module.exports.git_tag_major = git_tag_major;
 module.exports.git_tag_minor = git_tag_minor;

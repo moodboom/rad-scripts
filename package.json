@@ -1,12 +1,12 @@
 {
   "name": "rad-scripts",
-  "description": "moodboom's reusable node functions for rapid app dev",
+  "description": "moodboom's reusable node functions for rapid app dev; type [rad] for usage",
   "author": "Michael Behrns-Miller <moodboom@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "1.2.5",
+  "version": "1.3.0",
   "homepage": "http://bitpost.com",
   "license": "MIT",
 
@@ -21,6 +21,7 @@
   },
 
   "bin": {
+    "rad"                       : "rad-cmd.js",
     "git-sync"                  : "git-sync-cmd.js",
     "git-version"               : "git-version-cmd.js",
     "git-next-version"          : "git-next-version-cmd.js",
@@ -28,6 +29,7 @@
     "git-tag-minor"             : "git-tag-minor-cmd.js",
     "git-tag-patch"             : "git-tag-patch-cmd.js",
     "get-svn-rev"               : "get-svn-rev-cmd.js",
-    "get-svn-last-changed-rev"  : "get-svn-last-changed-rev-cmd.js"
+    "get-svn-last-changed-rev"  : "get-svn-last-changed-rev-cmd.js",
+    "npm-publish"               : "npm-publish-cmd.js"
   }
 }

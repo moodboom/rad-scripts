@@ -3,17 +3,17 @@
 var fs = require('fs');
 
 
-// =========== exists: returns true if the folder or file exists ============
+//=========== exists: cd to folder, return false if the folder doesn't exist ============
 var cdfolder = function (folder) {
 
-        // SYNCHRONOUS change wd and catch any error
-        try {
-            process.chdir(folder);
-            return process.cwd();
-        }
-        catch (err) {
-            return false;
-        }
+    // SYNCHRONOUS change wd and catch any error
+    try {
+        process.chdir(folder);
+        return process.cwd();
+    }
+    catch (err) {
+        return false;
+    }
 }
 
 // =========== cdfirst: change to first found folder ============
@@ -27,6 +27,31 @@ var cdfirst = function (candidates) {
         // ignore failures until we find one that works
         if (cdfolder(candidates[i])) {
           return process.cwd();
+        }
+    }
+
+    var msg = "ERROR: No candidate folder found";
+    console.log(msg);
+    return msg;
+};
+
+
+//=========== folder_exists: returns true if the folder or file exists ============
+var folder_exists = function (folder) {
+    try { 
+        return fs.statSync(folder).isDirectory();
+    }
+    catch (err) {
+        return false;
+    }
+}
+
+// =========== find_first_folder: find and return first existing folder in a list of candidates ============
+var find_first_folder = function (candidates) {
+
+    for (var i = 0;i < candidates.length;i++) {
+        if (folder_exists(candidates[i])) {
+          return candidates[i];
         }
     }
 
@@ -89,5 +114,7 @@ var walksubdirs = function(dir, done) {
 
 module.exports.cdfolder = cdfolder;
 module.exports.cdfirst = cdfirst;
+module.exports.folder_exists = folder_exists;
+module.exports.find_first_folder = find_first_folder;
 module.exports.walk = walk;
 module.exports.walksubdirs = walksubdirs;

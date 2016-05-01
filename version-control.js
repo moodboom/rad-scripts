@@ -114,12 +114,17 @@ var git_next_version = function () {
     // This process ensures that we have a correct stamp on the app without resorting to obnoxious CI-driven commits.
 
     var desc = git_version();
-    var tokens = desc.match(/([0-9]+.[0-9]+.[0-9]+.)([0-9]+).+/);
 
     // First we check to see if we are sitting right on a tag, eg [1.2.3].  If so, return [1.2.3-1].
-    if (tokens[1].length > 0 && tokens[2] == null)
+    var tokens = desc.match(/(^[0-9]*.[0-9]*.[0-9]*$)/);
+    if (tokens != null)
         return tokens[1] + "-1";
 
+    tokens = desc.match(/(^[0-9]*.[0-9]*.[0-9]*)(.[0-9]*).*/);
+
+    if (tokens == null || tokens[2] == null)
+        return "-- unknown --";
+    
     // Now turn [1.2.3-4-g#######] into [1.2.3-5]... 
     var build = parseInt(tokens[2]) + 1;
     return tokens[1] + build;
@@ -146,7 +151,7 @@ var git_tag_minor = function(message) {
     var desc = git_version();
     if (desc.substr(0,7) == "Unknown") return desc;
 
-    var tokens = desc.match(/([0-9]+).([0-9]+).[0-9]+.[0-9]+./);
+    var tokens = desc.match(/([0-9]*).([0-9]*)/);
     var major = tokens[1];
     var minor = parseInt(tokens[2]) + 1;
     if (minor == null) return "Unable to tag";
@@ -161,7 +166,7 @@ var git_tag_patch = function(message) {
     var desc = git_version();
     if (desc.substr(0,7) == "Unknown") return desc;
 
-    var tokens = desc.match(/([0-9]+).([0-9]+).([0-9]+).[0-9]+./);
+    var tokens = desc.match(/([0-9]*).([0-9]*).([0-9]*)/);
     var major = tokens[1];
     var minor = tokens[2];
     var patch = parseInt(tokens[3]) + 1;

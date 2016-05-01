@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 var fs = require('fs');
-var ru = require('./run_utils.js');
-var vc = require('./version_control.js';
+var ru = require('./run-utils.js');
+var vc = require('./version-control.js';
 
 var version = vc.git_version_clean();
 console.log('Stamping version ['+version+']...');

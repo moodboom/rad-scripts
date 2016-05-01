@@ -17,6 +17,7 @@ var cmds = [
     { name: 'git-sync'                  , desc: 'commits any changes in the current branch, pulls remote changes, and pushes the result'                                              },
     { name: 'git-version'               , desc: 'returns the current git semantic version, based on [git describe]'                                                                   },
     { name: 'git-version-clean'         , desc: 'returns MAJOR.MINOR.PATCH git version (suffix stripped)'                                                                             },
+    { name: 'git-tag-list'              , desc: 'list tags, including 1 line from the annotaged tag\'s commit message'                                                                },
     { name: 'git-tag-major'             , desc: 'creates a tag that represents the next MAJOR semantic version; minor+patch+build are reset to 0'                                     },
     { name: 'git-tag-minor'             , desc: 'creates a tag that represents the next MINOR semantic version; patch+build are reset to 0'                                           },
     { name: 'git-tag-patch'             , desc: 'creates a tag that represents the next PATCH semantic version; it is a tag so [git describe] build are reset to 0'                   },

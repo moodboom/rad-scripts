@@ -6,21 +6,17 @@ var vc = require('./version_control.js';
 
 var version = vc.git_version_clean();
 console.log('Stamping version ['+version+']...');
-fs.writeFileSync('version.txt', version, 'utf-8');
 
 try {
 
-    var filename = 'AboutDlgExtract.rc';
-    var origversion = fs.readFileSync(filename, 'ucs-2');
-    var newversion = origversion.replace(/\"DesignBase [0-9./]+\"/, '\"DesignBase '+m+'.'+n+'.'+p+'.'+b+'\"');
-    var date = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '');
-    var newversion = newversion.replace(/\"Date: .+\"/, '\"Date: '+date+'\"');
-    fs.writeFileSync(filename, newversion, 'ucs-2');
+    var filename = 'package.json';
+    var origversion = fs.readFileSync(filename);
+    //   "version": "1.3.0",  ==>    "version": "###git_version_clean###",
+    var newversion = origversion.replace(/\"version\".*$/, '\"version\": \"'+version+'\",');
+    fs.writeFileSync(filename, newversion);
     console.log(filename + " was updated...");
 
-
-    // TODO
-
+    ru.run_command_sync_to_console('npm publish');
 }
 catch (err) {
     console.log("Version could not be updated: "+err);

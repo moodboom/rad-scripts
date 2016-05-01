@@ -144,6 +144,13 @@ var git_next_version = function () {
 }
 
 
+// =========== git_tag_list: list tags, including 1 line from the annotaged tag's commit message ============
+var git_tag_list = function(message) {
+
+    return ru.run_command_sync("git tag -n");
+}
+
+
 // =========== git_tag_major: gets the git version and adds a tag for the next major release ============
 var git_tag_major = function(message) {
 
@@ -305,6 +312,7 @@ module.exports.git_clone = git_clone;
 module.exports.git_version = git_version;
 module.exports.git_version_clean = git_version_clean;
 module.exports.git_next_version = git_next_version;
+module.exports.git_tag_list = git_tag_list;
 module.exports.git_tag_major = git_tag_major;
 module.exports.git_tag_minor = git_tag_minor;
 module.exports.git_tag_patch = git_tag_patch;

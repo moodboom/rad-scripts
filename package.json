@@ -31,6 +31,8 @@
     "git-tag-patch"             : "git-tag-patch-cmd.js",
     "get-svn-rev"               : "get-svn-rev-cmd.js",
     "get-svn-last-changed-rev"  : "get-svn-last-changed-rev-cmd.js",
-    "npm-publish"               : "npm-publish-cmd.js"
+    "npm-publish"               : "npm-publish-cmd.js",
+    "rs-update-readme"          : "rs-update-readme-cmd.js",
+    "rs-publish"                : "rs-publish-cmd.js"
   }
 }

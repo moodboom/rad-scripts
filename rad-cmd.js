@@ -24,7 +24,9 @@ var cmds = [
     { name: 'git-next-version'          , desc: '> returns what would be the next version after the next commit; important for auto-stamping version into app'                          },
     { name: 'get-svn-rev'               , desc: '> parses and returns the svn current revision from [svn info]'                                                                         },
     { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]'                                                                    },
-    { name: 'npm-publish'               , desc: '> inject the current version into package.json, commit, and publish a new tagged release to npm'                                       }
+    { name: 'npm-publish'               , desc: '> inject the current version into package.json, commit, and publish a new tagged release to npm'                                       },
+    { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.md'                                                                     },
+    { name: 'rs-publish'                , desc: '> dogfooding 201: use rad-scripts to publish a new rad-scripts release to npm'                                                         }
 ];
 
 for (var i = 0;i < cmds.length;i++) {
@@ -34,8 +36,11 @@ for (var i = 0;i < cmds.length;i++) {
     }
 }
 
+// Generate usage, including a full app description, as this will be dynamically used to create README.md.  All docs in one place!  Cool.
 console.log(
-    '\n' +
+    '# rad-scripts\n' +
+    'Reusable node functions for rapid app development, continuous integration, and semantic versioning.\n\n' +
+
     'usage: rad [command]\n\n' +
 
     'Commands include:\n'

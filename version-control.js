@@ -40,9 +40,9 @@ var git_sync = function(folder,comment)
         comment = " -m \"" + comment + "\"";
     }
 
-    var commit_task = [{ name: 'commit', folder: folder, cmd: 'git commit -a' + comment    }];
-    var pull_task   = [{ name: 'pull'  , folder: folder, cmd: 'git pull'                   }];
-    var push_task   = [{ name: 'push'  , folder: folder, cmd: 'git push'                   }];
+    var commit_task = [{ name: 'commit'     , folder: folder, cmd: 'git commit -a' + comment    }];
+    var pull_task   = [{ name: 'pull'       , folder: folder, cmd: 'git pull'                   }];
+    var push_task   = [{ name: 'push'       , folder: folder, cmd: 'git push --follow-tags'     }]; // You should really make this the default via push.followTags
 
     // Build tasks.
     var tasks = [];

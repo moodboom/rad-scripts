@@ -1,5 +1,5 @@
 # rad-scripts
-My rad scripts: reusable node functions for rapid app development, continuous integration, and semantic versioning.
+Reusable node functions for rapid app development, continuous integration, and semantic versioning.
 
 usage: rad [command]
 
@@ -16,6 +16,8 @@ Commands include:
 * get-svn-rev                > parses and returns the svn current revision from [svn info]
 * get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]
 * npm-publish                > inject the current version into package.json, commit, and publish a new tagged release to npm
+* rs-update-readme           > dogfooding 101: use rad-scripts to dynamically update README.md
+* rs-publish                 > dogfooding 201: use rad-scripts to publish a new rad-scripts release to npm
 
 Utilities include:
 

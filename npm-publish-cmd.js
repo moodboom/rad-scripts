@@ -16,6 +16,10 @@ try {
     fs.writeFileSync(filename, newversion,'utf-8');
     console.log(filename + " was updated...");
 
+    // Push the package.json change.
+    ru.run_command_sync_to_console('git-sync auto-update of package.json');
+
+    // Publish.
     ru.run_command_sync_to_console('npm publish');
 }
 catch (err) {

@@ -122,7 +122,7 @@ var git_version_clean = function () {
 // =========== git_next_version: gets the git version, then strips hash and increments the commit count by one ============
 var git_next_version = function () {
 
-    // NOTE: this can be used to stamp a product with the next pending semantic version just before it is committed.  
+    // NOTE: this can be used to stamp a product with the next pending semantic version just before it is committed.
     // We add one to the "build" commit count, and we exclude the hash (since we won't know it until post-commit).
     // This process ensures that we have a correct stamp on the app without resorting to obnoxious CI-driven commits.
 
@@ -137,8 +137,8 @@ var git_next_version = function () {
 
     if (tokens == null || tokens[2] == null)
         return "-- unknown --";
-    
-    // Now turn [1.2.3-4-g#######] into [1.2.3-5]... 
+
+    // Now turn [1.2.3-4-g#######] into [1.2.3-5]...
     var build = parseInt(tokens[2]) + 1;
     return tokens[1] + build;
 }
@@ -161,6 +161,10 @@ var git_tag_major = function(message) {
     var major = parseInt(tokens[1]) + 1;
     if (major == null) return "Unable to tag";
 
+    // Always sync any changes before tagging, in case the user forgot.
+    // If they already committed this won't do anything.
+    git_sync('.',message);
+
     return ru.run_command_sync("git tag -a -m \""+message+"\" "+major+".0.0");
 }
 
@@ -176,6 +180,7 @@ var git_tag_minor = function(message) {
     var minor = parseInt(tokens[2]) + 1;
     if (minor == null) return "Unable to tag";
 
+    git_sync('.',message);
     return ru.run_command_sync("git tag -a -m \""+message+"\" "+major+"."+minor+".0");
 }
 
@@ -192,6 +197,7 @@ var git_tag_patch = function(message) {
     var patch = parseInt(tokens[3]) + 1;
     if (patch == null) return "Unable to tag";
 
+    git_sync('.',message);
     return ru.run_command_sync("git tag -a -m \""+message+"\" "+major+"."+minor+"."+patch);
 }
 

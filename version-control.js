@@ -165,7 +165,10 @@ var git_tag_major = function(message) {
     // If they already committed this won't do anything.
     git_sync('.',message);
 
-    return ru.run_command_sync("git tag -a -m \""+message+"\" "+major+".0.0");
+    ru.run_command_sync_to_console("git tag -a -m \""+message+"\" "+major+".0.0");
+    ru.run_command_sync_to_console("git push");    
+    
+    return;
 }
 
 
@@ -181,7 +184,10 @@ var git_tag_minor = function(message) {
     if (minor == null) return "Unable to tag";
 
     git_sync('.',message);
-    return ru.run_command_sync("git tag -a -m \""+message+"\" "+major+"."+minor+".0");
+    ru.run_command_sync_to_console("git tag -a -m \""+message+"\" "+major+"."+minor+".0");
+    ru.run_command_sync_to_console("git push");    
+    
+    return;
 }
 
 
@@ -198,7 +204,10 @@ var git_tag_patch = function(message) {
     if (patch == null) return "Unable to tag";
 
     git_sync('.',message);
-    return ru.run_command_sync("git tag -a -m \""+message+"\" "+major+"."+minor+"."+patch);
+    ru.run_command_sync_to_console("git tag -a -m \""+message+"\" "+major+"."+minor+"."+patch);
+    ru.run_command_sync_to_console("git push");    
+    
+    return;
 }
 
 

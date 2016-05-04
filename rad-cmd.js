@@ -66,7 +66,13 @@ console.log(
 '\n' +
 'Tag commands perform a full set of git operations to ensure that \n' +
 'the tag is applied to the latest local and remote code, and pushed.  \n' +
-'Precisely: commit pull push tag push.\n\n'
+'Precisely: commit pull push tag push.\n' +
+'\n' +
+'To have ci automatically inject a semantic version into your app on every build, \n' +
+'use the output of git-next-version to update your app\'s version \n' +
+'right before committing.\n' +
+'\n' +
+'Happy automating!  :-)\n'
 );
 
 process.exit(1);

@@ -16,8 +16,8 @@ Commands include:
 * npm-publish                > inject the current version into package.json, commit, and publish a new tagged release to npm
 * get-svn-rev                > parses and returns the svn current revision from [svn info]
 * get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]
-* rs-update-readme           > dogfooding 101: use rad-scripts to dynamically update README.md
-* rs-publish                 > dogfooding 201: use rad-scripts to publish a new rad-scripts release to npm
+* rs-update-readme           > dogfooding 101: use rad-scripts to dynamically update README.
+* rs-publish                 > dogfooding 201: use rad-scripts to publish a new rad-scripts release; see https://bitpost.com/news
 
 Utilities include:
 
@@ -37,4 +37,9 @@ Tag commands perform a full set of git operations to ensure that
 the tag is applied to the latest local and remote code, and pushed.  
 Precisely: commit pull push tag push.
 
+To have ci automatically inject a semantic version into your app on every build, 
+use the output of git-next-version to update your app's version 
+right before committing.
+
+Happy automating!  :-)
 

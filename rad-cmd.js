@@ -25,8 +25,8 @@ var cmds = [
     { name: 'npm-publish'               , desc: '> inject the current version into package.json, commit, and publish a new tagged release to npm'                   },
     { name: 'get-svn-rev'               , desc: '> parses and returns the svn current revision from [svn info]'                                                     },
     { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]'                                                },
-    { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.md'                                                 },
-    { name: 'rs-publish'                , desc: '> dogfooding 201: use rad-scripts to publish a new rad-scripts release to npm'                                     }
+    { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.'                                                   },
+    { name: 'rs-publish'                , desc: '> dogfooding 201: use rad-scripts to publish a new rad-scripts release; see https://bitpost.com/news'              }
 ];
 
 for (var i = 0;i < cmds.length;i++) {

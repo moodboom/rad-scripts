@@ -16,8 +16,12 @@ Commands include:
 * npm-publish                > inject the current version into package.json, commit, and publish a new tagged release to npm
 * get-svn-rev                > parses and returns the svn current revision from [svn info]
 * get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]
+
 * rs-update-readme           > dogfooding 101: use rad-scripts to dynamically update README.
-* rs-publish                 > dogfooding 201: use rad-scripts to publish a new rad-scripts release; see https://bitpost.com/news
+* rs-publish                 > dogfooding 201: use rad-scripts to publish a new rad-scripts release
+* rs-patch                   > dogfooding 301: top-level dev script to commit and publish an rs patch
+* rs-minor                   > dogfooding 302: top-level dev script to commit and publish an rs minor release
+* rs-major                   > dogfooding 303: top-level dev script to commit and publish an rs major release
 
 Utilities include:
 
@@ -44,5 +48,5 @@ right before committing.  This can be automated with a commit script.
 Best practice is to create 3 app-specific major,minor,patch commit scripts
 that take care of everything.
 
-Happy automating!  :-)
+See https://bitpost.com/news for more bloviating.  Happy automating!  :-)
 

@@ -24,9 +24,13 @@ var cmds = [
     { name: 'git-next-version'          , desc: '> returns what would be the next version after the next commit; important for auto-stamping version into app'      },
     { name: 'npm-publish'               , desc: '> inject the current version into package.json, commit, and publish a new tagged release to npm'                   },
     { name: 'get-svn-rev'               , desc: '> parses and returns the svn current revision from [svn info]'                                                     },
-    { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]'                                                },
+    { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]\n'                                              },
+
     { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.'                                                   },
-    { name: 'rs-publish'                , desc: '> dogfooding 201: use rad-scripts to publish a new rad-scripts release; see https://bitpost.com/news'              }
+    { name: 'rs-publish'                , desc: '> dogfooding 201: use rad-scripts to publish a new rad-scripts release'                                            },
+    { name: 'rs-patch'                  , desc: '> dogfooding 301: top-level dev script to commit and publish an rs patch'                                          },
+    { name: 'rs-minor'                  , desc: '> dogfooding 302: top-level dev script to commit and publish an rs minor release'                                  },
+    { name: 'rs-major'                  , desc: '> dogfooding 303: top-level dev script to commit and publish an rs major release'                                  }
 ];
 
 for (var i = 0;i < cmds.length;i++) {
@@ -75,7 +79,7 @@ console.log(
 'Best practice is to create 3 app-specific major,minor,patch commit scripts\n' +
 'that take care of everything.\n' +
 '\n' +
-'Happy automating!  :-)\n'
+'See https://bitpost.com/news for more bloviating.  Happy automating!  :-)\n'
 );
 
 process.exit(1);

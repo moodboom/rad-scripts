@@ -33,6 +33,9 @@
     "get-svn-last-changed-rev"  : "get-svn-last-changed-rev-cmd.js",
     "npm-publish"               : "npm-publish-cmd.js",
     "rs-update-readme"          : "rs-update-readme-cmd.js",
-    "rs-publish"                : "rs-publish-cmd.js"
+    "rs-publish"                : "rs-publish-cmd.js",
+    "rs-patch"                  : "rs-patch-cmd.js",
+    "rs-minor"                  : "rs-minor-cmd.js",
+    "rs-major"                  : "rs-major-cmd.js"
   }
 }

@@ -4,13 +4,15 @@ var fs = require('fs');
 var ru = require('./run-utils.js');
 var vc = require('./version-control.js');
 
-// Get a "clean" version (no build suffix).
-// We want an npm-compatible true semantic version.
-// (plus we don't want it to change when we commit a package.json change, below) 
-var version = vc.git_version_clean();
-console.log('Stamping version ['+version+']...');
+// TODO move this to a function in vc, and call it from here
 
 try {
+
+    // Get a "clean" version (no build suffix).
+    // We want an npm-compatible true semantic version.
+    // (plus we don't want it to change when we commit a package.json change, below)
+    var version = vc.git_version_clean();
+    console.log('Stamping version ['+version+']...');
 
     var filename = 'package.json';
     var origversion = fs.readFileSync(filename,'utf-8');

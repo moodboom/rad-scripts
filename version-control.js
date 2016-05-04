@@ -166,8 +166,8 @@ var git_tag_major = function(message) {
     git_sync('.',message);
 
     ru.run_command_sync_to_console("git tag -a -m \""+message+"\" "+major+".0.0");
-    ru.run_command_sync_to_console("git push");    
-    
+    ru.run_command_sync_to_console("git push");
+
     return;
 }
 
@@ -181,12 +181,12 @@ var git_tag_minor = function(message) {
     var tokens = desc.match(/([0-9]*).([0-9]*)/);
     var major = tokens[1];
     var minor = parseInt(tokens[2]) + 1;
-    if (minor == null) return "Unable to tag";
+    if (major == null || minor == null) return "Unable to tag";
 
     git_sync('.',message);
     ru.run_command_sync_to_console("git tag -a -m \""+message+"\" "+major+"."+minor+".0");
-    ru.run_command_sync_to_console("git push");    
-    
+    ru.run_command_sync_to_console("git push");
+
     return;
 }
 
@@ -201,12 +201,12 @@ var git_tag_patch = function(message) {
     var major = tokens[1];
     var minor = tokens[2];
     var patch = parseInt(tokens[3]) + 1;
-    if (patch == null) return "Unable to tag";
+    if (major == null || minor == null || patch == null) return "Unable to tag";
 
     git_sync('.',message);
     ru.run_command_sync_to_console("git tag -a -m \""+message+"\" "+major+"."+minor+"."+patch);
-    ru.run_command_sync_to_console("git push");    
-    
+    ru.run_command_sync_to_console("git push");
+
     return;
 }
 

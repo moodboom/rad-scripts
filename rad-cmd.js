@@ -68,9 +68,12 @@ console.log(
 'the tag is applied to the latest local and remote code, and pushed.  \n' +
 'Precisely: commit pull push tag push.\n' +
 '\n' +
-'To have ci automatically inject a semantic version into your app on every build, \n' +
-'use the output of git-next-version to update your app\'s version \n' +
-'right before committing.\n' +
+'Traditionally, ci automatically injects a build version into your app \n' +
+'on every build, but this is messy, causing extra commits.  Instead, consider\n' +
+'using the output of git-next-version to update your app\'s version \n' +
+'right before committing.  This can be automated with a commit script.\n' +
+'Best practice is to create 3 app-specific major,minor,patch commit scripts\n' +
+'that take care of everything.\n' +
 '\n' +
 'Happy automating!  :-)\n'
 );

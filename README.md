@@ -37,9 +37,12 @@ Tag commands perform a full set of git operations to ensure that
 the tag is applied to the latest local and remote code, and pushed.  
 Precisely: commit pull push tag push.
 
-To have ci automatically inject a semantic version into your app on every build, 
-use the output of git-next-version to update your app's version 
-right before committing.
+Traditionally, ci automatically injects a build version into your app 
+on every build, but this is messy, causing extra commits.  Instead, consider
+using the output of git-next-version to update your app's version 
+right before committing.  This can be automated with a commit script.
+Best practice is to create 3 app-specific major,minor,patch commit scripts
+that take care of everything.
 
 Happy automating!  :-)
 

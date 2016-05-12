@@ -21,8 +21,9 @@ try {
     fs.writeFileSync(filename, newversion,'utf-8');
     console.log(filename + " was updated...");
 
+    // NOTE that we will not do any git work, as we don't want the ci process to create extra commits.
     // Push the package.json change.
-    ru.run_command_sync_to_console('git-sync auto-update of package.json');
+    // ru.run_command_sync_to_console('git-sync auto-update of package.json');
 
     // Publish.
     ru.run_command_sync_to_console('npm publish');

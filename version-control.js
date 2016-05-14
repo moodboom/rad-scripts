@@ -45,7 +45,7 @@ var git_sync = function(folder,comment,version)
 
     var commit_task = [{ name: 'commit'     , folder: folder, cmd: 'git commit -a' + comment                }];
     var pull_task   = [{ name: 'pull'       , folder: folder, cmd: 'git pull'                               }];
-    var tag_task    = [{ name: 'tag'        , folder: folder, cmd: 'git tag -a -m \"'+comment+'\" '+version }];
+    var tag_task    = [{ name: 'tag'        , folder: folder, cmd: 'git tag -a' + comment + ' ' + version   }];
     var push_task   = [{ name: 'push'       , folder: folder, cmd: 'git push --follow-tags'                 }]; // You should really make [--follow-tags] the default via push.followTags
 
     // Build tasks.

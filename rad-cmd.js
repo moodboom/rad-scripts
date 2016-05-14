@@ -78,7 +78,7 @@ console.log(
 'Best practice is to create 3 app-specific major,minor,patch commit scripts\n' +
 'that take care of everything.  See rs-xxx scripts (used to publish rad-scripts itself).\n' +
 '\n' +
-'See https://bitpost.com/news for more bloviating.  Happy automating!  :-)\n'
+'See https://bitpost.com/news for more bloviating.  Devs don\'t need no stinkin ops.  Happy automating!  :-)\n'
 );
 
 process.exit(1);

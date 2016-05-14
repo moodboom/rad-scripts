@@ -47,5 +47,5 @@ determine the pending version and apply it to the code base right before committ
 Best practice is to create 3 app-specific major,minor,patch commit scripts
 that take care of everything.  See rs-xxx scripts (used to publish rad-scripts itself).
 
-See https://bitpost.com/news for more bloviating.  Happy automating!  :-)
+See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin ops.  Happy automating!  :-)
 

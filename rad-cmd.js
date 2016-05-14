@@ -14,23 +14,25 @@ var su = require('./string-utils.js');  // For string_pad
 var args = process.argv.slice(2);
 
 var cmds = [
-    { name: 'git-sync'                  , desc: '> commits any changes in the current branch, pulls remote changes, and pushes the result'                          },
+    { name: 'git-sync'                  , desc: '[msg msg...] > commits any changes in the current branch, pulls remote changes, and pushes the result'             },
     { name: 'git-version'               , desc: '> returns the current git semantic version, based on [git describe]'                                               },
     { name: 'git-version-clean'         , desc: '> returns MAJOR.MINOR.PATCH git version (suffix stripped)'                                                         },
     { name: 'git-tag-list'              , desc: '> list tags, including 1 line from the annotaged tag\'s commit message'                                            },
-    { name: 'git-tag-major'             , desc: '> creates a tag that represents the next MAJOR semantic version; minor+patch+build are reset to 0'                 },
-    { name: 'git-tag-minor'             , desc: '> creates a tag that represents the next MINOR semantic version; patch+build are reset to 0'                       },
-    { name: 'git-tag-patch'             , desc: '> creates a tag that represents the next PATCH semantic version; build resets to 0'                                },
-    { name: 'git-next-version'          , desc: '> returns what would be the next version after the next commit; important for auto-stamping version into app'      },
-    { name: 'npm-publish'               , desc: '> inject the current version into package.json, commit, and publish a new tagged release to npm'                   },
+    { name: 'git-next-major'            , desc: '> returns what would be the next MAJOR semantic version'                                                           },
+    { name: 'git-next-minor'            , desc: '> returns what would be the next MINOR semantic version'                                                           },
+    { name: 'git-next-patch'            , desc: '> returns what would be the next PATCH semantic version'                                                           },
+    { name: 'git-next-build'            , desc: '> returns what would be the next BUILD semantic version'                                                           },
+    { name: 'git-tag-major'             , desc: '[msg msg...] > creates a tag that represents the next MAJOR semantic version; minor+patch+build are reset to 0'    },
+    { name: 'git-tag-minor'             , desc: '[msg msg...] > creates a tag that represents the next MINOR semantic version; patch+build are reset to 0'          },
+    { name: 'git-tag-patch'             , desc: '[msg msg...] > creates a tag that represents the next PATCH semantic version; build resets to 0'                   },
+    { name: 'npm-update-version'        , desc: '[version] > inject the current version into package.json'                                                          },
     { name: 'get-svn-rev'               , desc: '> parses and returns the svn current revision from [svn info]'                                                     },
     { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]\n'                                              },
 
     { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.'                                                   },
-    { name: 'rs-publish'                , desc: '> dogfooding 201: use rad-scripts to publish a new rad-scripts release'                                            },
-    { name: 'rs-patch'                  , desc: '> dogfooding 301: top-level dev script to commit and publish an rs patch'                                          },
-    { name: 'rs-minor'                  , desc: '> dogfooding 302: top-level dev script to commit and publish an rs minor release'                                  },
-    { name: 'rs-major'                  , desc: '> dogfooding 303: top-level dev script to commit and publish an rs major release'                                  }
+    { name: 'rs-patch'                  , desc: '[msg msg...] > dogfooding 301: top-level dev script to commit and publish an rs patch'                             },
+    { name: 'rs-minor'                  , desc: '[msg msg...] > dogfooding 302: top-level dev script to commit and publish an rs minor release'                     },
+    { name: 'rs-major'                  , desc: '[msg msg...] > dogfooding 303: top-level dev script to commit and publish an rs major release'                     }
 ];
 
 for (var i = 0;i < cmds.length;i++) {
@@ -61,23 +63,20 @@ console.log(
 '* ' +su.string_pad('                    ','string-utils')     +'> string_pad, etc.\n'+
 '* ' +su.string_pad('                    ','version-control')  +'> git semantic versioning via tags; sync git repos (auto commit+pull+push); extract svn revisions\n\n'+
 
-'Semantic versioning is available for git repositories.\n'+
+'Rad-scripts makes it easy to apply semantic versioning to git repositories.\n'+
 'Following semantic versioning guidelines, developers can tag \n' +
 'major/minor/patch releases without knowing numeric tag details.  \n' +
-'The developer can then focus on whether commits since the last tag \n' +
+'The developer can simply focus on whether commits since the last tag \n' +
 'include breaking changes (major), addition of new functionality (minor), \n' +
 'or bugfixes (patch).  \n' +
 '\n' +
-'Tag commands perform a full set of git operations to ensure that \n' +
-'the tag is applied to the latest local and remote code, and pushed.  \n' +
-'Precisely: commit pull push tag push.\n' +
+'For simpler environments, you can use git-tag-xxx commands out of the box.\n'+
+'These apply tags to the latest code via: commit pull push tag push.\n' +
 '\n' +
-'Traditionally, ci automatically injects a build version into your app \n' +
-'on every build, but this is messy, causing extra commits.  Instead, consider\n' +
-'using the output of git-next-version to update your app\'s version \n' +
-'right before committing.  This can be automated with a commit script.\n' +
+'In more complex continuously automated environments, use git-next-xxx to\n' +
+'determine the pending version and apply it to the code base right before committing.\n' +
 'Best practice is to create 3 app-specific major,minor,patch commit scripts\n' +
-'that take care of everything.\n' +
+'that take care of everything.  See rs-xxx scripts (used to publish rad-scripts itself).\n' +
 '\n' +
 'See https://bitpost.com/news for more bloviating.  Happy automating!  :-)\n'
 );

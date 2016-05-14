@@ -91,8 +91,9 @@ var run_command_sync = function (cmd) {
     var outp = spawnSync(cmd, args, { encoding : 'utf8' });
 
     // Return all output.  Put any error output last.
-    var result = outp.stdout;
-    if (outp.stderr && outp.stderr.length > 0) { result += "\n" + outp.stderr; }
+    var result = '';
+    if (outp.stdout && outp.stdout.length > 0) { result = outp.stdout; }
+    if (outp.stderr && outp.stderr.length > 0) { result += '\n' + outp.stderr; }
     return result;
 }
 

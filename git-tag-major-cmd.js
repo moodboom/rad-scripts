@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-var version_control = require('./version-control.js');
+var vc = require('./version-control.js');
 var ru = require('./run-utils.js');
+var rs = require('./rs.js');
 
 var args = process.argv.slice(2);
 var comment = ru.combine_params(args);
+var version = vc.git_next_major();
 
-version_control.git_tag_major(comment);
+rs.rs_publish(version,comment);

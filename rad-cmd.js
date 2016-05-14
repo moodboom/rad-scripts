@@ -56,29 +56,29 @@ for (var i = 0;i < cmds.length;i++) {
 }
 
 console.log(
-'\nUtilities include:\n\n'+
+    '\nUtilities include:\n\n'+
 
-'* ' +su.string_pad('                    ','run-utils')        +'> run a command [sync/async] and get output; run an array of commands in specified folders\n'+
-'* ' +su.string_pad('                    ','folder-utils')     +'> cd to the first found directory in an array (important for finding base folder of projects on different OSes/machines); walk files; walk folders\n'+
-'* ' +su.string_pad('                    ','string-utils')     +'> string_pad, etc.\n'+
-'* ' +su.string_pad('                    ','version-control')  +'> git semantic versioning via tags; sync git repos (auto commit+pull+push); extract svn revisions\n\n'+
+    '* ' +su.string_pad('                    ','run-utils')        +'> run a command [sync/async] and get output; run an array of commands in specified folders\n'+
+    '* ' +su.string_pad('                    ','folder-utils')     +'> cd to the first found directory in an array (important for finding base folder of projects on different OSes/machines); walk files; walk folders\n'+
+    '* ' +su.string_pad('                    ','string-utils')     +'> string_pad, etc.\n'+
+    '* ' +su.string_pad('                    ','version-control')  +'> git semantic versioning via tags; sync git repos (auto commit+pull+push); extract svn revisions\n\n'+
 
-'Rad-scripts makes it easy to apply semantic versioning to git repositories.\n'+
-'Following semantic versioning guidelines, developers can tag \n' +
-'major/minor/patch releases without knowing numeric tag details.  \n' +
-'The developer can simply focus on whether commits since the last tag \n' +
-'include breaking changes (major), addition of new functionality (minor), \n' +
-'or bugfixes (patch).  \n' +
-'\n' +
-'For simpler environments, you can use git-tag-xxx commands out of the box.\n'+
-'These apply tags to the latest code via: commit pull push tag push.\n' +
-'\n' +
-'In more complex continuously automated environments, use git-next-xxx to\n' +
-'determine the pending version and apply it to the code base right before committing.\n' +
-'Best practice is to create 3 app-specific major,minor,patch commit scripts\n' +
-'that take care of everything.  See rs-xxx scripts (used to publish rad-scripts itself).\n' +
-'\n' +
-'See https://bitpost.com/news for more bloviating.  Devs don\'t need no stinkin ops.  Happy automating!  :-)\n'
+    'Rad-scripts makes it easy to apply semantic versioning to git repositories.\n'+
+    'Following semantic versioning guidelines, developers can tag \n' +
+    'major/minor/patch releases without knowing numeric tag details.  \n' +
+    'Instead, the developer can focus on whether commits since the last tag \n' +
+    'include breaking changes (major), addition of new functionality (minor), \n' +
+    'or bugfixes (patch).  \n' +
+    '\n' +
+    'For simpler environments, you can use git-tag-xxx commands out of the box.\n'+
+    'These apply tags to the latest code via: commit pull push tag push.\n' +
+    '\n' +
+    'In more complex continuously automated environments, use git-next-xxx to\n' +
+    'determine the pending version and apply it to the code base right before committing.\n' +
+    'Best practice is to create 3 app-specific major,minor,patch commit scripts\n' +
+    'that manage the details.  See rs-xxx scripts (used to publish rad-scripts itself).\n' +
+    '\n' +
+    'See https://bitpost.com/news for more bloviating.  Devs don\'t need no stinkin ops.  Happy automating!  :-)\n'
 );
 
 process.exit(1);

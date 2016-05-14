@@ -35,7 +35,7 @@ Utilities include:
 Rad-scripts makes it easy to apply semantic versioning to git repositories.
 Following semantic versioning guidelines, developers can tag 
 major/minor/patch releases without knowing numeric tag details.  
-The developer can simply focus on whether commits since the last tag 
+Instead, the developer can focus on whether commits since the last tag 
 include breaking changes (major), addition of new functionality (minor), 
 or bugfixes (patch).  
 
@@ -45,7 +45,7 @@ These apply tags to the latest code via: commit pull push tag push.
 In more complex continuously automated environments, use git-next-xxx to
 determine the pending version and apply it to the code base right before committing.
 Best practice is to create 3 app-specific major,minor,patch commit scripts
-that take care of everything.  See rs-xxx scripts (used to publish rad-scripts itself).
+that manage the details.  See rs-xxx scripts (used to publish rad-scripts itself).
 
 See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin ops.  Happy automating!  :-)
 

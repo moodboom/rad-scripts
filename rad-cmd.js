@@ -49,20 +49,6 @@ console.log(
 
     'usage: rad [command]\n\n' +
 
-    'Commands include:\n'
-);
-for (var i = 0;i < cmds.length;i++) {
-    console.log('* '+su.string_pad('                           ',cmds[i].name)+cmds[i].desc);
-}
-
-console.log(
-    '\nUtilities include:\n\n'+
-
-    '* ' +su.string_pad('                    ','run-utils')        +'> run a command [sync/async] and get output; run an array of commands in specified folders\n'+
-    '* ' +su.string_pad('                    ','folder-utils')     +'> cd to the first found directory in an array (important for finding base folder of projects on different OSes/machines); walk files; walk folders\n'+
-    '* ' +su.string_pad('                    ','string-utils')     +'> string_pad, etc.\n'+
-    '* ' +su.string_pad('                    ','version-control')  +'> git semantic versioning via tags; sync git repos (auto commit+pull+push); extract svn revisions\n\n'+
-
     'Rad-scripts makes it easy to apply semantic versioning to git repositories.\n'+
     'Following semantic versioning guidelines, developers can tag \n' +
     'major/minor/patch releases without knowing numeric tag details.  \n' +
@@ -78,7 +64,22 @@ console.log(
     'Best practice is to create 3 app-specific major,minor,patch commit scripts\n' +
     'that manage the details.  See rs-xxx scripts (used to publish rad-scripts itself).\n' +
     '\n' +
-    'See https://bitpost.com/news for more bloviating.  Devs don\'t need no stinkin ops.  Happy automating!  :-)\n'
+    'Commands include:\n'
+);
+for (var i = 0;i < cmds.length;i++) {
+    console.log('* '+su.string_pad('                           ',cmds[i].name)+cmds[i].desc);
+}
+
+console.log(
+    '\n'+
+    'Utilities include:\n'+
+    '\n'+
+    '* ' +su.string_pad('                    ','run-utils')        +'> run a command [sync/async] and get output; run an array of commands in specified folders\n'+
+    '* ' +su.string_pad('                    ','folder-utils')     +'> cd to the first found directory in an array (important for finding base folder of projects on different OSes/machines); walk files; walk folders\n'+
+    '* ' +su.string_pad('                    ','string-utils')     +'> string_pad, etc.\n'+
+    '* ' +su.string_pad('                    ','version-control')  +'> git semantic versioning via tags; sync git repos (auto commit+pull+push); extract svn revisions\n'+
+    '\n'+
+    'See https://bitpost.com/news for more bloviating.  Devs don\'t need no stinkin ops.  Happy automating!  :-)\n\n'
 );
 
 process.exit(1);

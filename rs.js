@@ -11,8 +11,8 @@ var rs_publish = function(comment,version) {
         vc.npm_update_version(version);
     }
 
-    // Reinstall, so we get any recently-made changes to usage.
-    ru.run_command_sync_to_console('npm install -g');
+    // Quietly reinstall, so we get any recently-made changes to usage.
+    ru.run_command_quietly('npm install -g');
 
     // Directly update README.md with usage, whoop
     var readme = ru.run_command_sync('rad');
@@ -28,8 +28,8 @@ var rs_publish = function(comment,version) {
         ru.run_command_sync_to_console('npm publish');
     }
     
-    // Reinstall, so we get any recently-made remote changes.
-    ru.run_command_sync_to_console('npm install -g');
+    // Quietly reinstall, so we get any recently-made remote changes.
+    ru.run_command_quietly('npm install -g');
 }
 
 module.exports.rs_publish = rs_publish;

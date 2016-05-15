@@ -7,7 +7,7 @@ var ru = require('./run-utils.js');
 var rs_publish = function(comment,version) {
 
     // If there have been code changes, stamp the "next" version into the app.
-    if (vc.git_version_valid(version) && ru.git_changes().length > 0) {
+    if (vc.git_version_valid(version) && vc.git_changes('.').length > 0) {
         vc.npm_update_version(version);
     }
 

@@ -18,7 +18,7 @@ var rs_publish = function(comment,version) {
     var readme = ru.run_command_sync('rad');
     var filename = 'README.md';
     fs.writeFileSync(filename, readme,'utf-8');
-    console.log(filename + " was updated...");
+    // console.log(filename + " was updated...");
 
     // commit + pull + tag + push
     // NOTE that at this point, we will not have changed anything if there were no code changes, so we won't get a commit.

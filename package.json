@@ -1,12 +1,12 @@
 {
   "name": "rad-scripts",
-  "description": "moodboom's reusable node functions for rapid app dev; type [rad] for usage",
+  "description": "Easy semantic versioning of git repositories",
   "author": "Michael Behrns-Miller <moodboom@gmail.com>",
   "repository": {
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "2.6.0",
+  "version": "2.6.1",
   "homepage": "http://bitpost.com",
   "license": "MIT",
 

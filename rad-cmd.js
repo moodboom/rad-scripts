@@ -45,7 +45,7 @@ for (var i = 0;i < cmds.length;i++) {
 // Generate usage, including a full app description, as this will be dynamically used to create README.md.  All docs in one place!  Cool.
 console.log(
     '# rad-scripts\n' +
-    'Reusable node functions for rapid app development, continuous integration, and semantic versioning.\n\n' +
+    'Easy semantic versioning of git repositories along with other rapid app dev tools.\n\n' +
 
     'usage: rad [command]\n\n' +
 

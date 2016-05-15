@@ -1,5 +1,5 @@
 # rad-scripts
-Reusable node functions for rapid app development, continuous integration, and semantic versioning.
+Easy semantic versioning of git repositories along with other rapid app dev tools.
 
 usage: rad [command]
 

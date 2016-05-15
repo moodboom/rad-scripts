@@ -64,7 +64,7 @@ console.log(
     '\n' +
     'In more complex continuously automated environments, use git-next-xxx to\n' +
     'determine the pending version and apply it to the code base right before committing.\n' +
-    'Best practice is to create 3 app-specific major,minor,patch commit scripts\n' +
+    'Best practice is to create 3 app-specific [major|minor|patch] scripts\n' +
     'that manage the details, and use them for every commit.\n' +
     '\n' +
     'See rs-xxx scripts (used to publish rad-scripts itself).\n' +

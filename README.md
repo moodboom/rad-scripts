@@ -18,7 +18,7 @@ These apply tags to the latest code via: commit pull push tag push.
 
 In more complex continuously automated environments, use git-next-xxx to
 determine the pending version and apply it to the code base right before committing.
-Best practice is to create 3 app-specific major,minor,patch commit scripts
+Best practice is to create 3 app-specific [major|minor|patch] scripts
 that manage the details, and use them for every commit.
 
 See rs-xxx scripts (used to publish rad-scripts itself).

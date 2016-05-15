@@ -24,6 +24,9 @@ var rs_publish = function(comment,version) {
         // There were changes, so let's publish now.
         ru.run_command_sync_to_console('npm publish');
     }
+    
+    // Reinstall, so we get any recently-made remote changes.
+    ru.run_command_sync_to_console('npm install -g');
 }
 
 module.exports.rs_publish = rs_publish;

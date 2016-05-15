@@ -71,6 +71,9 @@ var git_sync = function(folder,comment,version)
     }
 
     ru.runsteps(tasks);
+    
+    // Return true if there were changes.
+    return (changes.length > 0); 
 }
 
 

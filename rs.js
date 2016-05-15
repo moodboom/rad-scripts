@@ -19,10 +19,11 @@ var rs_publish = function(comment,version) {
     console.log(filename + " was updated...");
 
     // commit + pull + tag + push
-    vc.git_sync('.',comment,version);
+    if (vc.git_sync('.',comment,version)) {
 
-    // npm publish
-    ru.run_command_sync_to_console('npm publish');
+        // There were changes, so let's publish now.
+        ru.run_command_sync_to_console('npm publish');
+    }
 }
 
 module.exports.rs_publish = rs_publish;

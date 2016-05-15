@@ -3,7 +3,10 @@ Reusable node functions for rapid app development, continuous integration, and s
 
 usage: rad [command]
 
-Rad-scripts makes it easy to apply semantic versioning to git repositories.
+The rad-scripts mantra:
+   Every time you post code, you should tag it with a new semantic version
+
+Rad-scripts facilitates semantic versioning of git repositories.
 Following semantic versioning guidelines, developers can tag 
 major/minor/patch releases without knowing numeric tag details.  
 Instead, the developer can focus on whether commits since the last tag 
@@ -16,7 +19,9 @@ These apply tags to the latest code via: commit pull push tag push.
 In more complex continuously automated environments, use git-next-xxx to
 determine the pending version and apply it to the code base right before committing.
 Best practice is to create 3 app-specific major,minor,patch commit scripts
-that manage the details.  See rs-xxx scripts (used to publish rad-scripts itself).
+that manage the details, and use them for every commit.
+
+See rs-xxx scripts (used to publish rad-scripts itself).
 
 Commands include:
 

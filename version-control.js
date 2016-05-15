@@ -50,10 +50,10 @@ var git_sync = function(folder,comment,version)
 
     // Build tasks.
     var tasks = [];
-    if (changes.length       ) { tasks.plus(commit_task); }
-    if (remote_changes.length) { tasks.plus(pull_task  ); }
-    if (version)               { tasks.plus(tag_task   ); }
-    /* if (changes.length ) */ { tasks.plus(push_task  ); }   // Always push in case we already committed something
+    if (changes.length                              ) { tasks.plus(commit_task); }
+    if (remote_changes.length                       ) { tasks.plus(pull_task  ); }
+    if (changes.length && git_version_valid(version)) { tasks.plus(tag_task   ); }
+    /* if (changes.length ) */                        { tasks.plus(push_task  ); }   // Always push in case we already committed something
 
     if (tasks.length > 1) {
 
@@ -63,7 +63,7 @@ var git_sync = function(folder,comment,version)
         else if (changes.length                         ) { blip = '>>>'; }
         else if (remote_changes.length                  ) { blip = '<<<'; }
         else                                              { blip = '---'; }
-        if (version) { blip += ' ['+version+']'; }
+        if (git_version_valid(version)) { blip += ' ['+version+']'; }
 
         console.log('----------------------------------');
         console.log(blip + ' ' + folder);
@@ -104,8 +104,7 @@ var git_version = function () {
 
     var desc = ru.run_command_sync('git describe --always --tags').trim();
 
-    // If this doesn't start with a number then a dot, we won't know what to do...
-    if (desc.match(/^[0-9]\./) == null) {
+    if (!git_version_valid(desc)) {
         console.log("Unknown git version ["+desc+"]\nPlease tag the repository with a semantic version:\n\n   git tag -a #.#.# -m \"tag description\"\n");
         return unknown_version;
     }
@@ -125,6 +124,20 @@ var git_version_clean = function () {
         return tokens[1];
 
     return desc;
+}
+
+
+//=========== git_version_valid: tests to see if a version is valid ============
+var git_version_valid = function (version) {
+
+    if (version == null)
+        return false;
+    
+    // If this doesn't start with a number then a dot, we won't know what to do...
+    if (version.match(/^[0-9]\./) == null)
+        return false;
+
+    return true;
 }
 
 
@@ -366,6 +379,7 @@ module.exports.git_sync = git_sync;
 module.exports.git_clone = git_clone;
 module.exports.git_version = git_version;
 module.exports.git_version_clean = git_version_clean;
+module.exports.git_version_valid = git_version_valid;
 module.exports.git_tag_list = git_tag_list;
 module.exports.git_next_major = git_next_major;
 module.exports.git_next_minor = git_next_minor;

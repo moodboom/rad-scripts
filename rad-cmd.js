@@ -49,7 +49,10 @@ console.log(
 
     'usage: rad [command]\n\n' +
 
-    'Rad-scripts makes it easy to apply semantic versioning to git repositories.\n'+
+    'The rad-scripts mantra:\n' +
+    '   Every time you post code, you should tag it with a new semantic version\n' +
+    '\n' +
+    'Rad-scripts facilitates semantic versioning of git repositories.\n'+
     'Following semantic versioning guidelines, developers can tag \n' +
     'major/minor/patch releases without knowing numeric tag details.  \n' +
     'Instead, the developer can focus on whether commits since the last tag \n' +
@@ -62,7 +65,9 @@ console.log(
     'In more complex continuously automated environments, use git-next-xxx to\n' +
     'determine the pending version and apply it to the code base right before committing.\n' +
     'Best practice is to create 3 app-specific major,minor,patch commit scripts\n' +
-    'that manage the details.  See rs-xxx scripts (used to publish rad-scripts itself).\n' +
+    'that manage the details, and use them for every commit.\n' +
+    '\n' +
+    'See rs-xxx scripts (used to publish rad-scripts itself).\n' +
     '\n' +
     'Commands include:\n'
 );

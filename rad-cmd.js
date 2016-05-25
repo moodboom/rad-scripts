@@ -30,9 +30,7 @@ var cmds = [
     { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]\n'                                              },
 
     { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.'                                                   },
-    { name: 'rs-patch'                  , desc: '[msg msg...] > dogfooding 301: top-level dev script to commit and publish an rs patch'                             },
-    { name: 'rs-minor'                  , desc: '[msg msg...] > dogfooding 302: top-level dev script to commit and publish an rs minor release'                     },
-    { name: 'rs-major'                  , desc: '[msg msg...] > dogfooding 303: top-level dev script to commit and publish an rs major release'                     }
+    { name: 'rs-sync'                   , desc: '[--major|--minor|--patch] [msg msg...] > dogfooding 102: top-level script to commit tag and publish'               }
 ];
 
 for (var i = 0;i < cmds.length;i++) {
@@ -64,10 +62,10 @@ console.log(
     '\n' +
     'In more complex continuously automated environments, use git-next-xxx to\n' +
     'determine the pending version and apply it to the code base right before committing.\n' +
-    'Best practice is to create 3 app-specific [major|minor|patch] scripts\n' +
-    'that manage the details, and use them for every commit.\n' +
+    'Best practice is to create an app-specific top-level sync script\n' +
+    'that manages these details, and use it for every commit.\n' +
     '\n' +
-    'See rs-xxx scripts (used to publish rad-scripts itself).\n' +
+    'See rs-sync for a complete example - it is used to publish rad-scripts.\n' +
     '\n' +
     'Commands include:\n'
 );

@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "2.6.13",
+  "version": "2.7.0",
   "homepage": "http://bitpost.com",
   "license": "MIT",
 
@@ -37,8 +37,6 @@
     "get-svn-rev"               : "get-svn-rev-cmd.js",
     "get-svn-last-changed-rev"  : "get-svn-last-changed-rev-cmd.js",
     "rs-update-readme"          : "rs-update-readme-cmd.js",
-    "rs-patch"                  : "rs-patch-cmd.js",
-    "rs-minor"                  : "rs-minor-cmd.js",
-    "rs-major"                  : "rs-major-cmd.js"
+    "rs-sync"                   : "rs-sync-cmd.js"
   }
 }

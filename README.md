@@ -18,10 +18,10 @@ These apply tags to the latest code via: commit pull push tag push.
 
 In more complex continuously automated environments, use git-next-xxx to
 determine the pending version and apply it to the code base right before committing.
-Best practice is to create 3 app-specific [major|minor|patch] scripts
-that manage the details, and use them for every commit.
+Best practice is to create an app-specific top-level sync script
+that manages these details, and use it for every commit.
 
-See rs-xxx scripts (used to publish rad-scripts itself).
+See rs-sync for a complete example - it is used to publish rad-scripts.
 
 Commands include:
 
@@ -41,9 +41,7 @@ Commands include:
 * get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]
 
 * rs-update-readme           > dogfooding 101: use rad-scripts to dynamically update README.
-* rs-patch                   [msg msg...] > dogfooding 301: top-level dev script to commit and publish an rs patch
-* rs-minor                   [msg msg...] > dogfooding 302: top-level dev script to commit and publish an rs minor release
-* rs-major                   [msg msg...] > dogfooding 303: top-level dev script to commit and publish an rs major release
+* rs-sync                    [--major|--minor|--patch] [msg msg...] > dogfooding 102: top-level script to commit tag and publish
 
 Utilities include:
 

@@ -260,7 +260,7 @@ var parse_tag_parameters = function(argv) {
     else if (args[0] == '--patch') { version = git_next_patch(); args = args.slice(1); }
     else                           { version = git_next_patch()                        }
 
-    if (!vc.git_version_valid(version)) {
+    if (!git_version_valid(version)) {
         console.log("Please tag your repo with a valid semantic version.");
         process.exit(1);
     }
@@ -420,4 +420,4 @@ module.exports.npm_update_version = npm_update_version;
 module.exports.svn_last_changed_rev = svn_last_changed_rev;
 module.exports.svn_rev = svn_rev;
 module.exports.build_semantic_version = build_semantic_version;
-
+module.exports.parse_tag_parameters = parse_tag_parameters;

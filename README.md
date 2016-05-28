@@ -1,5 +1,5 @@
 # rad-scripts
-Easy semantic versioning of git repositories along with other rapid app dev tools.
+Easy semantic versioning of git repositories, along with other rapid app dev tools.
 
 usage: rad [command]
 
@@ -21,7 +21,7 @@ determine the pending version and apply it to the code base right before committ
 Best practice is to create an app-specific top-level sync script
 that manages these details, and use it for every commit.
 
-See rs-sync for a complete example - it is used to publish rad-scripts.
+See rs-sync-cmd.js / rs.js for a complete example that is used to publish rad-scripts itself.
 
 Commands include:
 

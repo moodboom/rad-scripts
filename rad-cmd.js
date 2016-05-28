@@ -43,7 +43,7 @@ for (var i = 0;i < cmds.length;i++) {
 // Generate usage, including a full app description, as this will be dynamically used to create README.md.  All docs in one place!  Cool.
 console.log(
     '# rad-scripts\n' +
-    'Easy semantic versioning of git repositories along with other rapid app dev tools.\n\n' +
+    'Easy semantic versioning of git repositories, along with other rapid app dev tools.\n\n' +
 
     'usage: rad [command]\n\n' +
 
@@ -65,7 +65,7 @@ console.log(
     'Best practice is to create an app-specific top-level sync script\n' +
     'that manages these details, and use it for every commit.\n' +
     '\n' +
-    'See rs-sync for a complete example - it is used to publish rad-scripts.\n' +
+    'See rs-sync-cmd.js / rs.js for a complete example that is used to publish rad-scripts itself.\n' +
     '\n' +
     'Commands include:\n'
 );

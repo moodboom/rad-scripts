@@ -150,7 +150,7 @@ var git_next_major = function() {
     var desc = git_version();
     if (desc == unknown_version) return desc;
 
-    var tokens = desc.match(/([0-9]+)(.[0-9]+.[0-9]+.[0-9]+).+/);
+    var tokens = desc.match(/([0-9]*).*/);
     var major = parseInt(tokens[1]) + 1;
     if (major == null) return unknown_version;
 
@@ -246,6 +246,31 @@ var git_tag_patch = function(message) {
     var desc = git_next_patch();
     if (desc == unknown_version) { console.log("Unable to tag"); process.exit(1); }
     git_sync('.',message,desc);
+}
+
+
+// =========== parse_tag_parameters: utility commonly needed to parse tag-based command line parameters ============
+var parse_tag_parameters = function(argv) {
+
+    var args = argv.slice(2);
+
+    var version;
+         if (args[0] == '--major') { version = git_next_major(); args = args.slice(1); }
+    else if (args[0] == '--minor') { version = git_next_minor(); args = args.slice(1); }
+    else if (args[0] == '--patch') { version = git_next_patch(); args = args.slice(1); }
+    else                           { version = git_next_patch()                        }
+
+    if (!vc.git_version_valid(version)) {
+        console.log("Please tag your repo with a valid semantic version.");
+        process.exit(1);
+    }
+
+    var comment = ru.combine_params(args);
+
+    return {
+        "next_version" : version,
+        "comment" : comment
+    };
 }
 
 

@@ -52,7 +52,7 @@ console.log(
     '\n' +
     'Rad-scripts facilitates semantic versioning of git repositories.\n'+
     'Following semantic versioning guidelines, developers can tag \n' +
-    'major/minor/patch releases without knowing numeric tag details.  \n' +
+    'major/minor/patch releases without knowing numeric tag details.\n' +
     'Instead, the developer can focus on whether commits since the last tag \n' +
     'include breaking changes (major), addition of new functionality (minor), \n' +
     'or bugfixes (patch).  \n' +

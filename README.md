@@ -8,7 +8,7 @@ The rad-scripts mantra:
 
 Rad-scripts facilitates semantic versioning of git repositories.
 Following semantic versioning guidelines, developers can tag 
-major/minor/patch releases without knowing numeric tag details.  
+major/minor/patch releases without knowing numeric tag details.
 Instead, the developer can focus on whether commits since the last tag 
 include breaking changes (major), addition of new functionality (minor), 
 or bugfixes (patch).  

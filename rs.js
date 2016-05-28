@@ -4,6 +4,19 @@ var fs = require('fs');
 var vc = require('./version-control.js');
 var ru = require('./run-utils.js');
 
+// You can use this as an example for publishing of your own node packages, as well as any other complex project.
+// Here we handle the following stages, it should handle all edge cases related to npm publishing!
+//
+//      UPDATE VERSION if there were code changes
+//      NPM INSTALL to ensure usage is up-to-date
+//      UPDATE README via usage
+//      SYNC (commit+pull+tag+push)
+//      NPM PUBLISH
+//      NPM INSTALL to get any remote changes installed
+//
+// Feel free to leave a comment if you find there's something not handled in this example: 
+//      https://bitpost.com/news/category/projects/rad-scripts/
+//
 var rs_publish = function(comment,version) {
 
     // If there have been code changes, stamp the "next" version into the app.

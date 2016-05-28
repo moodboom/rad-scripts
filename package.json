@@ -6,8 +6,8 @@
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "2.8.2",
-  "homepage": "http://bitpost.com",
+  "version": "2.8.3",
+  "homepage": "https://bitpost.com/news/category/projects/rad-scripts/",
   "license": "MIT",
 
   "preferGlobal": true,

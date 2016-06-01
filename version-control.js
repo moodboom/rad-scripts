@@ -110,12 +110,16 @@ var git_version = function () {
     if (!git_version_valid(desc)) {
 
         console.log("No semantic version tag found, creating 0.0.0...");
-        ru.run_command_sync('git tag -a -m "rad-scripts auto-created initial tag" 0.0.0').trim();
+        var tagattempt = ru.run_command_sync('git tag -a -m "rad-scripts auto-created initial tag" 0.0.0');
         desc = ru.run_command_sync('git describe --always --tags').trim();
 
-        // We used to fail, now we'll auto-create.
-        // console.log("Unknown git version ["+desc+"]\nPlease tag the repository with a semantic version:\n\n   git tag -a #.#.# -m \"tag description\"\n\n");
-        // return unknown_version;
+        // If we still don't have a valid version, it's likely that the repo has just been created.
+        // The user will need to commit first to create HEAD.
+        // We COULD try committing... but that is fraught with peril to do right here...
+        if (!git_version_valid(desc)) {
+            console.log("Unable to tag - perhaps you need to make an initial commit first to actually create HEAD.\nOutput:\n"+tagattempt+"\n");
+            return unknown_version;
+        }
     }
 
     return desc;
@@ -270,7 +274,6 @@ var parse_tag_parameters = function(argv) {
     else                           { version = git_next_patch()                        }
 
     if (!git_version_valid(version)) {
-        console.log("Please tag your repo with a valid semantic version.");
         process.exit(1);
     }
 

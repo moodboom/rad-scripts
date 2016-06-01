@@ -43,9 +43,9 @@ for (var i = 0;i < cmds.length;i++) {
 // Generate usage, including a full app description, as this will be dynamically used to create README.md.  All docs in one place!  Cool.
 console.log(
     '# rad-scripts\n' +
-    'Easy semantic versioning of git repositories, along with other rapid app dev tools.\n\n' +
+    'Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.\n\n' +
 
-    'usage: rad [command]\n\n' +
+    'Usage: rad [command]\n\n' +
 
     'The rad-scripts mantra:\n' +
     '   Every time you post code, you should tag it with a new semantic version\n' +
@@ -57,8 +57,10 @@ console.log(
     'include breaking changes (major), addition of new functionality (minor), \n' +
     'or bugfixes (patch).  \n' +
     '\n' +
-    'For simpler environments, you can use git-tag-xxx commands out of the box.\n'+
-    'These apply tags to the latest code via: commit pull push tag push.\n' +
+    'To painlessly kick things off, just start using git-sync to commit your changes.\n'+
+    'This automatically applies semantic version tags to your code, starting with v0.0.0.\n' +
+    'Use --major when committing breaking changes, and --minor when committing new features.\n' +
+    'Other than that, it should all be automatic.\n' +
     '\n' +
     'In more complex continuously automated environments, use git-next-xxx to\n' +
     'determine the pending version and apply it to the code base right before committing.\n' +

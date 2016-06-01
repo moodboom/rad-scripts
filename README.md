@@ -1,7 +1,7 @@
 # rad-scripts
-Easy semantic versioning of git repositories, along with other rapid app dev tools.
+Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.
 
-usage: rad [command]
+Usage: rad [command]
 
 The rad-scripts mantra:
    Every time you post code, you should tag it with a new semantic version
@@ -13,8 +13,10 @@ Instead, the developer can focus on whether commits since the last tag
 include breaking changes (major), addition of new functionality (minor), 
 or bugfixes (patch).  
 
-For simpler environments, you can use git-tag-xxx commands out of the box.
-These apply tags to the latest code via: commit pull push tag push.
+To painlessly kick things off, just start using git-sync to commit your changes.
+This automatically applies semantic version tags to your code, starting with v0.0.0.
+Use --major when committing breaking changes, and --minor when committing new features.
+Other than that, it should all be automatic.
 
 In more complex continuously automated environments, use git-next-xxx to
 determine the pending version and apply it to the code base right before committing.

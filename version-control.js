@@ -108,7 +108,7 @@ var git_version = function () {
     var desc = ru.run_command_sync('git describe --always --tags').trim();
 
     if (!git_version_valid(desc)) {
-        console.log("Unknown git version ["+desc+"]\nPlease tag the repository with a semantic version:\n\n   git tag -a #.#.# -m \"tag description\"\n");
+        console.log("Unknown git version ["+desc+"]\nPlease tag the repository with a semantic version:\n\n   git tag -a #.#.# -m \"tag description\"\n\n");
         return unknown_version;
     }
 
@@ -222,6 +222,8 @@ var git_tag_list = function(message) {
 }
 
 
+// OLD
+/*
 // =========== git_tag_major: gets the git version and adds a tag for the next major release ============
 var git_tag_major = function(message) {
 
@@ -247,6 +249,7 @@ var git_tag_patch = function(message) {
     if (desc == unknown_version) { console.log("Unable to tag"); process.exit(1); }
     git_sync('.',message,desc);
 }
+*/
 
 
 // =========== parse_tag_parameters: utility commonly needed to parse tag-based command line parameters ============
@@ -413,11 +416,8 @@ module.exports.git_next_major = git_next_major;
 module.exports.git_next_minor = git_next_minor;
 module.exports.git_next_patch = git_next_patch;
 module.exports.git_next_build = git_next_build;
-module.exports.git_tag_major = git_tag_major;
-module.exports.git_tag_minor = git_tag_minor;
-module.exports.git_tag_patch = git_tag_patch;
+module.exports.parse_tag_parameters = parse_tag_parameters;
 module.exports.npm_update_version = npm_update_version;
 module.exports.svn_last_changed_rev = svn_last_changed_rev;
 module.exports.svn_rev = svn_rev;
 module.exports.build_semantic_version = build_semantic_version;
-module.exports.parse_tag_parameters = parse_tag_parameters;

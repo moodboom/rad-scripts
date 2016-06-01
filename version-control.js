@@ -108,8 +108,14 @@ var git_version = function () {
     var desc = ru.run_command_sync('git describe --always --tags').trim();
 
     if (!git_version_valid(desc)) {
-        console.log("Unknown git version ["+desc+"]\nPlease tag the repository with a semantic version:\n\n   git tag -a #.#.# -m \"tag description\"\n\n");
-        return unknown_version;
+
+        console.log("No semantic version tag found, creating 0.0.0...");
+        ru.run_command_sync('git tag -a -m "rad-scripts auto-created initial tag" 0.0.0').trim();
+        desc = ru.run_command_sync('git describe --always --tags').trim();
+
+        // We used to fail, now we'll auto-create.
+        // console.log("Unknown git version ["+desc+"]\nPlease tag the repository with a semantic version:\n\n   git tag -a #.#.# -m \"tag description\"\n\n");
+        // return unknown_version;
     }
 
     return desc;

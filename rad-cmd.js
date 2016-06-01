@@ -14,23 +14,23 @@ var su = require('./string-utils.js');  // For string_pad
 var args = process.argv.slice(2);
 
 var cmds = [
-    { name: 'git-sync'                  , desc: '[msg msg...] > commits any changes in the current branch, pulls remote changes, and pushes the result'             },
-    { name: 'git-version'               , desc: '> returns the current git semantic version, based on [git describe]'                                               },
-    { name: 'git-version-clean'         , desc: '> returns MAJOR.MINOR.PATCH git version (suffix stripped)'                                                         },
-    { name: 'git-tag-list'              , desc: '> list tags, including 1 line from the annotaged tag\'s commit message'                                            },
-    { name: 'git-next-major'            , desc: '> returns what would be the next MAJOR semantic version'                                                           },
-    { name: 'git-next-minor'            , desc: '> returns what would be the next MINOR semantic version'                                                           },
-    { name: 'git-next-patch'            , desc: '> returns what would be the next PATCH semantic version'                                                           },
-    { name: 'git-next-build'            , desc: '> returns what would be the next BUILD semantic version'                                                           },
-    { name: 'git-tag-major'             , desc: '[msg msg...] > creates a tag that represents the next MAJOR semantic version; minor+patch+build are reset to 0'    },
-    { name: 'git-tag-minor'             , desc: '[msg msg...] > creates a tag that represents the next MINOR semantic version; patch+build are reset to 0'          },
-    { name: 'git-tag-patch'             , desc: '[msg msg...] > creates a tag that represents the next PATCH semantic version; build resets to 0'                   },
-    { name: 'npm-update-version'        , desc: '[version] > inject the current version into package.json'                                                          },
-    { name: 'get-svn-rev'               , desc: '> parses and returns the svn current revision from [svn info]'                                                     },
-    { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]\n'                                              },
+    { name: 'git-sync'                  , desc: '[--major|--minor|--patch] [msg msg...] > commits, pulls remote changes, tags and pushes the result\n'  },
 
-    { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.'                                                   },
-    { name: 'rs-sync'                   , desc: '[--major|--minor|--patch] [msg msg...] > dogfooding 102: top-level script to commit tag and publish'               }
+    { name: 'git-tag-list'              , desc: '> list tags, including 1 line from the annotaged tag\'s commit message'                                },
+    { name: 'git-version'               , desc: '> returns the current git semantic version, based on [git describe]'                                   },
+    { name: 'git-version-clean'         , desc: '> returns MAJOR.MINOR.PATCH git version (suffix stripped)\n'                                           },
+
+    { name: 'git-next-major'            , desc: '> returns what would be the next MAJOR semantic version'                                               },
+    { name: 'git-next-minor'            , desc: '> returns what would be the next MINOR semantic version'                                               },
+    { name: 'git-next-patch'            , desc: '> returns what would be the next PATCH semantic version'                                               },
+    { name: 'git-next-build'            , desc: '> returns what would be the next BUILD semantic version'                                               },
+    { name: 'npm-update-version'        , desc: '[version] > inject the current version into package.json'                                              },
+    { name: 'get-svn-rev'               , desc: '> parses and returns the svn current revision from [svn info]'                                         },
+    { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]'                                    },
+    { name: 'git-sync-notag'            , desc: 'a git-sync version to commit code without a tag; bad form perhaps, but up to you\n'                    },
+
+    { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.'                                       },
+    { name: 'rs-sync'                   , desc: '[--major|--minor|--patch] [msg msg...] > dogfooding 102: top-level script to commit tag and publish'   }
 ];
 
 for (var i = 0;i < cmds.length;i++) {

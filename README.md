@@ -27,20 +27,20 @@ See rs-sync-cmd.js / rs.js for a complete example that is used to publish rad-sc
 
 Commands include:
 
-* git-sync                   [msg msg...] > commits any changes in the current branch, pulls remote changes, and pushes the result
+* git-sync                   [--major|--minor|--patch] [msg msg...] > commits, pulls remote changes, tags and pushes the result
+
+* git-tag-list               > list tags, including 1 line from the annotaged tag's commit message
 * git-version                > returns the current git semantic version, based on [git describe]
 * git-version-clean          > returns MAJOR.MINOR.PATCH git version (suffix stripped)
-* git-tag-list               > list tags, including 1 line from the annotaged tag's commit message
+
 * git-next-major             > returns what would be the next MAJOR semantic version
 * git-next-minor             > returns what would be the next MINOR semantic version
 * git-next-patch             > returns what would be the next PATCH semantic version
 * git-next-build             > returns what would be the next BUILD semantic version
-* git-tag-major              [msg msg...] > creates a tag that represents the next MAJOR semantic version; minor+patch+build are reset to 0
-* git-tag-minor              [msg msg...] > creates a tag that represents the next MINOR semantic version; patch+build are reset to 0
-* git-tag-patch              [msg msg...] > creates a tag that represents the next PATCH semantic version; build resets to 0
 * npm-update-version         [version] > inject the current version into package.json
 * get-svn-rev                > parses and returns the svn current revision from [svn info]
 * get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]
+* git-sync-notag             a git-sync version to commit code without a tag; bad form perhaps, but up to you
 
 * rs-update-readme           > dogfooding 101: use rad-scripts to dynamically update README.
 * rs-sync                    [--major|--minor|--patch] [msg msg...] > dogfooding 102: top-level script to commit tag and publish

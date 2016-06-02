@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-// This script defines the top-level command of rad-scripts, moodboom's reusable node functions for rapid app dev.
+// This script defines the top-level command of rad-scripts.
+// It requires a second sub-command.
 // Type [rad] for usage.
 //
 // NOTE: Substeps can typically be run directly, via binaries defined in package.json that call the corresponding '-cmd.js' scripts.

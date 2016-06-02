@@ -26,8 +26,10 @@ var git_remote_changes = function(folder) {
 }
 
 
-// =========== git_sync: commits, then pulls, (then tags if version is provided), then pushes to the default remote repo, as needed ============
-// This may not be what is always wanted by everyone but for me it is always the common use case.
+// =========== git_sync ============
+// commits, then pulls, (then tags if version is provided), then pushes to the default remote repo, as needed
+// NOTE: This follows the rad-scripts mantra.  This may not be what is always wanted by everyone but for me,
+// it is always the common use case.  Automating this saves me time every day.
 var git_sync = function(folder,comment,version)
 {
     Array.prototype.plus = function (other_array) {
@@ -268,13 +270,21 @@ var parse_tag_parameters = function(argv) {
     var args = argv.slice(2);
 
     var version;
-         if (args[0] == '--major') { version = git_next_major(); args = args.slice(1); }
-    else if (args[0] == '--minor') { version = git_next_minor(); args = args.slice(1); }
-    else if (args[0] == '--patch') { version = git_next_patch(); args = args.slice(1); }
-    else                           { version = git_next_patch()                        }
+    
+    // If there are no changes, don't bother with the version.
+    // NOTE: This is actually important for new repos that have not been tagged yet.
+    // We don't want to mess with them yet by trying to force the first tag.
+    var changes = git_changes(folder);
+    if (changes.length)
+    {
+             if (args[0] == '--major') { version = git_next_major(); args = args.slice(1); }
+        else if (args[0] == '--minor') { version = git_next_minor(); args = args.slice(1); }
+        else if (args[0] == '--patch') { version = git_next_patch(); args = args.slice(1); }
+        else                           { version = git_next_patch()                        }
 
-    if (!git_version_valid(version)) {
-        process.exit(1);
+        if (!git_version_valid(version)) {
+            process.exit(1);
+        }
     }
 
     var comment = ru.combine_params(args);

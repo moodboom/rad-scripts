@@ -274,7 +274,7 @@ var parse_tag_parameters = function(argv) {
     // If there are no changes, don't bother with the version.
     // NOTE: This is actually important for new repos that have not been tagged yet.
     // We don't want to mess with them yet by trying to force the first tag.
-    var changes = git_changes(folder);
+    var changes = git_changes('.');
     if (changes.length)
     {
              if (args[0] == '--major') { version = git_next_major(); args = args.slice(1); }

@@ -7,7 +7,7 @@ var ru = require('./run-utils.js');
 // You can use this as an example for publishing of your own node packages, as well as any other complex project.
 // Here we handle the following stages, it should handle all edge cases related to npm publishing!
 //
-//      UPDATE VERSION if there were code changes
+//      UPDATE VERSION if there were code changes, and stamp it into the app as needed
 //      NPM INSTALL to ensure usage is up-to-date
 //      UPDATE README via usage
 //      SYNC (commit+pull+tag+push)
@@ -17,7 +17,11 @@ var ru = require('./run-utils.js');
 // Feel free to leave a comment if you find there's something not handled in this example: 
 //      https://bitpost.com/news/category/projects/rad-scripts/
 //
-var rs_publish = function(comment,version) {
+var rs_publish = function(argv) {
+
+    var tag_params = vc.parse_tag_parameters(process.argv);
+    var comment = tag_params.comment;
+    var version = tag_params.next_version;
 
     // If there have been code changes, stamp the "next" version into the app.
     if (vc.git_version_valid(version) && vc.git_changes('.').length > 0) {

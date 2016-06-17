@@ -62,13 +62,13 @@ var find_first_folder = function (candidates) {
 };
 
 
-function getFilesInOneDir (dir, pattern, files_){
+function get_files_in_one_dir (dir, pattern, files_){
     files_ = files_ || [];
     var files = fs.readdirSync(dir);
     for (var i in files){
         var name = dir + '/' + files[i];
         if (!fs.statSync(name).isDirectory()){
-            if (minimatch(name,pattern)) {
+            if (minimatch(files[i],pattern)) {
               files_.push(name);
             }
         }
@@ -132,6 +132,6 @@ module.exports.cdfolder = cdfolder;
 module.exports.cdfirst = cdfirst;
 module.exports.folder_exists = folder_exists;
 module.exports.find_first_folder = find_first_folder;
-module.exports.getFilesInOneDir = getFilesInOneDir;
+module.exports.get_files_in_one_dir = get_files_in_one_dir;
 module.exports.walk = walk;
 module.exports.walksubdirs = walksubdirs;

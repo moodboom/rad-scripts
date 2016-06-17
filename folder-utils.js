@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var fs = require('fs');
+var minimatch = require("minimatch");
 
 
 //=========== exists: cd to folder, return false if the folder doesn't exist ============
@@ -61,6 +62,21 @@ var find_first_folder = function (candidates) {
 };
 
 
+function getFilesInOneDir (dir, pattern, files_){
+    files_ = files_ || [];
+    var files = fs.readdirSync(dir);
+    for (var i in files){
+        var name = dir + '/' + files[i];
+        if (!fs.statSync(name).isDirectory()){
+            if (minimatch(name,pattern)) {
+              files_.push(name);
+            }
+        }
+    }
+    return files_;
+}
+
+
 // =========== walk: gather all files in a folder ============
 // TODO node-dir is probably more robust/feature-filled, check it out!
 var path = require('path');
@@ -116,5 +132,6 @@ module.exports.cdfolder = cdfolder;
 module.exports.cdfirst = cdfirst;
 module.exports.folder_exists = folder_exists;
 module.exports.find_first_folder = find_first_folder;
+module.exports.getFilesInOneDir = getFilesInOneDir;
 module.exports.walk = walk;
 module.exports.walksubdirs = walksubdirs;

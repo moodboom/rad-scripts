@@ -6,35 +6,33 @@
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "3.2.6",
+  "version": "3.2.7",
   "homepage": "https://bitpost.com/news/category/projects/rad-scripts/",
   "license": "MIT",
-
   "preferGlobal": true,
-
-  "dependencies": { "spawn-args": "^0.1.0" },
-
+  "dependencies": {
+    "minimatch": "^3.0.0",
+    "spawn-args": "^0.1.0"
+  },
   "devDependencies": {},
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
   "bin": {
-    "rad"                       : "rad-cmd.js",
-    "git-sync"                  : "git-sync-cmd.js",
-    "git-sync-notag"            : "git-sync-notag-cmd.js",
-    "git-version"               : "git-version-cmd.js",
-    "git-version-clean"         : "git-version-clean-cmd.js",
-    "git-tag-list"              : "git-tag-list-cmd.js",
-    "git-next-build"            : "git-next-build-cmd.js",
-    "git-next-major"            : "git-next-major-cmd.js",
-    "git-next-minor"            : "git-next-minor-cmd.js",
-    "git-next-patch"            : "git-next-patch-cmd.js",
-    "npm-update-version"        : "npm-update-version-cmd.js",
-    "get-svn-rev"               : "get-svn-rev-cmd.js",
-    "get-svn-last-changed-rev"  : "get-svn-last-changed-rev-cmd.js",
-    "rs-update-readme"          : "rs-update-readme-cmd.js",
-    "rs-sync"                   : "rs-sync-cmd.js"
+    "rad": "rad-cmd.js",
+    "git-sync": "git-sync-cmd.js",
+    "git-sync-notag": "git-sync-notag-cmd.js",
+    "git-version": "git-version-cmd.js",
+    "git-version-clean": "git-version-clean-cmd.js",
+    "git-tag-list": "git-tag-list-cmd.js",
+    "git-next-build": "git-next-build-cmd.js",
+    "git-next-major": "git-next-major-cmd.js",
+    "git-next-minor": "git-next-minor-cmd.js",
+    "git-next-patch": "git-next-patch-cmd.js",
+    "npm-update-version": "npm-update-version-cmd.js",
+    "get-svn-rev": "get-svn-rev-cmd.js",
+    "get-svn-last-changed-rev": "get-svn-last-changed-rev-cmd.js",
+    "rs-update-readme": "rs-update-readme-cmd.js",
+    "rs-sync": "rs-sync-cmd.js"
   }
 }

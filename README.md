@@ -52,6 +52,6 @@ Utilities include:
 * string-utils        > string_pad, etc.
 * version-control     > git semantic versioning via tags; sync git repos (auto commit+pull+push); extract svn revisions
 
-See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin ops.  Happy automating!  :-)
+See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin ops.   Happy automating!  :-)
 
 

@@ -85,7 +85,7 @@ console.log(
     '* ' +su.string_pad('                    ','string-utils')     +'> string_pad, etc.\n'+
     '* ' +su.string_pad('                    ','version-control')  +'> git semantic versioning via tags; sync git repos (auto commit+pull+push); extract svn revisions\n'+
     '\n'+
-    'See https://bitpost.com/news for more bloviating.  Devs don\'t need no stinkin ops.  Happy automating!  :-)\n\n'
+    'See https://bitpost.com/news for more bloviating.  Devs don\'t need no stinkin ops.   Happy automating!  :-)\n\n'
 );
 
 process.exit(1);

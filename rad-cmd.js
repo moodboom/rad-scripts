@@ -31,7 +31,7 @@ var cmds = [
     { name: 'git-sync-notag'            , desc: 'a git-sync version to commit code without a tag; bad form perhaps, but up to you\n'                    },
 
     { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.'                                       },
-    { name: 'rs-sync'                   , desc: '[--major|--minor|--patch] [msg msg...] > dogfooding 102: top-level script to commit tag and publish'   }
+    { name: 'rs-sync'                   , desc: '[--major|--minor|--patch] [msg msg...] > dogfooding 102: use rad-scripts to publish rad-scripts'       }
 ];
 
 for (var i = 0;i < cmds.length;i++) {
@@ -46,10 +46,10 @@ console.log(
     '# rad-scripts\n' +
     'Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.\n\n' +
 
-    'Usage: rad [command]\n\n' +
-
     'The rad-scripts mantra:\n' +
     '   Every time you post code, you should tag it with a new semantic version\n' +
+    '\n' +
+    'Usage: rad [command]\n' +
     '\n' +
     'Rad-scripts facilitates semantic versioning of git repositories.\n'+
     'Following semantic versioning guidelines, developers can tag \n' +

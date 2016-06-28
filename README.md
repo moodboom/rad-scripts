@@ -1,10 +1,10 @@
 # rad-scripts
 Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.
 
-Usage: rad [command]
-
 The rad-scripts mantra:
    Every time you post code, you should tag it with a new semantic version
+
+Usage: rad [command]
 
 Rad-scripts facilitates semantic versioning of git repositories.
 Following semantic versioning guidelines, developers can tag 
@@ -43,7 +43,7 @@ Commands include:
 * git-sync-notag             a git-sync version to commit code without a tag; bad form perhaps, but up to you
 
 * rs-update-readme           > dogfooding 101: use rad-scripts to dynamically update README.
-* rs-sync                    [--major|--minor|--patch] [msg msg...] > dogfooding 102: top-level script to commit tag and publish
+* rs-sync                    [--major|--minor|--patch] [msg msg...] > dogfooding 102: use rad-scripts to publish rad-scripts
 
 Utilities include:
 

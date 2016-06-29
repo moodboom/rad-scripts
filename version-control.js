@@ -43,16 +43,20 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
 
         var changes = git_changes(folder);
         var remote_changes = git_remote_changes(folder);
-        var any_changes = (changes && changes.length > 0) || (remote_changes && remote_changes.length > 0);
+        if (changes) {
+            changes = (changes.length>0);
+        }
+        if (remote_changes) {
+            remote_changes = (remote_changes.length>0);
+        }
 
-        // We can bail out before printing blip.  Pros and cons.
-        /*
+        var any_changes = changes || remote_changes;
+
+        // Currently we bail out before printing "---" blip, as it's fairly chatty.
         if (!any_changes)
         {
-            // console.log('No changes found.');
             process.exit(1);
         }
-        */
 
         // Build blip.
         var blip = "";
@@ -77,7 +81,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         // And we expect to work in the same branch, for the most part.
         // Best practice: use [git pull --rebase] before committing.
         // See http://stackoverflow.com/questions/2472254/when-should-i-use-git-pull-rebase
-        if (remote_changes.length) {
+        if (remote_changes) {
             ru.run_command_sync_to_console('git pull --rebase');
         }
 
@@ -92,31 +96,31 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
            process.exit(1);
         }
 
-        // Here is where we would do any version stamping into whatever product or app we are supporting.
-        // This is very app-specific, so we expect an (optional) callback function to get it done, if desired.
-        //
-        // Here's how you provide the function signature:
-        //
-        //      var tag_params = vc.parse_tag_parameters(process.argv);
-        //      var app_stamp_callback_function = function(err, version) {
-        //          if (err) throw err; // Check for the error and throw if it exists.
-        //          // STAMP VERSION INTO PRODUCT CODE as needed
-        //      };
-        //      git_sync('.',tag_params,app_stamp_callback_function);
-        //
-        if (stamp_callback_function)
-        {
-            // We don't want to throw an error, so we pass null for the error argument
-            // See: http://stackoverflow.com/questions/19739755/nodejs-callbacks-simple-example
-            stamp_callback_function(null, version);
-        }
+        if (changes) {
 
-        if (changes.length) {
+            // Here is where we would do any version stamping into whatever product or app we are supporting.
+            // This is very app-specific, so we expect an (optional) callback function to get it done, if desired.
+            //
+            // Here's how you provide the function signature:
+            //
+            //      var tag_params = vc.parse_tag_parameters(process.argv);
+            //      var app_stamp_callback_function = function(err, version) {
+            //          if (err) throw err; // Check for the error and throw if it exists.
+            //          // STAMP VERSION INTO PRODUCT CODE as needed
+            //      };
+            //      git_sync('.',tag_params,app_stamp_callback_function);
+            //
+            if (stamp_callback_function)
+            {
+                // We don't want to throw an error, so we pass null for the error argument
+                // See: http://stackoverflow.com/questions/19739755/nodejs-callbacks-simple-example
+                stamp_callback_function(null, version);
+            }
 
             // Commit
-            // DEBUG editor is not waiting?
-            // ru.run_command_sync_to_console('git commit -a' + comment);
-            ru.run_command_quietly('git commit -a' + comment);
+            // Make sure your editor waits before returning if you want to be able to provide comments on the fly.
+            // TODO get on-the-fly commit message and use as the tag message.  Right now we prompt twice.
+            ru.run_command_sync_to_console('git commit -a' + comment);
 
             // Tag
             if (!tag_params.notag && git_version_valid(version)) {
@@ -129,7 +133,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         ru.run_command_sync_to_console('git push --follow-tags');
 
         // Return true if there were changes.
-        return (changes.length > 0);
+        return changes;
     }
     catch (err) {
         console.log(err);

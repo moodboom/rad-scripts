@@ -114,7 +114,9 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         if (changes.length) {
 
             // Commit
-            ru.run_command_sync_to_console('git commit -a' + comment);
+            // DEBUG editor is not waiting?
+            // ru.run_command_sync_to_console('git commit -a' + comment);
+            ru.run_command_quietly('git commit -a' + comment);
 
             // Tag
             if (!tag_params.notag && git_version_valid(version)) {
@@ -204,7 +206,7 @@ var git_version_valid = function (version) {
 
     if (version == null)
         return false;
-    
+
     // If this doesn't start with a number then a dot, we won't know what to do...
     if (version.match(/^[0-9]\./) == null)
         return false;

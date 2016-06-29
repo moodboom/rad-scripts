@@ -75,11 +75,11 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
 
         // Build blip.
         var blip = "";
-             if (changes.length && remote_changes.length) { blip = '<=>'; }
-        else if (changes.length                         ) { blip = '>>>'; }
-        else if (remote_changes.length                  ) { blip = '<<<'; }
-        else                                              { blip = '---'; }
-        if (git_version_valid(version)) { blip += ' ['+version+']'; }
+             if (changes && remote_changes) { blip = '<=>'; }
+        else if (changes                  ) { blip = '>>>'; }
+        else if (remote_changes           ) { blip = '<<<'; }
+        else                                { blip = '---'; }
+        if (git_version_valid(version)    ) { blip += ' ['+version+']'; }
 
         console.log('----------------------------------');
         console.log(blip + ' ' + folder);

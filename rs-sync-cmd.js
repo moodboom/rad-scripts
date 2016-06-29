@@ -23,7 +23,7 @@ var rs_stamp_callback_function = function(err, version) {
 };
 
 // SYNC and PUBLISH CHANGES
-if (vc.git_sync('.',tag_params,rs_stamp_callback_function))
+if (vc.git_sync(process.cwd(),tag_params,rs_stamp_callback_function))
 {
     // There were changes, so let's publish now.
     ru.run_command_sync_to_console('npm publish');

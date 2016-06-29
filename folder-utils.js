@@ -39,7 +39,7 @@ var cdfirst = function (candidates) {
 
 //=========== folder_exists: returns true if the folder or file exists ============
 var folder_exists = function (folder) {
-    try { 
+    try {
         return fs.statSync(folder).isDirectory();
     }
     catch (err) {

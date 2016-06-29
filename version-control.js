@@ -1,5 +1,6 @@
 #!/usr/bin/env nodeold
 
+var path = require('path');             // For path.normalize
 var fs = require('fs');
 var ru = require('./run-utils.js');
 var unknown_version = 'unknown version';
@@ -27,37 +28,31 @@ var git_remote_changes = function(folder) {
 
 
 // =========== git_sync ============
-// commits, then pulls, (then tags if version is provided), then pushes to the default remote repo, as needed
+// commits, then pulls, then determines "next" version, then tags, then pushes to the default remote repo, as needed
 // NOTE: This follows the rad-scripts mantra.  This may not be what is always wanted by everyone but for me,
 // it is always the common use case.  Automating this saves me time every day.
-var git_sync = function(folder,comment,version)
+var git_sync = function(folder,tag_params,stamp_callback_function)
 {
     Array.prototype.plus = function (other_array) {
         other_array.forEach(function(v) {this.push(v)}, this);
     }
 
-    var changes = git_changes(folder);
-    var remote_changes = git_remote_changes(folder);
+    try {
 
-    // If comment is anything other than blank, build a proper comment format that we can slap on the end of cmd.
-    if (comment.length > 0)
-    {
-        comment = " -m \"" + comment + "\"";
-    }
+        process.chdir(path.normalize(folder));
 
-    var commit_task = [{ name: 'commit'     , folder: folder, cmd: 'git commit -a' + comment                }];
-    var pull_task   = [{ name: 'pull'       , folder: folder, cmd: 'git pull'                               }];
-    var tag_task    = [{ name: 'tag'        , folder: folder, cmd: 'git tag -a' + comment + ' ' + version   }];
-    var push_task   = [{ name: 'push'       , folder: folder, cmd: 'git push --follow-tags'                 }]; // You should really make [--follow-tags] the default via push.followTags
+        var changes = git_changes(folder);
+        var remote_changes = git_remote_changes(folder);
+        var any_changes = (changes && changes.length > 0) || (remote_changes && remote_changes.length > 0);
 
-    // Build tasks.
-    var tasks = [];
-    if (changes.length                              ) { tasks.plus(commit_task); }
-    if (remote_changes.length                       ) { tasks.plus(pull_task  ); }
-    if (changes.length && git_version_valid(version)) { tasks.plus(tag_task   ); }
-    /* if (changes.length ) */                        { tasks.plus(push_task  ); }   // Always push in case we already committed something
-
-    if (tasks.length > 1) {
+        // We can bail out before printing blip.  Pros and cons.
+        /*
+        if (!any_changes)
+        {
+            // console.log('No changes found.');
+            process.exit(1);
+        }
+        */
 
         // Build blip.
         var blip = "";
@@ -70,12 +65,74 @@ var git_sync = function(folder,comment,version)
         console.log('----------------------------------');
         console.log(blip + ' ' + folder);
         console.log('----------------------------------');
-    }
 
-    ru.runsteps(tasks);
-    
-    // Return true if there were changes.
-    return (changes.length > 0); 
+        // If comment is anything other than blank, build a proper comment format that we can slap on the end of cmd.
+        var comment = tag_params.comment;
+        if (comment.length > 0)
+        {
+            comment = " -m \"" + comment + "\"";
+        }
+
+        // For our purposes, we don't expect a lot of merging.
+        // And we expect to work in the same branch, for the most part.
+        // Best practice: use [git pull --rebase] before committing.
+        // See http://stackoverflow.com/questions/2472254/when-should-i-use-git-pull-rebase
+        if (remote_changes.length) {
+            ru.run_command_sync_to_console('git pull --rebase');
+        }
+
+        // Now we can get the "next" version.
+        // We had to wait until after the pull,
+        // since there may have been newer REMOTE version tags.
+        var version;
+             if (tag_params.major) { version = git_next_major(); }
+        else if (tag_params.minor) { version = git_next_minor(); }
+        else                       { version = git_next_patch(); }
+        if (!git_version_valid(version)) {
+           process.exit(1);
+        }
+
+        // Here is where we would do any version stamping into whatever product or app we are supporting.
+        // This is very app-specific, so we expect an (optional) callback function to get it done, if desired.
+        //
+        // Here's how you provide the function signature:
+        //
+        //      var tag_params = vc.parse_tag_parameters(process.argv);
+        //      var app_stamp_callback_function = function(err, version) {
+        //          if (err) throw err; // Check for the error and throw if it exists.
+        //          // STAMP VERSION INTO PRODUCT CODE as needed
+        //      };
+        //      git_sync('.',tag_params,app_stamp_callback_function);
+        //
+        if (stamp_callback_function)
+        {
+            // We don't want to throw an error, so we pass null for the error argument
+            // See: http://stackoverflow.com/questions/19739755/nodejs-callbacks-simple-example
+            stamp_callback_function(null, version);
+        }
+
+        if (changes.length) {
+
+            // Commit
+            ru.run_command_sync_to_console('git commit -a' + comment);
+
+            // Tag
+            if (git_version_valid(version)) {
+                ru.run_command_sync_to_console('git tag -a' + comment + ' ' + version);
+            }
+        }
+
+        // Always push in case we already committed something
+        // You should really make [--follow-tags] the default via push.followTags
+        ru.run_command_sync_to_console('git push --follow-tags');
+
+        // Return true if there were changes.
+        return (changes.length > 0);
+    }
+    catch (err) {
+        console.log(err);
+        return 0;
+    }
 }
 
 
@@ -234,63 +291,42 @@ var git_tag_list = function(message) {
 }
 
 
-// OLD
-/*
-// =========== git_tag_major: gets the git version and adds a tag for the next major release ============
-var git_tag_major = function(message) {
-
-    var desc = git_next_major();
-    if (desc == unknown_version) { console.log("Unable to tag"); process.exit(1); }
-    git_sync('.',message,desc);
-}
-
-
-// =========== git_tag_minor: gets the git version and adds a tag for the next minor release ============
-var git_tag_minor = function(message) {
-
-    var desc = git_next_minor();
-    if (desc == unknown_version) { console.log("Unable to tag"); process.exit(1); }
-    git_sync('.',message,desc);
-}
-
-
-// =========== git_tag_patch: gets the git version and adds a tag for the next patch ============
-var git_tag_patch = function(message) {
-
-    var desc = git_next_patch();
-    if (desc == unknown_version) { console.log("Unable to tag"); process.exit(1); }
-    git_sync('.',message,desc);
-}
-*/
-
-
 // =========== parse_tag_parameters: utility commonly needed to parse tag-based command line parameters ============
 var parse_tag_parameters = function(argv) {
 
     var args = argv.slice(2);
 
-    var version;
-    
+    var major = 0;
+    var minor = 0;
+
     // If there are no changes, don't bother with the version.
     // NOTE: This is actually important for new repos that have not been tagged yet.
     // We don't want to mess with them yet by trying to force the first tag.
     var changes = git_changes('.');
     if (changes.length)
     {
+             if (args[0] == '--major') { major = 1; args = args.slice(1); }
+        else if (args[0] == '--minor') { minor = 1; args = args.slice(1); }
+
+        // We used to actually get the version here.
+        // The reason we CAN'T is that there may be newer REMOTE version tags that we haven't pulled at this time.
+        // We need to determine the actual next version LATER in git-sync.
+        /*
              if (args[0] == '--major') { version = git_next_major(); args = args.slice(1); }
         else if (args[0] == '--minor') { version = git_next_minor(); args = args.slice(1); }
         else if (args[0] == '--patch') { version = git_next_patch(); args = args.slice(1); }
         else                           { version = git_next_patch()                        }
-
         if (!git_version_valid(version)) {
             process.exit(1);
         }
+        */
     }
 
     var comment = ru.combine_params(args);
 
     return {
-        "next_version" : version,
+        "major" : major,
+        "minor" : minor,
         "comment" : comment
     };
 }

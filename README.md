@@ -18,16 +18,15 @@ This automatically applies semantic version tags to your code, starting with v0.
 Use --major when committing breaking changes, and --minor when committing new features.
 Other than that, it should all be automatic.
 
-In more complex continuously automated environments, use git-next-xxx to
-determine the pending version and apply it to the code base right before committing.
-Best practice is to create an app-specific top-level sync script
-that manages these details, and use it for every commit.
-
-See rs-sync-cmd.js / rs.js for a complete example that is used to publish rad-scripts itself.
+In more complex continuously automated environments, rad-scripts provides a framework
+for you to stamp the "next version" into your code base right before committing.
+Best practice is to create an app-specific "stamp" script for your app, and use it for every commit.
+Any type of app is supported, through a generic callback; npm module publishing is also supported.
+See rs-sync-cmd.js for a complete example that is used to publish rad-scripts itself.
 
 Commands include:
 
-* git-sync                   [--major|--minor|--patch] [msg msg...] > commits, pulls remote changes, tags and pushes the result
+* git-sync                   [--major|--minor|--patch] [msg msg...] > pulls, commits, tags and pushes the result
 
 * git-tag-list               > list tags, including 1 line from the annotaged tag's commit message
 * git-version                > returns the current git semantic version, based on [git describe]
@@ -43,7 +42,7 @@ Commands include:
 * git-sync-notag             a git-sync version to commit code without a tag; bad form perhaps, but up to you
 
 * rs-update-readme           > dogfooding 101: use rad-scripts to dynamically update README.
-* rs-sync                    [--major|--minor|--patch] [msg msg...] > dogfooding 102: use rad-scripts to publish rad-scripts
+* rs-sync                    [--major|--minor] [msg msg...] > dogfooding 102: use rad-scripts to publish rad-scripts
 
 Utilities include:
 

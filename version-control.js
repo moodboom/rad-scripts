@@ -28,9 +28,24 @@ var git_remote_changes = function(folder) {
 
 
 // =========== git_sync ============
-// commits, then pulls, then determines "next" version, then tags, then pushes to the default remote repo, as needed
-// NOTE: This follows the rad-scripts mantra.  This may not be what is always wanted by everyone but for me,
+// NOTE: This follows the rad-scripts mantra of semver-tagging EVERY commit.
+// This may not be what is always wanted by everyone but for me,
 // it is always the common use case.  Automating this saves me time every day.
+//
+// We consider two processes here.
+//
+// 1) commit, pull --rebase, determine "next" version, stamp, commit, tag, push, publish
+// This process is thorough but would often result in two commits.
+// Also, if you committed local changes somewhere else they'll be screwed by rebase
+// (but that would be uncommon).
+// See http://stackoverflow.com/questions/2472254/when-should-i-use-git-pull-rebase
+//
+// 2) pull, determine "next" version, stamp, commit, tag, push, publish
+// Best practice is to pull before starting work, and finish before others push.  Not always possible.  :-)
+// So this process can result in merges when there were remote changes - but that's the cost of doing business.
+//
+// We will go with the second.
+//
 var git_sync = function(folder,tag_params,stamp_callback_function)
 {
     Array.prototype.plus = function (other_array) {
@@ -77,12 +92,9 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             comment = " -m \"" + comment + "\"";
         }
 
-        // For our purposes, we don't expect a lot of merging.
-        // And we expect to work in the same branch, for the most part.
-        // Best practice: use [git pull --rebase] before committing.
-        // See http://stackoverflow.com/questions/2472254/when-should-i-use-git-pull-rebase
+        // See note in function header regarding --rebase
         if (remote_changes) {
-            ru.run_command_sync_to_console('git pull --rebase');
+            ru.run_command_sync_to_console('git pull');
         }
 
         // Now we can get the "next" version.

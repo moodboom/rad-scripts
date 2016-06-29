@@ -88,7 +88,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
              if (tag_params.major) { version = git_next_major(); }
         else if (tag_params.minor) { version = git_next_minor(); }
         else                       { version = git_next_patch(); }
-        if (!git_version_valid(version)) {
+        if (!tag_params.notag && !git_version_valid(version)) {
            process.exit(1);
         }
 
@@ -117,7 +117,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             ru.run_command_sync_to_console('git commit -a' + comment);
 
             // Tag
-            if (git_version_valid(version)) {
+            if (!tag_params.notag && git_version_valid(version)) {
                 ru.run_command_sync_to_console('git tag -a' + comment + ' ' + version);
             }
         }

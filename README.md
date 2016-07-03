@@ -26,7 +26,7 @@ See rs-sync-cmd.js for a complete example that is used to publish rad-scripts it
 
 Commands include:
 
-* git-sync                   [--major|--minor|--patch] [msg msg...] > pulls, commits, tags and pushes the result
+* git-sync                   [--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push
 
 * git-tag-list               > list tags, including 1 line from the annotaged tag's commit message
 * git-version                > returns the current git semantic version, based on [git describe]

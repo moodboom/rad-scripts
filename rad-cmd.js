@@ -15,7 +15,7 @@ var su = require('./string-utils.js');  // For string_pad
 var args = process.argv.slice(2);
 
 var cmds = [
-    { name: 'git-sync'                  , desc: '[--major|--minor|--patch] [msg msg...] > pulls, commits, tags and pushes the result\n'     },
+    { name: 'git-sync'                  , desc: '[--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push\n'     },
 
     { name: 'git-tag-list'              , desc: '> list tags, including 1 line from the annotaged tag\'s commit message'                    },
     { name: 'git-version'               , desc: '> returns the current git semantic version, based on [git describe]'                       },

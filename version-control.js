@@ -32,7 +32,7 @@ var git_remote_changes = function(folder) {
 // This may not be what is always wanted by everyone but for me,
 // it is always the common use case.  Automating this saves me time every day.
 //
-// We consider two processes here.
+// We consider the following flows here.
 //
 // 1) commit, pull --rebase, determine "next" version, stamp, commit, tag, push, publish
 // This process is thorough but would often result in two commits.
@@ -43,8 +43,16 @@ var git_remote_changes = function(folder) {
 // 2) pull, determine "next" version, stamp, commit, tag, push, publish
 // Best practice is to pull before starting work, and finish before others push.  Not always possible.  :-)
 // So this process can result in merges when there were remote changes - but that's the cost of doing business.
+// The problem is the pull - it won't happen if changes are not committed first.
 //
-// We will go with the second.
+// 3) determine "next" version using local and remote tags, stamp, commit, pull --rebase, tag, push, publish
+// This process is the holy grail.
+// The difficulty is in the first step, but we will get it going if we can.
+//
+// 4) stash, pull --rebase, stash pop, determine "next" version, stamp, commit, tag, push, publish
+// This is just as good as 3 and is easier.
+//
+// We will go with the fourth.
 //
 var git_sync = function(folder,tag_params,stamp_callback_function)
 {
@@ -92,23 +100,29 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             comment = " -m \"" + comment + "\"";
         }
 
-        // See note in function header regarding --rebase
-        if (remote_changes) {
-            ru.run_command_sync_to_console('git pull');
+        if (changes) {
+            ru.run_command_quietly('git stash --keep-index');
         }
 
-        // Now we can get the "next" version.
-        // We had to wait until after the pull,
-        // since there may have been newer REMOTE version tags.
-        var version;
-             if (tag_params.major) { version = git_next_major(); }
-        else if (tag_params.minor) { version = git_next_minor(); }
-        else                       { version = git_next_patch(); }
-        if (!tag_params.notag && !git_version_valid(version)) {
-           process.exit(1);
+        // See note in function header regarding --rebase
+        if (remote_changes) {
+            ru.run_command_sync_to_console('git pull --rebase');
         }
 
         if (changes) {
+
+            ru.run_command_quietly('git stash pop');
+
+            // Now we can get the "next" version.
+            // We had to wait until after the pull,
+            // since there may have been newer REMOTE version tags.
+            var version;
+                 if (tag_params.major) { version = git_next_major(); }
+            else if (tag_params.minor) { version = git_next_minor(); }
+            else                       { version = git_next_patch(); }
+            if (!tag_params.notag && !git_version_valid(version)) {
+               process.exit(1);
+            }
 
             // Here is where we would do any version stamping into whatever product or app we are supporting.
             // This is very app-specific, so we expect an (optional) callback function to get it done, if desired.

@@ -46,11 +46,11 @@ var git_remote_changes = function(folder) {
 // The problem is the pull - it won't happen if changes are not committed first.
 //
 // 3) determine "next" version using local and remote tags, stamp, commit, pull --rebase, tag, push, publish
-// This process is the holy grail.
-// The difficulty is in the first step, but we will get it going if we can.
+// This process is does everything we need.
+// The difficulty is in implementing the first step.
 //
 // 4) stash, pull --rebase, stash pop, determine "next" version, stamp, commit, tag, push, publish
-// This is just as good as 3 and is easier.
+// This is just as good as 3 and is easier.  It does everything we need, well, for the typical commit.
 //
 // We will go with the fourth.
 //

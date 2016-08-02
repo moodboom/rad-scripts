@@ -37,6 +37,14 @@ var cdfirst = function (candidates) {
 };
 
 
+var make_dir = function (path) {
+  try {
+    fs.mkdirSync(path);
+  } catch(e) {
+    if ( e.code != 'EEXIST' ) throw e;
+  }
+}
+
 //=========== folder_exists: returns true if the folder or file exists ============
 var folder_exists = function (folder) {
     try {
@@ -130,6 +138,7 @@ var walksubdirs = function(dir, done) {
 
 module.exports.cdfolder = cdfolder;
 module.exports.cdfirst = cdfirst;
+module.exports.make_dir = make_dir;
 module.exports.folder_exists = folder_exists;
 module.exports.find_first_folder = find_first_folder;
 module.exports.get_files_in_one_dir = get_files_in_one_dir;

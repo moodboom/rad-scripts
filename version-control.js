@@ -169,12 +169,15 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
 
 
 // =========== git_clone: clones a repo ============
-var git_clone = function(remote_repo,local_folder)
+var git_clone = function(remote_repo,local_folder,sync)
 {
-    var exec = require('child_process').exec;
+    var exec;
+    if (sync)
+        exec = require('child_process').execSync;
+    else 
+        exec = require('child_process').exec;
 
-    // Run these in order.
-    // Make sure the task specifies the full target folder since these will be called async.
+    // Make sure the task specifies the full target folder since these may be called async.
     // i.e., don't use process.cwd()...
     var cmd1 = 'git clone ' + remote_repo + ' ' + local_folder;
 

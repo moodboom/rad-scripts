@@ -16,7 +16,8 @@ var run_command_sync_to_console = function (cmd) {
     execSync(cmd, {stdio:[0,1,2]}, function(error, stdout, stderr) {
         if (error) {
             console.log('======= RUN ERROR =======');
-            throw error;
+            console.log(error);
+            // throw error;
         }
     });
 }
@@ -36,7 +37,7 @@ var run_command_quietly = function (cmd) {
     execSync(cmd, function(error, stdout, stderr) {
         if (error) {
             console.log('======= RUN ERROR =======');
-            throw error;
+            console.log(error);
         }
     });
 }

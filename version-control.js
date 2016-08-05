@@ -78,7 +78,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         // Currently we bail out before printing "---" blip, as it's fairly chatty.
         if (!any_changes)
         {
-            process.exit(1);
+            process.exit(0);
         }
 
         // Build blip.
@@ -121,7 +121,8 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             else if (tag_params.minor) { version = git_next_minor(); }
             else                       { version = git_next_patch(); }
             if (!tag_params.notag && !git_version_valid(version)) {
-               process.exit(1);
+                console.log("Can't determine 'next' version of current tag...");
+                process.exit(1);
             }
 
             // Here is where we would do any version stamping into whatever product or app we are supporting.
@@ -158,12 +159,15 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         // You should really make [--follow-tags] the default via push.followTags
         ru.run_command_sync_to_console('git push --follow-tags');
 
+        // Erp... this is causing failure in scripts.  We need to return 0 on success.
         // Return true if there were changes.
-        return changes;
+        // return changes;
+
+        return 0;
     }
     catch (err) {
         console.log(err);
-        return 0;
+        return -1;
     }
 }
 

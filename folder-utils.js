@@ -88,8 +88,13 @@ function get_files_in_one_dir (dir, pattern, files_){
 // =========== walk: gather all files in a folder ============
 // TODO node-dir is probably more robust/feature-filled, check it out!
 var path = require('path');
-var walk = function(dir, done) {
+var walk = function(dir,pattern,done) {
   var results = [];
+
+
+  // console.log(dir);
+
+
   fs.readdir(dir, function(err, list) {
     if (err) return done(err);
     var pending = list.length;
@@ -98,12 +103,18 @@ var walk = function(dir, done) {
       file = path.resolve(dir, file);
       fs.stat(file, function(err, stat) {
         if (stat && stat.isDirectory()) {
-          walk(file, function(err, res) {
+          walk(file, pattern, function(err, res) {
             results = results.concat(res);
             if (!--pending) done(null, results);
           });
         } else {
-          results.push(file);
+
+          if (!pattern || minimatch(file,pattern)) {
+            results.push(file);
+          }
+          
+          // console.log(file);
+
           if (!--pending) done(null, results);
         }
       });

@@ -17,7 +17,7 @@ var args = process.argv.slice(2);
 var cmds = [
     { name: 'git-sync'                  , desc: '[--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push\n'     },
 
-    { name: 'git-tag-list'              , desc: '> list tags, including 1 line from the annotaged tag\'s commit message'                    },
+    { name: 'git-tag-list'              , desc: '> list tags, including one line from the annotaged tag\'s commit message'                  },
     { name: 'git-version'               , desc: '> returns the current git semantic version, based on [git describe]'                       },
     { name: 'git-version-clean'         , desc: '> returns MAJOR.MINOR.PATCH git version (suffix stripped)\n'                               },
 

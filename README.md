@@ -28,7 +28,7 @@ Commands include:
 
 * git-sync                   [--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push
 
-* git-tag-list               > list tags, including 1 line from the annotaged tag's commit message
+* git-tag-list               > list tags, including one line from the annotaged tag's commit message
 * git-version                > returns the current git semantic version, based on [git describe]
 * git-version-clean          > returns MAJOR.MINOR.PATCH git version (suffix stripped)
 

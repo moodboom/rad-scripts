@@ -7,6 +7,7 @@ var unknown_version = 'unknown version';
 
 
 //=========== git_changes: gets any changes in the current folder; returns blank if none ============
+// TOTHINK: this will not tell us if there are recent commits that have not been pushed yet.
 var git_changes = function(folder) {
 
     // Steps will be called synchronously so we can use cd.
@@ -65,6 +66,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         process.chdir(path.normalize(folder));
 
         var changes = git_changes(folder);
+
         var remote_changes = git_remote_changes(folder);
         if (changes) {
             changes = (changes.length>0);
@@ -100,7 +102,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             comment = " -m \"" + comment + "\"";
         }
 
-        if (changes) {
+        if (any_changes) {
             ru.run_command_quietly('git stash --keep-index');
         }
 
@@ -109,9 +111,11 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             ru.run_command_sync_to_console('git pull --rebase');
         }
 
-        if (changes) {
-
+        if (any_changes) {
             ru.run_command_quietly('git stash pop');
+        }
+
+        if (changes) {
 
             // Now we can get the "next" version.
             // We had to wait until after the pull,

@@ -35,7 +35,7 @@ Commands include:
 * git-next-major             > returns what would be the next MAJOR semantic version
 * git-next-minor             > returns what would be the next MINOR semantic version
 * git-next-patch             > returns what would be the next PATCH semantic version
-* git-next-build             > returns what would be the next BUILD semantic version
+* git-next-build             > returns what would be the next BUILD semantic version (less common)
 * npm-update-version         [version] > inject the current version into package.json
 * get-svn-rev                > parses and returns the svn current revision from [svn info]
 * get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]

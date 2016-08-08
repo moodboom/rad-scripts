@@ -24,7 +24,7 @@ var cmds = [
     { name: 'git-next-major'            , desc: '> returns what would be the next MAJOR semantic version'                                   },
     { name: 'git-next-minor'            , desc: '> returns what would be the next MINOR semantic version'                                   },
     { name: 'git-next-patch'            , desc: '> returns what would be the next PATCH semantic version'                                   },
-    { name: 'git-next-build'            , desc: '> returns what would be the next BUILD semantic version'                                   },
+    { name: 'git-next-build'            , desc: '> returns what would be the next BUILD semantic version (less common)'                     },
     { name: 'npm-update-version'        , desc: '[version] > inject the current version into package.json'                                  },
     { name: 'get-svn-rev'               , desc: '> parses and returns the svn current revision from [svn info]'                             },
     { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]'                        },

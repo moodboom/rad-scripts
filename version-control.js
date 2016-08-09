@@ -102,7 +102,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             comment = " -m \"" + comment + "\"";
         }
 
-        if (any_changes) {
+        if (changes) {
             ru.run_command_quietly('git stash --keep-index');
         }
 
@@ -111,7 +111,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             ru.run_command_sync_to_console('git pull --rebase');
         }
 
-        if (any_changes) {
+        if (changes) {
             ru.run_command_quietly('git stash pop');
         }
 

@@ -12,11 +12,13 @@ var git_changes = function(folder) {
     // Steps will be called synchronously so we can use cd.
     process.chdir(folder);
 
-    // NOTE: this will tell us if there are recent commits that have not been pushed yet.
     // Outgoing changes: git log @{u}.. Incoming changes: git log ..@{u}
-    var changes = ru.run_command_sync("git log @{u}..");
 
-    changes += ru.run_command_sync("git status -uno --porcelain");
+    // NOTE: this will tell us if there are recent commits that have not been pushed yet.
+    // We actually do not want that, the rebase pull will take care of those.
+    // var changes = ru.run_command_sync("git log @{u}..");
+
+    var changes = ru.run_command_sync("git status -uno --porcelain");
     return changes;
 }
 

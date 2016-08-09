@@ -7,13 +7,17 @@ var unknown_version = 'unknown version';
 
 
 //=========== git_changes: gets any changes in the current folder; returns blank if none ============
-// TOTHINK: this will not tell us if there are recent commits that have not been pushed yet.
 var git_changes = function(folder) {
 
     // Steps will be called synchronously so we can use cd.
     process.chdir(folder);
 
-    return ru.run_command_sync("git status -uno --porcelain");
+    // NOTE: this will tell us if there are recent commits that have not been pushed yet.
+    // Outgoing changes: git log @{u}.. Incoming changes: git log ..@{u}
+    var changes = ru.run_command_sync("git log @{u}..");
+
+    changes += ru.run_command_sync("git status -uno --porcelain");
+    return changes;
 }
 
 

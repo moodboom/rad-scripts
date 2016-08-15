@@ -91,11 +91,13 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
 
         // Build blip.
         var blip = "";
-             if (changes && remote_changes) { blip = '<=>'; }
-        else if (changes                  ) { blip = '>>>'; }
-        else if (remote_changes           ) { blip = '<<<'; }
-        else                                { blip = '---'; }
-        if (git_version_valid(version)    ) { blip += ' ['+version+']'; }
+             if (changes && remote_changes && !tag_params.pull_only) { blip = '<=>'; }
+        else if (changes && !tag_params.pull_only                  ) { blip = '>>>'; }
+        else if (remote_changes                                    ) { blip = '<<<'; }
+        else                                                         { blip = '---'; }
+
+        // We can't get the version here because we haven't done a pull yet and we don't yet know what it will be.     
+        // if (git_version_valid(version)    ) { blip += ' ['+version+']'; }
 
         console.log('----------------------------------');
         console.log(blip + ' ' + folder);
@@ -121,6 +123,10 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             ru.run_command_quietly('git stash pop');
         }
 
+        // We are now ready to push.  Bail out if we only wanted pull.
+        if (tag_params.pull_only)
+            return 0;
+        
         if (changes) {
 
             // Now we can get the "next" version.
@@ -347,6 +353,7 @@ var parse_tag_parameters = function(argv) {
 
     var major = 0;
     var minor = 0;
+    var pull_only = 0;
 
     // If there are no changes, don't bother with the version.
     // NOTE: This is actually important for new repos that have not been tagged yet.
@@ -356,6 +363,7 @@ var parse_tag_parameters = function(argv) {
     {
              if (args[0] == '--major') { major = 1; args = args.slice(1); }
         else if (args[0] == '--minor') { minor = 1; args = args.slice(1); }
+        else if (args[0] == '--pull-only') { pull_only = 1; args = args.slice(1); }
 
         // We used to actually get the version here.
         // The reason we CAN'T is that there may be newer REMOTE version tags that we haven't pulled at this time.
@@ -376,6 +384,7 @@ var parse_tag_parameters = function(argv) {
     return {
         "major" : major,
         "minor" : minor,
+        "pull_only" : pull_only,
         "comment" : comment
     };
 }

@@ -268,6 +268,8 @@ var git_version_valid = function (version) {
 }
 
 
+// NOTE: These are used by git-sync to determine the "next" version.
+
 // =========== git_next_major ============
 var git_next_major = function() {
 
@@ -313,12 +315,8 @@ var git_next_patch = function() {
 }
 
 
-// =========== git_next_build: gets the git version, then strips hash and increments the commit count by one ============
+// =========== git_next_build (DEPRECATED in most use cases): gets the git version, then strips hash and increments the commit count by one ============
 var git_next_build = function () {
-
-    // NOTE: this can be used to stamp a product with the next pending semantic version just before it is committed.
-    // We add one to the "build" commit count, and we exclude the hash (since we won't know it until post-commit).
-    // This process ensures that we have a correct stamp on the app without resorting to obnoxious CI-driven commits.
 
     var desc = git_version();
     if (desc == unknown_version) return desc;
@@ -341,6 +339,8 @@ var git_next_build = function () {
 
 // =========== git_tag_list: list tags, including 1 line from the annotaged tag's commit message ============
 var git_tag_list = function(message) {
+
+    // TODO sort output numerically
 
     return ru.run_command_sync("git tag -n");
 }

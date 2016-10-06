@@ -9,6 +9,6 @@ var vc = require('./version-control.js');
 var tag_params = vc.parse_tag_parameters(process.argv);
 tag_params.notag = 1;
 
-// We don't provide the version here, as this command is specifically used to avoid tagging.
-// You should consider using git-sync instead!
+// Because we set notag, we won't be setting a tag via git_sync.
+// Consider using the git-sync command instead!
 vc.git_sync(process.cwd(),tag_params);

@@ -338,11 +338,14 @@ var git_next_build = function () {
 
 
 // =========== git_tag_list: list tags, including 1 line from the annotaged tag's commit message ============
-var git_tag_list = function(message) {
+var git_tag_list = function(tag_params) {
 
-    // TODO sort output numerically
+    // get tags, then sort output numerically
+    // tail just the last few, but allow the user to provide tail params (eg [-n 200])
+    ru.run_command_sync_to_console("git tag -n|sort -n|tail "+tag_params.comment);
 
-    return ru.run_command_sync("git tag -n");
+    // OLD way, output does not pipe properly if we don't sync_to_console
+    // return ru.run_command_sync("git tag -n | sort -n | tail "+message);  <-- doesn't pipe
 }
 
 

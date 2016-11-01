@@ -41,6 +41,10 @@ Commands include:
 * get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]
 * git-sync-notag             a git-sync version to commit code without a tag; bad form perhaps, but up to you
 
+* git-skip                   [file] tell git to start ignoring upstream and local changes to the given file
+* git-noskip                 [file] tell git to stop ignoring upstream and local changes to the given file
+* git-skiplist               list the files for which git is currently ignoring upstream and local changes
+
 * rs-update-readme           > dogfooding 101: use rad-scripts to dynamically update README.
 * rs-sync                    [--major|--minor] [msg msg...] > dogfooding 102: use rad-scripts to publish rad-scripts
 

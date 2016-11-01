@@ -349,6 +349,28 @@ var git_tag_list = function(tag_params) {
 }
 
 
+//=========== git_skip: tell git to start ignoring upstream and local changes to the given file ============
+var git_skip = function(file) {
+    ru.run_command_sync_to_console("git update-index --skip-worktree "+file);
+}
+
+
+//=========== git_noskip: tell git to stop ignoring upstream and local changes to the given file ============
+var git_noskip = function(file) {
+    ru.run_command_sync_to_console("git update-index --no-skip-worktree "+file);
+}
+
+
+//=========== git_skiplist: list the files for which git is currently ignoring upstream and local changes ============
+var git_skiplist = function() {
+    try {
+        ru.run_command_sync_to_console("git ls-files -v . | grep ^S");
+    }
+    catch (err) {
+    }
+}
+
+
 // =========== parse_tag_parameters: utility commonly needed to parse tag-based command line parameters ============
 var parse_tag_parameters = function(argv) {
 
@@ -532,6 +554,9 @@ module.exports.git_next_major = git_next_major;
 module.exports.git_next_minor = git_next_minor;
 module.exports.git_next_patch = git_next_patch;
 module.exports.git_next_build = git_next_build;
+module.exports.git_skip = git_skip;
+module.exports.git_noskip = git_noskip;
+module.exports.git_skiplist = git_skiplist;
 module.exports.parse_tag_parameters = parse_tag_parameters;
 module.exports.npm_update_version = npm_update_version;
 module.exports.svn_last_changed_rev = svn_last_changed_rev;

@@ -29,6 +29,10 @@ var cmds = [
     { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]'                        },
     { name: 'git-sync-notag'            , desc: 'a git-sync version to commit code without a tag; bad form perhaps, but up to you\n'        },
 
+    { name: 'git-skip'                  , desc: '[file] tell git to start ignoring upstream and local changes to the given file'            },
+    { name: 'git-noskip'                , desc: '[file] tell git to stop ignoring upstream and local changes to the given file'             },
+    { name: 'git-skiplist'              , desc: 'list the files for which git is currently ignoring upstream and local changes\n'           },
+
     { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.'                           },
     { name: 'rs-sync'                   , desc: '[--major|--minor] [msg msg...] > dogfooding 102: use rad-scripts to publish rad-scripts'   }
 ];

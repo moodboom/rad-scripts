@@ -1,5 +1,4 @@
 #!/usr/bin/env node
 
-var version_control = require('./version-control.js');
-
-// TODO
+var vc = require('./version-control.js');
+vc.git_skiplist();

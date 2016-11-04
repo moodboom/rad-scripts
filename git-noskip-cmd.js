@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
-var version_control = require('./version-control.js');
+var vc = require('./version-control.js');
 
-// TODO
+// 0 = node, 1 = script path, so we ignore those.
+// 2 = target file
+var target = process.argv[2];
+vc.git_noskip(target);

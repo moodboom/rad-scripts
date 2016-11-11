@@ -50,7 +50,7 @@ console.log(
     'Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.\n\n' +
 
     'The rad-scripts mantra:\n' +
-    '   Every time you post code, you should tag it with a new semantic version\n' +
+    '   Automatically tag your code with a unique semantic version every time you commit\n' +
     '\n' +
     'Usage: rad [command]\n' +
     '\n' +

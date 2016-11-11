@@ -344,12 +344,30 @@ var git_next_build = function () {
 // =========== git_tag_list: list tags, including 1 line from the annotaged tag's commit message ============
 var git_tag_list = function(tag_params) {
 
+    var head = 10
+    if (tag_params.comment != null && tag_params.comment.length)
+	head = tag_params.comment
+	
     // get tags, then sort output numerically
-    // tail just the last few, but allow the user to provide tail params (eg [-n 200])
-    ru.run_command_sync_to_console("git tag -n|sort -V|tail "+tag_params.comment);
+    ru.run_command_sync_to_console("git tag -n|sort -V -r|head -"+head);
 
     // OLD way, output does not pipe properly if we don't sync_to_console
     // return ru.run_command_sync("git tag -n | sort -n | tail "+message);  <-- doesn't pipe
+}
+
+
+// =========== git_tag_list: list tags, including 1 line from the annotaged tag's commit message ============
+var git_log = function(tag_params) {
+
+    var head = 10
+    if (tag_params.comment != null && tag_params.comment.length)
+	head = tag_params.comment
+
+    // get log, prettified; see here:
+    //     http://stackoverflow.com/questions/1441010/the-shortest-possible-output-from-git-log-containing-author-and-date
+    // ru.run_command_sync_to_console("git log --pretty=\"%C(auto,yellow)%h%C(auto,magenta)% G? %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(7,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D\" --date=relative|head "+tag_params.comment);
+    // ru.run_command_sync_to_console("git log --pretty=\"%C(auto,blue)%>(12,trunc)%ad %C(auto,red)% gD% D %C(auto,reset)%s %C(auto,white)%aN\" --date=relative -"+head);
+    ru.run_command_sync_to_console("git log --pretty=\"%C(auto,blue)%>(12,trunc)%ad %C(auto,reset)%<(65,trunc)%s %C(auto,red)%>(12,trunc)%D %C(auto,white)%an\" --date=relative -"+head);
 }
 
 
@@ -553,6 +571,7 @@ module.exports.git_clone = git_clone;
 module.exports.git_version = git_version;
 module.exports.git_version_clean = git_version_clean;
 module.exports.git_version_valid = git_version_valid;
+module.exports.git_log = git_log;
 module.exports.git_tag_list = git_tag_list;
 module.exports.git_next_major = git_next_major;
 module.exports.git_next_minor = git_next_minor;

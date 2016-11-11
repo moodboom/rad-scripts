@@ -2,7 +2,7 @@
 Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.
 
 The rad-scripts mantra:
-   Every time you post code, you should tag it with a new semantic version
+   Automatically tag your code with a unique semantic version every time you commit
 
 Usage: rad [command]
 

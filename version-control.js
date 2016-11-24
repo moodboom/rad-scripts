@@ -111,7 +111,9 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         }
 
         if (changes) {
-            ru.run_command_quietly('git stash --keep-index');
+            // Why did we originally use --keep-index here?
+            // ru.run_command_quietly('git stash --keep-index');
+            ru.run_command_quietly('git stash');
         }
 
         // See note in function header regarding --rebase

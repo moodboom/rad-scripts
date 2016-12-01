@@ -86,7 +86,10 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         // Currently we bail out before printing "---" blip, as it's fairly chatty.
         if (!any_changes)
         {
-            process.exit(0);
+            // There may be more to do after we return, doh!
+            // process.exit(0);
+            
+            return 0;
         }
 
         // Build blip.

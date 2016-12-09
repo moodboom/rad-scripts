@@ -190,6 +190,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         // NOTE: this is VERY noisy...
         // console.log(err);
 
+        // If blip is not set, we had an earlier error in just trying to connect to the repo.
         if (blip == "") {
             console.log('----------------------------------');
             console.log("*** ["+folder+"] WARNING: git-sync could not connect to this repo...");

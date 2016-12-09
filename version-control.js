@@ -67,6 +67,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         other_array.forEach(function(v) {this.push(v)}, this);
     }
 
+    var blip = "";
     try {
 
         process.chdir(path.normalize(folder));
@@ -93,7 +94,6 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
         }
 
         // Build blip.
-        var blip = "";
              if (changes && remote_changes && !tag_params.pull_only) { blip = '<=>'; }
         else if (changes && !tag_params.pull_only                  ) { blip = '>>>'; }
         else if (remote_changes                                    ) { blip = '<<<'; }
@@ -189,9 +189,16 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
     catch (err) {
         // NOTE: this is VERY noisy...
         // console.log(err);
+
+        if (blip == "") {
+            console.log('----------------------------------');
+            console.log("*** ["+folder+"] WARNING: git-sync could not connect to this repo...");
+            console.log('----------------------------------');
+        } else {
+            console.log("*** ["+folder+"] WARNING: git-sync did not complete, check repo for coflicts...");
+            console.log('----------------------------------');
+        }
         
-        console.log("*** ["+folder+"] WARNING: git-sync did not complete, check repo for coflicts...");
-        console.log('----------------------------------');
         return -1;
     }
 }

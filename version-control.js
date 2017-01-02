@@ -407,9 +407,15 @@ var git_skiplist = function() {
 
 
 // =========== parse_tag_parameters: utility commonly needed to parse tag-based command line parameters ============
-var parse_tag_parameters = function(argv) {
+var parse_tag_parameters = function(argv,noslice) {
 
-    var args = argv.slice(2);
+    // Typical node argv sets include [#path#/node #path#/node_cmd param1 param2 ...]
+    // By default, we slice off the first two, but some callers do that themselves.
+    var args;
+    if (noslice)
+        args = argv;
+    else
+        args = argv.slice(2);
 
     var major = 0;
     var minor = 0;

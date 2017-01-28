@@ -113,10 +113,10 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             comment = " -m \"" + comment + "\"";
         }
 
-        if (changes) {
+        if (changes && remote_changes) {
             // Why did we originally use --keep-index here?
             // ru.run_command_quietly('git stash --keep-index');
-            ru.run_command_quietly('git stash');
+            ru.run_command_sync_to_console('git stash');
         }
 
         // See note in function header regarding --rebase
@@ -124,8 +124,8 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             ru.run_command_sync_to_console('git pull --rebase');
         }
 
-        if (changes) {
-            ru.run_command_quietly('git stash pop');
+        if (changes && remote_changes) {
+            ru.run_command_sync_to_console('git stash pop');
         }
 
         // We are now ready to push.  Bail out if we only wanted pull.

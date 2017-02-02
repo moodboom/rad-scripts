@@ -289,10 +289,11 @@ var git_version_valid = function (version) {
 
 // =========== git_next_major ============
 var git_next_major = function() {
-
     var desc = git_version();
     if (desc == unknown_version) return desc;
-
+    return next_major(desc);
+}
+var next_major = function(desc) {
     var tokens = desc.match(/([0-9]*).*/);
     var major = parseInt(tokens[1]) + 1;
     if (major == null) return unknown_version;
@@ -303,10 +304,11 @@ var git_next_major = function() {
 
 // =========== git_next_minor ============
 var git_next_minor = function() {
-
     var desc = git_version();
     if (desc == unknown_version) return desc;
-
+    return next_minor(desc);
+}
+var next_minor = function(desc) {
     var tokens = desc.match(/([0-9]*).([0-9]*)/);
     var major = tokens[1];
     var minor = parseInt(tokens[2]) + 1;
@@ -321,7 +323,9 @@ var git_next_patch = function() {
 
     var desc = git_version();
     if (desc == unknown_version) return desc;
-
+    return next_patch(desc);
+}
+var next_patch = function(desc) {
     var tokens = desc.match(/([0-9]*).([0-9]*).([0-9]*)/);
     var major = tokens[1];
     var minor = tokens[2];
@@ -337,7 +341,9 @@ var git_next_build = function () {
 
     var desc = git_version();
     if (desc == unknown_version) return desc;
-
+    return next_build(desc);
+}
+var next_build = function (desc) {
     // First we check to see if we are sitting right on a tag, eg [1.2.3].  If so, return [1.2.3-1].
     var tokens = desc.match(/(^[0-9]*.[0-9]*.[0-9]*$)/);
     if (tokens != null)
@@ -596,6 +602,10 @@ module.exports.git_next_major = git_next_major;
 module.exports.git_next_minor = git_next_minor;
 module.exports.git_next_patch = git_next_patch;
 module.exports.git_next_build = git_next_build;
+module.exports.next_major = next_major;
+module.exports.next_minor = next_minor;
+module.exports.next_patch = next_patch;
+module.exports.next_build = next_build;
 module.exports.git_skip = git_skip;
 module.exports.git_noskip = git_noskip;
 module.exports.git_skiplist = git_skiplist;

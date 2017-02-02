@@ -412,6 +412,20 @@ var git_skiplist = function() {
 }
 
 
+//=========== git_folder_from_url: extract top level folder name ============
+var git_folder_from_url = function(url) {
+
+    // Get project name out of this:
+    // ssh://user@me.com:1000/subdirs/folder.git
+    var git_regex = "/([a-zA-Z0-9-]+)([.]git)?$";
+    var greg_result = url.match(git_regex);
+    if (greg_result && greg_result[1])
+        return greg_result[1];
+    else
+        return "unknown";
+}
+
+
 // =========== parse_tag_parameters: utility commonly needed to parse tag-based command line parameters ============
 var parse_tag_parameters = function(argv,noslice) {
 
@@ -609,6 +623,7 @@ module.exports.next_build = next_build;
 module.exports.git_skip = git_skip;
 module.exports.git_noskip = git_noskip;
 module.exports.git_skiplist = git_skiplist;
+module.exports.git_folder_from_url = git_folder_from_url;
 module.exports.parse_tag_parameters = parse_tag_parameters;
 module.exports.npm_update_version = npm_update_version;
 module.exports.svn_last_changed_rev = svn_last_changed_rev;

@@ -386,7 +386,7 @@ var git_log = function(tag_params) {
     //     http://stackoverflow.com/questions/1441010/the-shortest-possible-output-from-git-log-containing-author-and-date
     // ru.run_command_sync_to_console("git log --pretty=\"%C(auto,yellow)%h%C(auto,magenta)% G? %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(7,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D\" --date=relative|head "+tag_params.comment);
     // ru.run_command_sync_to_console("git log --pretty=\"%C(auto,blue)%>(12,trunc)%ad %C(auto,red)% gD% D %C(auto,reset)%s %C(auto,white)%aN\" --date=relative -"+head);
-    ru.run_command_sync_to_console("git log --pretty=\"%C(auto,blue)%>(12,trunc)%ad %C(auto,reset)%<(65,trunc)%s %C(auto,red)%>(12,trunc)%D %C(auto,white)%an\" --date=relative -"+head);
+    ru.run_command_sync_to_console("git log --pretty=\"%h %C(auto,blue)%>(12,trunc)%ad %C(auto,reset)%<(65,trunc)%s %C(auto,red)%>(12,trunc)%D %C(auto,white)%an\" --date=relative -"+head);
 }
 
 

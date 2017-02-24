@@ -49,6 +49,8 @@ var run_command_quietly = function (cmd) {
 // run_command( "ls -l", function(err,text) { console.log (text) });
 var run_command = function (cmd, callBack ) {
 
+    // TODO convert to exec()
+    
     var fullargs = spawnargs(cmd);
     cmd = fullargs[0];
     var args = fullargs.slice(1);

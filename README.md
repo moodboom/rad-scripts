@@ -58,10 +58,10 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-a1c3e93  2 hours ago Typo in error message                                             HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
+62912ee 5 minutes .. Adding version and last few commits to README for fun             HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
+a1c3e93  2 hours ago Typo in error message                                               tag: 4.8.4 Michael Behrns-Miller [case-ubuntu]
 e97a2be  2 hours ago NOTE Updated run_command_sync WILL error out on console error       tag: 4.8.3 Michael Behrns-Miller [case-ubuntu]
 41470c0  2 hours ago More manual version fix                                             tag: 4.8.2 Michael Behrns-Miller [case-ubuntu]
-65428da  2 hours ago Push                                                                tag: 4.8.1 Michael Behrns-Miller [case-ubuntu]
 
-Version 4.8.4
+Version 4.8.5
 

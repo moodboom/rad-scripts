@@ -19,7 +19,8 @@ var rs_stamp_callback_function = function(err, version) {
     var readme = ru.run_command_sync('rad');
 
     // Let's add the version, and the most recent commits, to the readme, for fun.
-    // Note that usage will not include this, only the README.md file (but it is visible on github/npm).
+    // Note that usage will not include this, only the README.md file.
+    // But it should be visible on github/npm.
     readme += "Most recent commits...\n";
     readme += ru.run_command_sync('git-log 4')
     readme += "\nVersion ";

@@ -45,8 +45,7 @@ Commands include:
 * git-noskip                 [file] tell git to stop ignoring upstream and local changes to the given file
 * git-skiplist               list the files for which git is currently ignoring upstream and local changes
 
-* rs-update-readme           > dogfooding 101: use rad-scripts to dynamically update README.
-* rs-sync                    [--major|--minor] [msg msg...] > dogfooding 102: use rad-scripts to publish rad-scripts
+* rs-sync                    [--major|--minor] [msg msg...] > dogfooding 101: use rad-scripts to publish rad-scripts
 
 Utilities include:
 
@@ -57,4 +56,12 @@ Utilities include:
 
 See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin ops.   Happy automating!  :-)
 
+
+Most recent commits...
+a1c3e93  2 hours ago Typo in error message                                             HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
+e97a2be  2 hours ago NOTE Updated run_command_sync WILL error out on console error       tag: 4.8.3 Michael Behrns-Miller [case-ubuntu]
+41470c0  2 hours ago More manual version fix                                             tag: 4.8.2 Michael Behrns-Miller [case-ubuntu]
+65428da  2 hours ago Push                                                                tag: 4.8.1 Michael Behrns-Miller [case-ubuntu]
+
+Version 4.8.4
 

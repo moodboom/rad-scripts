@@ -84,7 +84,12 @@ var run_command = function (cmd, callBack ) {
 // var lsout = run_command_sync("ls -l");
 var run_command_sync = function (cmd) {
 
-    return execSync(cmd).toString();
+    return execSync(cmd, function(error, stdout, stderr) {
+        if (error) {
+            console.log('======= RUN ERROR =======');
+            console.log(error);
+        }
+    }).toString();
 
     // OLD spawn doesn't handle half the things exec does.
     /*

@@ -17,6 +17,14 @@ var rs_stamp_callback_function = function(err, version) {
 
     // Directly update README.md with usage, whoop
     var readme = ru.run_command_sync('rad');
+
+    // Let's add the version, and the most recent commits, to the readme, for fun.
+    readme += "Most recent commits...\n";
+    readme += ru.run_command_sync('git-log 4')
+    readme += "\nVersion ";
+    readme += ru.run_command_sync('git-version-clean');
+    readme += "\n";
+
     var filename = 'README.md';
     fs.writeFileSync(filename, readme,'utf-8');
 

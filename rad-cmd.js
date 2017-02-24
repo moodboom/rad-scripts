@@ -33,8 +33,7 @@ var cmds = [
     { name: 'git-noskip'                , desc: '[file] tell git to stop ignoring upstream and local changes to the given file'             },
     { name: 'git-skiplist'              , desc: 'list the files for which git is currently ignoring upstream and local changes\n'           },
 
-    { name: 'rs-update-readme'          , desc: '> dogfooding 101: use rad-scripts to dynamically update README.'                           },
-    { name: 'rs-sync'                   , desc: '[--major|--minor] [msg msg...] > dogfooding 102: use rad-scripts to publish rad-scripts'   }
+    { name: 'rs-sync'                   , desc: '[--major|--minor] [msg msg...] > dogfooding 101: use rad-scripts to publish rad-scripts'   }
 ];
 
 for (var i = 0;i < cmds.length;i++) {

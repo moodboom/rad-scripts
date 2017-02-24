@@ -57,11 +57,3 @@ Utilities include:
 See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin ops.   Happy automating!  :-)
 
 
-Most recent commits...
-882bec7 3 minutes .. Added TODO to replace spawn with exec                             HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
-62912ee 8 minutes .. Adding version and last few commits to README for fun               tag: 4.8.5 Michael Behrns-Miller [case-ubuntu]
-a1c3e93  2 hours ago Typo in error message                                               tag: 4.8.4 Michael Behrns-Miller [case-ubuntu]
-e97a2be  2 hours ago NOTE Updated run_command_sync WILL error out on console error       tag: 4.8.3 Michael Behrns-Miller [case-ubuntu]
-
-Version 4.8.6
-

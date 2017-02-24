@@ -11,6 +11,7 @@ var rs_stamp_callback_function = function(err, version) {
     if (err) throw err; // Check for the error and throw if it exists.
 
     vc.npm_update_version(version);
+    console.log(version);
 
     // Quietly reinstall, so we get any recently-made changes to usage.
     ru.run_command_quietly('npm install -g');
@@ -25,6 +26,7 @@ var rs_stamp_callback_function = function(err, version) {
     readme += ru.run_command_sync('git-log 4')
     readme += "\nVersion "+version;
     readme += "\n";
+    console.log(version);
 
     var filename = 'README.md';
     fs.writeFileSync(filename, readme,'utf-8');

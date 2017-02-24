@@ -196,7 +196,7 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             console.log("*** ["+folder+"] WARNING: git-sync could not connect to this repo...");
             console.log('----------------------------------');
         } else {
-            console.log("*** ["+folder+"] WARNING: git-sync did not complete, check repo for coflicts...");
+            console.log("*** ["+folder+"] WARNING: git-sync did not complete, check repo for conflicts...");
             console.log('----------------------------------');
         }
         

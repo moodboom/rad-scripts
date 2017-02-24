@@ -23,8 +23,7 @@ var rs_stamp_callback_function = function(err, version) {
     // But it should be visible on github/npm.
     readme += "Most recent commits...\n";
     readme += ru.run_command_sync('git-log 4')
-    readme += "\nVersion ";
-    readme += ru.run_command_sync('git-version-clean');
+    readme += "\nVersion "+version;
     readme += "\n";
 
     var filename = 'README.md';

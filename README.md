@@ -58,10 +58,10 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-2d5272b 2 minutes .. It is ok to update README usage will not be affected              HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
-0db8666 4 minutes .. Need a bit more work before we include version and commit           tag: 4.8.7 Michael Behrns-Miller [case-ubuntu]
-882bec7 6 minutes .. Added TODO to replace spawn with exec                               tag: 4.8.6 Michael Behrns-Miller [case-ubuntu]
-62912ee 11 minutes.. Adding version and last few commits to README for fun               tag: 4.8.5 Michael Behrns-Miller [case-ubuntu]
+88a85d8 2 minutes .. Update README not seeing it                                       HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
+2d5272b 4 minutes .. It is ok to update README usage will not be affected                tag: 4.8.8 Michael Behrns-Miller [case-ubuntu]
+0db8666 6 minutes .. Need a bit more work before we include version and commit           tag: 4.8.7 Michael Behrns-Miller [case-ubuntu]
+882bec7 8 minutes .. Added TODO to replace spawn with exec                               tag: 4.8.6 Michael Behrns-Miller [case-ubuntu]
 
-Version 4.8.8
+Version 4.8.9
 

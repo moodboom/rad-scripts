@@ -74,9 +74,8 @@ function get_files_in_one_dir (dir, pattern, files_){
     files_ = files_ || [];
     var files = fs.readdirSync(dir);
     for (var i in files){
-        // ODD CASE: Avoid non-owned properties, in case the base array definition has been extended!
-        // http://stackoverflow.com/questions/684672/how-do-i-loop-through-or-enumerate-a-javascript-object
-        // NOTE We typically extend arrays to enable in-place array addition.
+        // ODD CASE: Avoid non-owned properties, in case the base array definition has been extended.
+        // NOTE We found that we needed this because we typically extend arrays to enable in-place array addition.
         // http://stackoverflow.com/questions/1374126/how-to-extend-an-existing-javascript-array-with-another-array-without-creating
         if (files.hasOwnProperty(i)) {      
           var name = dir + '/' + files[i];

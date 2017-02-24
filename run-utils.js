@@ -84,6 +84,20 @@ var run_command = function (cmd, callBack ) {
 // var lsout = run_command_sync("ls -l");
 var run_command_sync = function (cmd) {
 
+    var result = '';
+    execSync(cmd, function(error, stdout, stderr) {
+        if (error) {
+            result += '======= RUN ERROR =======\n';
+            result += error + '\n';
+            result += '======= RUN ERROR =======\n';
+        }
+        if (outp.stdout && outp.stdout.length > 0) { result += outp.stdout; }
+        if (outp.stderr && outp.stderr.length > 0) { result += '\n' + outp.stderr; }
+    });
+    return result;
+
+    // OLD spawn doesn't handle half the things exec does.
+    /*
     var fullargs = spawnargs(cmd);
     cmd = fullargs[0];
     var args = fullargs.slice(1);
@@ -93,9 +107,10 @@ var run_command_sync = function (cmd) {
 
     // Return all output.  Put any error output last.
     var result = '';
-    if (outp.stdout && outp.stdout.length > 0) { result = outp.stdout; }
+    if (outp.stdout && outp.stdout.length > 0) { result += outp.stdout; }
     if (outp.stderr && outp.stderr.length > 0) { result += '\n' + outp.stderr; }
     return result;
+    */
 }
 
 

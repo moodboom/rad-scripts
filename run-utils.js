@@ -50,7 +50,7 @@ var run_command_quietly = function (cmd) {
 var run_command = function (cmd, callBack ) {
 
     // TODO convert to exec()
-    
+
     var fullargs = spawnargs(cmd);
     cmd = fullargs[0];
     var args = fullargs.slice(1);
@@ -90,6 +90,10 @@ var run_command_sync = function (cmd) {
         if (error) {
             console.log('======= RUN ERROR =======');
             console.log(error);
+        }
+        if (stderr) {
+            console.log('======= RUN stderr =======');
+            console.log(stderr);
         }
     }).toString();
 

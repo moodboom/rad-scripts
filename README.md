@@ -58,9 +58,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-07e9f0e 2 minutes .. README version off Test 1                                         HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
-7c5bf94 8 minutes .. Use actual version in README                                       tag: 4.8.10 Michael Behrns-Miller [case-ubuntu]
-88a85d8 10 minutes.. Update README not seeing it                                         tag: 4.8.9 Michael Behrns-Miller [case-ubuntu]
-2d5272b 12 minutes.. It is ok to update README usage will not be affected                tag: 4.8.8 Michael Behrns-Miller [case-ubuntu]
+0c7534b 22 minutes.. README version synced                                             HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
+07e9f0e 24 minutes.. README version off Test 1                                          tag: 4.8.11 Michael Behrns-Miller [case-ubuntu]
+7c5bf94 30 minutes.. Use actual version in README                                       tag: 4.8.10 Michael Behrns-Miller [case-ubuntu]
+88a85d8 32 minutes.. Update README not seeing it                                         tag: 4.8.9 Michael Behrns-Miller [case-ubuntu]
 
-Version 4.8.12
+Version 4.8.13

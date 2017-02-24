@@ -90,4 +90,5 @@ console.log(
     'See https://bitpost.com/news for more bloviating.  Devs don\'t need no stinkin ops.   Happy automating!  :-)\n\n'
 );
 
-process.exit(1);
+// Getting the usage is important in scripts, don't error out.
+process.exit(0);

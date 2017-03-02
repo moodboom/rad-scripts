@@ -133,45 +133,51 @@ var git_sync = function(folder,tag_params,stamp_callback_function)
             return 0;
         
         if (changes) {
+            if (tag_params.notag) {
 
-            // Now we can get the "next" version.
-            // We had to wait until after the pull,
-            // since there may have been newer REMOTE version tags.
-            var version;
-                 if (tag_params.major) { version = git_next_major(); }
-            else if (tag_params.minor) { version = git_next_minor(); }
-            else                       { version = git_next_patch(); }
-            if (!tag_params.notag && !git_version_valid(version)) {
-                console.log("Can't determine 'next' version of current tag...");
-                process.exit(1);
-            }
+                // Just commit, no tag work at all.
+                ru.run_command_sync_to_console('git commit -a' + comment);
 
-            // Here is where we would do any version stamping into whatever product or app we are supporting.
-            // This is very app-specific, so we expect an (optional) callback function to get it done, if desired.
-            //
-            // Here's how you provide the function signature:
-            //
-            //      var tag_params = vc.parse_tag_parameters(process.argv);
-            //      var app_stamp_callback_function = function(err, version) {
-            //          if (err) throw err; // Check for the error and throw if it exists.
-            //          // STAMP VERSION INTO PRODUCT CODE as needed
-            //      };
-            //      git_sync('.',tag_params,app_stamp_callback_function);
-            //
-            if (stamp_callback_function)
-            {
-                // We don't want to throw an error, so we pass null for the error argument
-                // See: http://stackoverflow.com/questions/19739755/nodejs-callbacks-simple-example
-                stamp_callback_function(null, version);
-            }
+            } else {
 
-            // Commit
-            // Make sure your editor waits before returning if you want to be able to provide comments on the fly.
-            // TODO get on-the-fly commit message and use as the tag message.  Right now we prompt twice.
-            ru.run_command_sync_to_console('git commit -a' + comment);
+                // Now we can get the "next" version.
+                // We had to wait until after the pull,
+                // since there may have been newer REMOTE version tags.
+                var version;
+                     if (tag_params.major) { version = git_next_major(); }
+                else if (tag_params.minor) { version = git_next_minor(); }
+                else                       { version = git_next_patch(); }
+                if (!git_version_valid(version)) {
+                    console.log("Can't determine 'next' version of current tag...");
+                    process.exit(1);
+                }
 
-            // Tag
-            if (!tag_params.notag && git_version_valid(version)) {
+                // Here is where we would do any version stamping into whatever product or app we are supporting.
+                // This is very app-specific, so we expect an (optional) callback function to get it done, if desired.
+                //
+                // Here's how you provide the function signature:
+                //
+                //      var tag_params = vc.parse_tag_parameters(process.argv);
+                //      var app_stamp_callback_function = function(err, version) {
+                //          if (err) throw err; // Check for the error and throw if it exists.
+                //          // STAMP VERSION INTO PRODUCT CODE as needed
+                //      };
+                //      git_sync('.',tag_params,app_stamp_callback_function);
+                //
+                if (stamp_callback_function)
+                {
+                    // We don't want to throw an error, so we pass null for the error argument
+                    // See: http://stackoverflow.com/questions/19739755/nodejs-callbacks-simple-example
+                    stamp_callback_function(null, version);
+                }
+
+                // Make sure your editor waits before returning if you want to be able to provide comments on the fly.
+                // TODO get on-the-fly commit message and use as the tag message.  Right now we prompt twice.
+
+                // Commit
+                ru.run_command_sync_to_console('git commit -a' + comment);
+
+                // Tag
                 ru.run_command_sync_to_console('git tag -a' + comment + ' ' + version);
             }
         }

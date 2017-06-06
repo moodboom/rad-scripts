@@ -49,7 +49,8 @@ console.log(
     'Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.\n\n' +
 
     'The rad-scripts mantra:\n' +
-    '   Automatically tag your code with a unique semantic version every time you push\n' +
+    '\n' +
+    '   Automatically tag your code with a semantic version every time you push\n' +
     '\n' +
     'Usage: rad [command]\n' +
     '\n' +
@@ -72,6 +73,7 @@ console.log(
     'See rs-sync-cmd.js for a complete example that is used to publish rad-scripts itself.\n' +
     '\n' +
     'git-sync is the primary command.  It automates version stamping through a rebased push:\n' +
+    '\n' +
     '  stash, pull --rebase, stash pop, determine "next" version, stamp, commit, tag, push, publish\n' +
     '\n' +
     'All commands:\n'

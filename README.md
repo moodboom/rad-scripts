@@ -2,7 +2,7 @@
 Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.
 
 The rad-scripts mantra:
-   Automatically tag your code with a unique semantic version every time you commit
+   Automatically tag your code with a unique semantic version every time you push
 
 Usage: rad [command]
 
@@ -13,18 +13,21 @@ Instead, the developer can focus on whether commits since the last tag
 include breaking changes (major), addition of new functionality (minor), 
 or bugfixes (patch).  
 
-To painlessly kick things off, just start using git-sync to commit your changes.
+To painlessly kick things off, just start using git-sync to push your changes.
 This automatically applies semantic version tags to your code, starting with v0.0.0.
-Use --major when committing breaking changes, and --minor when committing new features.
+Use --major when pushing breaking changes, and --minor when pushing new features.
 Other than that, it should all be automatic.
 
 In more complex continuously automated environments, rad-scripts provides a framework
-for you to stamp the "next version" into your code base right before committing.
+for you to stamp the "next version" into your code base right before pushing.
 Best practice is to create an app-specific "stamp" script for your app, and use it for every commit.
 Any type of app is supported, through a generic callback; npm module publishing is also supported.
 See rs-sync-cmd.js for a complete example that is used to publish rad-scripts itself.
 
-Commands include:
+git-sync is the primary command.  It automates version stamping through a rebased push:
+  stash, pull --rebase, stash pop, determine "next" version, stamp, commit, tag, push, publish
+
+All commands:
 
 * git-sync                   [--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push
 
@@ -58,9 +61,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-d4f030e   6 days ago run_command_sync print stderr                                     HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
-0c7534b   6 days ago README version synced                                              tag: 4.8.12 Michael Behrns-Miller [case-ubuntu]
-07e9f0e   6 days ago README version off Test 1                                          tag: 4.8.11 Michael Behrns-Miller [case-ubuntu]
-7c5bf94   6 days ago Use actual version in README                                       tag: 4.8.10 Michael Behrns-Miller [case-ubuntu]
+4bb11f7 3 months ago Updated git-sync-notag to avoid creation of initial tag Now NO .. HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
+d4f030e 3 months ago run_command_sync print stderr                                      tag: 4.8.13 Michael Behrns-Miller [case-ubuntu]
+0c7534b 3 months ago README version synced                                              tag: 4.8.12 Michael Behrns-Miller [case-ubuntu]
+07e9f0e 3 months ago README version off Test 1                                          tag: 4.8.11 Michael Behrns-Miller [case-ubuntu]
 
-Version 4.8.14
+Version 4.8.15

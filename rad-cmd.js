@@ -49,7 +49,7 @@ console.log(
     'Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.\n\n' +
 
     'The rad-scripts mantra:\n' +
-    '   Automatically tag your code with a unique semantic version every time you commit\n' +
+    '   Automatically tag your code with a unique semantic version every time you push\n' +
     '\n' +
     'Usage: rad [command]\n' +
     '\n' +
@@ -60,18 +60,21 @@ console.log(
     'include breaking changes (major), addition of new functionality (minor), \n' +
     'or bugfixes (patch).  \n' +
     '\n' +
-    'To painlessly kick things off, just start using git-sync to commit your changes.\n'+
+    'To painlessly kick things off, just start using git-sync to push your changes.\n'+
     'This automatically applies semantic version tags to your code, starting with v0.0.0.\n' +
-    'Use --major when committing breaking changes, and --minor when committing new features.\n' +
+    'Use --major when pushing breaking changes, and --minor when pushing new features.\n' +
     'Other than that, it should all be automatic.\n' +
     '\n' +
     'In more complex continuously automated environments, rad-scripts provides a framework\n' +
-    'for you to stamp the "next version" into your code base right before committing.\n' +
+    'for you to stamp the "next version" into your code base right before pushing.\n' +
     'Best practice is to create an app-specific "stamp" script for your app, and use it for every commit.\n' +
     'Any type of app is supported, through a generic callback; npm module publishing is also supported.\n' +
     'See rs-sync-cmd.js for a complete example that is used to publish rad-scripts itself.\n' +
     '\n' +
-    'Commands include:\n'
+    'git-sync is the primary command.  It automates version stamping through a rebased push:\n' +
+    '  stash, pull --rebase, stash pop, determine "next" version, stamp, commit, tag, push, publish\n' +
+    '\n' +
+    'All commands:\n'
 );
 for (var i = 0;i < cmds.length;i++) {
     console.log('* '+su.string_pad('                           ',cmds[i].name)+cmds[i].desc);

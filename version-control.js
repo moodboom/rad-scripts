@@ -35,9 +35,7 @@ var git_remote_changes = function(folder) {
 
 
 // =========== git_sync ============
-// NOTE: This follows the rad-scripts mantra of semver-tagging EVERY commit.
-// This may not be what is always wanted by everyone but for me,
-// it is always the common use case.  Automating this saves me time every day.
+// NOTE: This follows the rad-scripts mantra of semver-tagging every push.
 //
 // We consider the following flows here.
 //

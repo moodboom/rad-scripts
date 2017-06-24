@@ -63,9 +63,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-88d6e34  3 weeks ago README cleanup                                                    HEAD -> ma.. Michael Behrns-Miller [case-ubuntu]
+cf4ba4a 87 seconds.. Done dependency fixing                                            HEAD -> ma.. Michael Behrns-Miller [viper-ubuntu]
+88d6e34  3 weeks ago README cleanup                                                    tag: 4.8.1.. Michael Behrns-Miller [case-ubuntu]
 3a0539c  3 weeks ago Updated readme to focus on push not commit Also to describe git..  tag: 4.8.15 Michael Behrns-Miller [case-ubuntu]
 4bb11f7 4 months ago Updated git-sync-notag to avoid creation of initial tag Now NO ..  tag: 4.8.14 Michael Behrns-Miller [case-ubuntu]
-d4f030e 4 months ago run_command_sync print stderr                                      tag: 4.8.13 Michael Behrns-Miller [case-ubuntu]
 
-Version 4.8.19
+Version 4.8.20

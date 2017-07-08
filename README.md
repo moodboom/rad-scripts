@@ -66,9 +66,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-81b8cb3  2 weeks ago Done dependency fixing version fixing                             HEAD -> ma.. Michael Behrns-Miller [viper-ubuntu]
+d21e0b3  4 hours ago Updated make_dir to deep-capable make_folder Made available as .. HEAD -> ma.. Michael Behrns-Miller [bitpost-gentoo]
+81b8cb3  2 weeks ago Done dependency fixing version fixing                              tag: 4.8.20 Michael Behrns-Miller [viper-ubuntu]
 cf4ba4a  2 weeks ago Done dependency fixing                                             tag: 4.8.19 Michael Behrns-Miller [viper-ubuntu]
 88d6e34  5 weeks ago README cleanup                                                    tag: 4.8.1.. Michael Behrns-Miller [case-ubuntu]
-3a0539c  5 weeks ago Updated readme to focus on push not commit Also to describe git..  tag: 4.8.15 Michael Behrns-Miller [case-ubuntu]
 
-Version 4.9.0
+Version 4.9.1

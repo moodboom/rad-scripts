@@ -37,9 +37,23 @@ var cdfirst = function (candidates) {
 };
 
 
-var make_dir = function (path) {
+// ========== make_folder : make the given folder (no matter how deep) =========
+var make_folder = function (target_path) {
+
+  // We will catch EEXIST exceptions so we can return true if it already exists.
   try {
-    fs.mkdirSync(path);
+
+      const path = require('path');
+      const sep = path.sep;
+      const initDir = path.isAbsolute(target_path) ? sep : '';
+      target_path.split(sep).reduce((parentDir, childDir) => {
+          const curDir = path.resolve(parentDir, childDir);
+          if (!fs.existsSync(curDir)) {
+              fs.mkdirSync(curDir);
+          }
+          return curDir;
+      }, initDir);
+
   } catch(e) {
     if ( e.code != 'EEXIST' ) throw e;
   }
@@ -154,7 +168,7 @@ var walksubdirs = function(dir, done) {
 
 module.exports.cdfolder = cdfolder;
 module.exports.cdfirst = cdfirst;
-module.exports.make_dir = make_dir;
+module.exports.make_folder = make_folder;
 module.exports.folder_exists = folder_exists;
 module.exports.find_first_folder = find_first_folder;
 module.exports.get_files_in_one_dir = get_files_in_one_dir;

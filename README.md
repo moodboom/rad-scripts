@@ -32,6 +32,7 @@ git-sync is the primary command.  It automates version stamping through a rebase
 All commands:
 
 * git-sync                   [--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push
+* git-sync-notag             a git-sync version to commit code without a tag; bad form perhaps, but up to you
 
 * git-tag-list               > list tags, including one line from the annotaged tag's commit message
 * git-version                > returns the current git semantic version, based on [git describe]
@@ -41,15 +42,17 @@ All commands:
 * git-next-minor             > returns what would be the next MINOR semantic version
 * git-next-patch             > returns what would be the next PATCH semantic version
 * git-next-build             > returns what would be the next BUILD semantic version (less common)
-* npm-update-version         [version] > inject the current version into package.json
-* get-svn-rev                > parses and returns the svn current revision from [svn info]
-* get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]
-* git-sync-notag             a git-sync version to commit code without a tag; bad form perhaps, but up to you
 
 * git-skip                   [file] tell git to start ignoring upstream and local changes to the given file
 * git-noskip                 [file] tell git to stop ignoring upstream and local changes to the given file
 * git-skiplist               list the files for which git is currently ignoring upstream and local changes
 
+* get-svn-rev                > parses and returns the svn current revision from [svn info]
+* get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]
+
+* make-folder                [path] > makes the folder (even if deep), returns true if succeeds or already exists
+
+* npm-update-version         [version] > inject the current version into package.json
 * rs-sync                    [--major|--minor] [msg msg...] > dogfooding 101: use rad-scripts to publish rad-scripts
 
 Utilities include:
@@ -63,9 +66,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-cf4ba4a 87 seconds.. Done dependency fixing                                            HEAD -> ma.. Michael Behrns-Miller [viper-ubuntu]
-88d6e34  3 weeks ago README cleanup                                                    tag: 4.8.1.. Michael Behrns-Miller [case-ubuntu]
-3a0539c  3 weeks ago Updated readme to focus on push not commit Also to describe git..  tag: 4.8.15 Michael Behrns-Miller [case-ubuntu]
-4bb11f7 4 months ago Updated git-sync-notag to avoid creation of initial tag Now NO ..  tag: 4.8.14 Michael Behrns-Miller [case-ubuntu]
+81b8cb3  2 weeks ago Done dependency fixing version fixing                             HEAD -> ma.. Michael Behrns-Miller [viper-ubuntu]
+cf4ba4a  2 weeks ago Done dependency fixing                                             tag: 4.8.19 Michael Behrns-Miller [viper-ubuntu]
+88d6e34  5 weeks ago README cleanup                                                    tag: 4.8.1.. Michael Behrns-Miller [case-ubuntu]
+3a0539c  5 weeks ago Updated readme to focus on push not commit Also to describe git..  tag: 4.8.15 Michael Behrns-Miller [case-ubuntu]
 
-Version 4.8.20
+Version 4.9.0

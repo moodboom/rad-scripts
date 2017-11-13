@@ -6,13 +6,13 @@
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "4.9.1",
+  "version": "4.9.2",
   "homepage": "https://bitpost.com/news/category/projects/rad-scripts/",
   "license": "MIT",
   "preferGlobal": true,
   "dependencies": {
-    "minimatch": "^3.0.4",
-    "spawn-args": "^0.2.0"
+    "minimatch": ">=3.0.4",
+    "spawn-args": ">=0.2.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified.\" && exit 1"

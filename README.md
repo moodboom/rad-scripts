@@ -66,9 +66,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-53adb62 4 months ago Added missing file                                                HEAD -> ma.. Michael Behrns-Miller [bitpost-gentoo]
-d21e0b3 4 months ago Updated make_dir to deep-capable make_folder Made available as ..   tag: 4.9.0 Michael Behrns-Miller [bitpost-gentoo]
-81b8cb3 5 months ago Done dependency fixing version fixing                              tag: 4.8.20 Michael Behrns-Miller [viper-ubuntu]
-cf4ba4a 5 months ago Done dependency fixing                                             tag: 4.8.19 Michael Behrns-Miller [viper-ubuntu]
+2bdafa7  5 weeks ago Unlock restrictive package dependency versioning                  HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-gold-ubuntu]
+53adb62 5 months ago Added missing file                                                  tag: 4.9.1 Michael Behrns-Miller [bitpost-gentoo]
+d21e0b3 5 months ago Updated make_dir to deep-capable make_folder Made available as ..   tag: 4.9.0 Michael Behrns-Miller [bitpost-gentoo]
+81b8cb3 6 months ago Done dependency fixing version fixing                              tag: 4.8.20 Michael Behrns-Miller [viper-ubuntu]
 
-Version 4.9.2
+Version 4.9.3

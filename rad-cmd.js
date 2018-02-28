@@ -14,8 +14,9 @@ var su = require('./string-utils.js');  // For string_pad
 var args = process.argv.slice(2);
 
 var cmds = [
+    { name: 'rad [command]'             , desc: '> show available commands, can also be used to run commands if provided'                   },
     { name: 'git-sync'                  , desc: '[--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push'       },
-    { name: 'git-sync-notag'            , desc: 'a git-sync version to commit code without a tag; bad form perhaps, but up to you\n'        },
+    { name: 'git-sync-notag'            , desc: '> a git-sync version to commit code without a tag; bad form perhaps, but up to you\n'      },
 
     { name: 'git-tag-list'              , desc: '> list tags, including one line from the annotaged tag\'s commit message'                  },
     { name: 'git-version'               , desc: '> returns the current git semantic version, based on [git describe]'                       },
@@ -26,9 +27,9 @@ var cmds = [
     { name: 'git-next-patch'            , desc: '> returns what would be the next PATCH semantic version'                                   },
     { name: 'git-next-build'            , desc: '> returns what would be the next BUILD semantic version (less common)\n'                   },
 
-    { name: 'git-skip'                  , desc: '[file] tell git to start ignoring upstream and local changes to the given file'            },
-    { name: 'git-noskip'                , desc: '[file] tell git to stop ignoring upstream and local changes to the given file'             },
-    { name: 'git-skiplist'              , desc: 'list the files for which git is currently ignoring upstream and local changes\n'           },
+    { name: 'git-skip'                  , desc: '[file] > tell git to start ignoring upstream and local changes to the given file'          },
+    { name: 'git-noskip'                , desc: '[file] > tell git to stop ignoring upstream and local changes to the given file'           },
+    { name: 'git-skiplist'              , desc: '> list the files for which git is currently ignoring upstream and local changes\n'         },
 
     { name: 'get-svn-rev'               , desc: '> parses and returns the svn current revision from [svn info]'                             },
     { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]\n'                      },
@@ -54,8 +55,6 @@ console.log(
     'The rad-scripts mantra:\n' +
     '\n' +
     '   Automatically tag your code with a semantic version every time you push\n' +
-    '\n' +
-    'Usage: rad [command]\n' +
     '\n' +
     'Rad-scripts facilitates semantic versioning of git repositories.\n'+
     'Following semantic versioning guidelines, developers can tag \n' +

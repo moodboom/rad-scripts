@@ -5,8 +5,6 @@ The rad-scripts mantra:
 
    Automatically tag your code with a semantic version every time you push
 
-Usage: rad [command]
-
 Rad-scripts facilitates semantic versioning of git repositories.
 Following semantic versioning guidelines, developers can tag 
 major/minor/patch releases without knowing numeric tag details.
@@ -31,8 +29,9 @@ git-sync is the primary command.  It automates version stamping through a rebase
 
 All commands:
 
+* rad [command]              > show available commands, can also be used to run commands if provided
 * git-sync                   [--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push
-* git-sync-notag             a git-sync version to commit code without a tag; bad form perhaps, but up to you
+* git-sync-notag             > a git-sync version to commit code without a tag; bad form perhaps, but up to you
 
 * git-tag-list               > list tags, including one line from the annotaged tag's commit message
 * git-version                > returns the current git semantic version, based on [git describe]
@@ -43,9 +42,9 @@ All commands:
 * git-next-patch             > returns what would be the next PATCH semantic version
 * git-next-build             > returns what would be the next BUILD semantic version (less common)
 
-* git-skip                   [file] tell git to start ignoring upstream and local changes to the given file
-* git-noskip                 [file] tell git to stop ignoring upstream and local changes to the given file
-* git-skiplist               list the files for which git is currently ignoring upstream and local changes
+* git-skip                   [file] > tell git to start ignoring upstream and local changes to the given file
+* git-noskip                 [file] > tell git to stop ignoring upstream and local changes to the given file
+* git-skiplist               > list the files for which git is currently ignoring upstream and local changes
 
 * get-svn-rev                > parses and returns the svn current revision from [svn info]
 * get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]
@@ -66,9 +65,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-2bdafa7  5 weeks ago Unlock restrictive package dependency versioning                  HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-gold-ubuntu]
-53adb62 5 months ago Added missing file                                                  tag: 4.9.1 Michael Behrns-Miller [bitpost-gentoo]
-d21e0b3 5 months ago Updated make_dir to deep-capable make_folder Made available as ..   tag: 4.9.0 Michael Behrns-Miller [bitpost-gentoo]
-81b8cb3 6 months ago Done dependency fixing version fixing                              tag: 4.8.20 Michael Behrns-Miller [viper-ubuntu]
+c561bc9 2 months ago Added file_exists                                                 HEAD -> ma.. Michael Behrns-Miller [bitpost-gentoo]
+2bdafa7 4 months ago Unlock restrictive package dependency versioning                    tag: 4.9.2 Michael Behrns-Miller [mbehrnsm-gold-ubuntu]
+53adb62 8 months ago Added missing file                                                  tag: 4.9.1 Michael Behrns-Miller [bitpost-gentoo]
+d21e0b3 8 months ago Updated make_dir to deep-capable make_folder Made available as ..   tag: 4.9.0 Michael Behrns-Miller [bitpost-gentoo]
 
-Version 4.9.3
+Version 4.9.4

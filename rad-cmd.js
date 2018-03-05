@@ -78,6 +78,8 @@ console.log(
     '\n' +
     '  stash, pull --rebase, stash pop, determine "next" version, stamp, commit, tag, push, publish\n' +
     '\n' +
+    'git-sync will drop you back to the command line on any conflicts.  Automating this workflow can save hours.\n' +
+    '\n' +
     'All commands:\n'
 );
 for (var i = 0;i < cmds.length;i++) {

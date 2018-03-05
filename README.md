@@ -27,6 +27,8 @@ git-sync is the primary command.  It automates version stamping through a rebase
 
   stash, pull --rebase, stash pop, determine "next" version, stamp, commit, tag, push, publish
 
+git-sync will drop you back to the command line on any conflicts.  Automating this workflow can save hours.
+
 All commands:
 
 * rad [command]              > show available commands, can also be used to run commands if provided
@@ -65,9 +67,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-c561bc9 2 months ago Added file_exists                                                 HEAD -> ma.. Michael Behrns-Miller [bitpost-gentoo]
+443c7ad   5 days ago Documentation cleanup                                             HEAD -> ma.. Michael Behrns-Miller [bitpost-gentoo]
+c561bc9 3 months ago Added file_exists                                                   tag: 4.9.3 Michael Behrns-Miller [bitpost-gentoo]
 2bdafa7 4 months ago Unlock restrictive package dependency versioning                    tag: 4.9.2 Michael Behrns-Miller [mbehrnsm-gold-ubuntu]
 53adb62 8 months ago Added missing file                                                  tag: 4.9.1 Michael Behrns-Miller [bitpost-gentoo]
-d21e0b3 8 months ago Updated make_dir to deep-capable make_folder Made available as ..   tag: 4.9.0 Michael Behrns-Miller [bitpost-gentoo]
 
-Version 4.9.4
+Version 4.9.5

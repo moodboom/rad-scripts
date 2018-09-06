@@ -189,6 +189,10 @@ var combine_params = function(params) {
     return result;
 }
 
+var distro = function() {
+    var distro = run_command_sync('lsb_release -i').split(":")[1].trim().toLowerCase();
+    return distro
+}
 
 module.exports.run_command_sync = run_command_sync;
 module.exports.run_command_sync_to_console = run_command_sync_to_console;
@@ -197,3 +201,4 @@ module.exports.run_command_quietly = run_command_quietly;
 module.exports.run_command = run_command;
 module.exports.runsteps = runsteps;
 module.exports.combine_params = combine_params;
+module.exports.distro = distro;

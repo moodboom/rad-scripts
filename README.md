@@ -67,9 +67,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-443c7ad   5 days ago Documentation cleanup                                             HEAD -> ma.. Michael Behrns-Miller [bitpost-gentoo]
-c561bc9 3 months ago Added file_exists                                                   tag: 4.9.3 Michael Behrns-Miller [bitpost-gentoo]
-2bdafa7 4 months ago Unlock restrictive package dependency versioning                    tag: 4.9.2 Michael Behrns-Miller [mbehrnsm-gold-ubuntu]
-53adb62 8 months ago Added missing file                                                  tag: 4.9.1 Michael Behrns-Miller [bitpost-gentoo]
+9cbde54 6 months ago rad-scripts README small note                                     HEAD -> ma.. Michael Behrns-Miller [bitpost-gentoo]
+443c7ad 6 months ago Documentation cleanup                                               tag: 4.9.4 Michael Behrns-Miller [bitpost-gentoo]
+c561bc9 9 months ago Added file_exists                                                   tag: 4.9.3 Michael Behrns-Miller [bitpost-gentoo]
+2bdafa7 10 months .. Unlock restrictive package dependency versioning                    tag: 4.9.2 Michael Behrns-Miller [mbehrnsm-gold-ubuntu]
 
-Version 4.9.5
+Version 4.9.6

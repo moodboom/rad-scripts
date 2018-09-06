@@ -29,32 +29,23 @@ git-sync is the primary command.  It automates version stamping through a rebase
 
 git-sync will drop you back to the command line on any conflicts.  Automating this workflow can save hours.
 
-All commands:
+Common commands:
 
-* rad [command]              > show available commands, can also be used to run commands if provided
 * git-sync                   [--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push
 * git-sync-notag             > a git-sync version to commit code without a tag; bad form perhaps, but up to you
 
+* git-log                    [count] > an opinionated pretty colored git log, 1-line-per-commit, clipped to ~110 chars
 * git-tag-list               > list tags, including one line from the annotaged tag's commit message
-* git-version                > returns the current git semantic version, based on [git describe]
-* git-version-clean          > returns MAJOR.MINOR.PATCH git version (suffix stripped)
-
-* git-next-major             > returns what would be the next MAJOR semantic version
-* git-next-minor             > returns what would be the next MINOR semantic version
-* git-next-patch             > returns what would be the next PATCH semantic version
-* git-next-build             > returns what would be the next BUILD semantic version (less common)
 
 * git-skip                   [file] > tell git to start ignoring upstream and local changes to the given file
 * git-noskip                 [file] > tell git to stop ignoring upstream and local changes to the given file
 * git-skiplist               > list the files for which git is currently ignoring upstream and local changes
 
-* get-svn-rev                > parses and returns the svn current revision from [svn info]
-* get-svn-last-changed-rev   > parses and returns the svn last-changed revision from [svn info]
-
-* make-folder                [path] > makes the folder (even if deep), returns true if succeeds or already exists
-
 * npm-update-version         [version] > inject the current version into package.json
 * rs-sync                    [--major|--minor] [msg msg...] > dogfooding 101: use rad-scripts to publish rad-scripts
+
+* rad                        [command] > show all available commands, can also be used to run commands if provided
+
 
 Utilities include:
 
@@ -67,9 +58,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-9cbde54 6 months ago rad-scripts README small note                                     HEAD -> ma.. Michael Behrns-Miller [bitpost-gentoo]
+9536696  2 hours ago Added distro()                                                    HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
+9cbde54 6 months ago rad-scripts README small note                                       tag: 4.9.5 Michael Behrns-Miller [bitpost-gentoo]
 443c7ad 6 months ago Documentation cleanup                                               tag: 4.9.4 Michael Behrns-Miller [bitpost-gentoo]
 c561bc9 9 months ago Added file_exists                                                   tag: 4.9.3 Michael Behrns-Miller [bitpost-gentoo]
-2bdafa7 10 months .. Unlock restrictive package dependency versioning                    tag: 4.9.2 Michael Behrns-Miller [mbehrnsm-gold-ubuntu]
 
-Version 4.9.6
+Version 4.9.7

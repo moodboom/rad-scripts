@@ -14,30 +14,33 @@ var su = require('./string-utils.js');  // For string_pad
 var args = process.argv.slice(2);
 
 var cmds = [
-    { name: 'rad [command]'             , desc: '> show available commands, can also be used to run commands if provided'                   },
     { name: 'git-sync'                  , desc: '[--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push'       },
     { name: 'git-sync-notag'            , desc: '> a git-sync version to commit code without a tag; bad form perhaps, but up to you\n'      },
 
-    { name: 'git-tag-list'              , desc: '> list tags, including one line from the annotaged tag\'s commit message'                  },
-    { name: 'git-version'               , desc: '> returns the current git semantic version, based on [git describe]'                       },
-    { name: 'git-version-clean'         , desc: '> returns MAJOR.MINOR.PATCH git version (suffix stripped)\n'                               },
-
-    { name: 'git-next-major'            , desc: '> returns what would be the next MAJOR semantic version'                                   },
-    { name: 'git-next-minor'            , desc: '> returns what would be the next MINOR semantic version'                                   },
-    { name: 'git-next-patch'            , desc: '> returns what would be the next PATCH semantic version'                                   },
-    { name: 'git-next-build'            , desc: '> returns what would be the next BUILD semantic version (less common)\n'                   },
+    { name: 'git-log'                   , desc: '[count] > an opinionated pretty colored git log, 1-line-per-commit, clipped to ~110 chars' },
+    { name: 'git-tag-list'              , desc: '> list tags, including one line from the annotaged tag\'s commit message\n'                },
 
     { name: 'git-skip'                  , desc: '[file] > tell git to start ignoring upstream and local changes to the given file'          },
     { name: 'git-noskip'                , desc: '[file] > tell git to stop ignoring upstream and local changes to the given file'           },
     { name: 'git-skiplist'              , desc: '> list the files for which git is currently ignoring upstream and local changes\n'         },
 
-    { name: 'get-svn-rev'               , desc: '> parses and returns the svn current revision from [svn info]'                             },
-    { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]\n'                      },
+    { name: 'npm-update-version'        , desc: '[version] > inject the current version into package.json'                                  },
+    { name: 'rs-sync'                   , desc: '[--major|--minor] [msg msg...] > dogfooding 101: use rad-scripts to publish rad-scripts\n' },
+
+    { name: 'rad'                       , desc: '[command] > show all available commands, can also be used to run commands if provided\n'   },
 
     { name: 'make-folder'               , desc: '[path] > makes the folder (even if deep), returns true if succeeds or already exists\n'    },
 
-    { name: 'npm-update-version'        , desc: '[version] > inject the current version into package.json'                                  },
-    { name: 'rs-sync'                   , desc: '[--major|--minor] [msg msg...] > dogfooding 101: use rad-scripts to publish rad-scripts'   }
+    { name: 'git-version'               , desc: '> returns the current git semantic version, based on [git describe]'                       },
+    { name: 'git-version-clean'         , desc: '> returns MAJOR.MINOR.PATCH git version (suffix stripped)\n'                               },
+    { name: 'git-next-major'            , desc: '> returns what would be the next MAJOR semantic version'                                   },
+    { name: 'git-next-minor'            , desc: '> returns what would be the next MINOR semantic version'                                   },
+    { name: 'git-next-patch'            , desc: '> returns what would be the next PATCH semantic version'                                   },
+    { name: 'git-next-build'            , desc: '> returns what would be the next BUILD semantic version (less common)\n'                   },
+
+    { name: 'get-svn-rev'               , desc: '> parses and returns the svn current revision from [svn info]'                             },
+    { name: 'get-svn-last-changed-rev'  , desc: '> parses and returns the svn last-changed revision from [svn info]\n'                      }
+
 ];
 
 for (var i = 0;i < cmds.length;i++) {
@@ -80,10 +83,11 @@ console.log(
     '\n' +
     'git-sync will drop you back to the command line on any conflicts.  Automating this workflow can save hours.\n' +
     '\n' +
-    'All commands:\n'
+    'Common commands:\n'
 );
 for (var i = 0;i < cmds.length;i++) {
     console.log('* '+su.string_pad('                           ',cmds[i].name)+cmds[i].desc);
+    if (cmds[i].name == 'rad') break
 }
 
 console.log(

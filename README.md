@@ -44,23 +44,16 @@ Common commands:
 * npm-update-version         [version] > inject the current version into package.json
 * rs-sync                    [--major|--minor] [msg msg...] > dogfooding 101: use rad-scripts to publish rad-scripts
 
-* rad                        [command] > show all available commands, can also be used to run commands if provided
+* list-commands              > lists all available commands
 
-
-Utilities include:
-
-* run-utils           > run a command [sync/async] and get output; run an array of commands in specified folders
-* folder-utils        > cd to the first found directory in an array (important for finding base folder of projects on different OSes/machines); walk files; walk folders
-* string-utils        > string_pad, etc.
-* version-control     > git semantic versioning via tags; sync git repos (auto commit+pull+push); extract svn revisions
 
 See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin ops.   Happy automating!  :-)
 
 
 Most recent commits...
-9536696  2 hours ago Added distro()                                                    HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
+333525e   6 days ago Document git-log                                                  HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
+9536696   6 days ago Added distro()                                                      tag: 4.9.6 Michael Behrns-Miller [mbehrnsm-silver]
 9cbde54 6 months ago rad-scripts README small note                                       tag: 4.9.5 Michael Behrns-Miller [bitpost-gentoo]
-443c7ad 6 months ago Documentation cleanup                                               tag: 4.9.4 Michael Behrns-Miller [bitpost-gentoo]
-c561bc9 9 months ago Added file_exists                                                   tag: 4.9.3 Michael Behrns-Miller [bitpost-gentoo]
+443c7ad 7 months ago Documentation cleanup                                               tag: 4.9.4 Michael Behrns-Miller [bitpost-gentoo]
 
-Version 4.9.7
+Version 4.9.8

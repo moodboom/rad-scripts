@@ -27,7 +27,9 @@ var cmds = [
     { name: 'npm-update-version'        , desc: '[version] > inject the current version into package.json'                                  },
     { name: 'rs-sync'                   , desc: '[--major|--minor] [msg msg...] > dogfooding 101: use rad-scripts to publish rad-scripts\n' },
 
-    { name: 'rad'                       , desc: '[command] > show all available commands, can also be used to run commands if provided\n'   },
+    // Minor commands
+    
+    { name: 'list-commands'             , desc: '> lists all available commands\n'   },
 
     { name: 'make-folder'               , desc: '[path] > makes the folder (even if deep), returns true if succeeds or already exists\n'    },
 
@@ -44,60 +46,71 @@ var cmds = [
 ];
 
 for (var i = 0;i < cmds.length;i++) {
-    if (args[0] == cmds[i].name) {
+    if (args[0] == cmds[i].name && cmds[i].name != 'list-commands') {
         var steps = [{ name: cmds[i].name, folder: '.', cmd: cmds[i].name}];
         return ru.runsteps(steps);
     }
 }
 
 // Generate usage, including a full app description, as this will be dynamically used to create README.md.  All docs in one place!  Cool.
-console.log(
-    '# rad-scripts\n' +
-    'Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.\n\n' +
+if (args[0] != 'list-commands') {
+    console.log(
+        '# rad-scripts\n' +        
+        'Easily add semantic versioning to all your git repositories, and integrate the versioning into your apps.\n\n' +
 
-    'The rad-scripts mantra:\n' +
-    '\n' +
-    '   Automatically tag your code with a semantic version every time you push\n' +
-    '\n' +
-    'Rad-scripts facilitates semantic versioning of git repositories.\n'+
-    'Following semantic versioning guidelines, developers can tag \n' +
-    'major/minor/patch releases without knowing numeric tag details.\n' +
-    'Instead, the developer can focus on whether commits since the last tag \n' +
-    'include breaking changes (major), addition of new functionality (minor), \n' +
-    'or bugfixes (patch).  \n' +
-    '\n' +
-    'To painlessly kick things off, just start using git-sync to push your changes.\n'+
-    'This automatically applies semantic version tags to your code, starting with v0.0.0.\n' +
-    'Use --major when pushing breaking changes, and --minor when pushing new features.\n' +
-    'Other than that, it should all be automatic.\n' +
-    '\n' +
-    'In more complex continuously automated environments, rad-scripts provides a framework\n' +
-    'for you to stamp the "next version" into your code base right before pushing.\n' +
-    'Best practice is to create an app-specific "stamp" script for your app, and use it for every commit.\n' +
-    'Any type of app is supported, through a generic callback; npm module publishing is also supported.\n' +
-    'See rs-sync-cmd.js for a complete example that is used to publish rad-scripts itself.\n' +
-    '\n' +
-    'git-sync is the primary command.  It automates version stamping through a rebased push:\n' +
-    '\n' +
-    '  stash, pull --rebase, stash pop, determine "next" version, stamp, commit, tag, push, publish\n' +
-    '\n' +
-    'git-sync will drop you back to the command line on any conflicts.  Automating this workflow can save hours.\n' +
-    '\n' +
-    'Common commands:\n'
-);
+        'The rad-scripts mantra:\n' +
+        '\n' +
+        '   Automatically tag your code with a semantic version every time you push\n' +
+        '\n' +
+        'Rad-scripts facilitates semantic versioning of git repositories.\n'+
+        'Following semantic versioning guidelines, developers can tag \n' +
+        'major/minor/patch releases without knowing numeric tag details.\n' +
+        'Instead, the developer can focus on whether commits since the last tag \n' +
+        'include breaking changes (major), addition of new functionality (minor), \n' +
+        'or bugfixes (patch).  \n' +
+        '\n' +
+        'To painlessly kick things off, just start using git-sync to push your changes.\n'+
+        'This automatically applies semantic version tags to your code, starting with v0.0.0.\n' +
+        'Use --major when pushing breaking changes, and --minor when pushing new features.\n' +
+        'Other than that, it should all be automatic.\n' +
+        '\n' +
+        'In more complex continuously automated environments, rad-scripts provides a framework\n' +
+        'for you to stamp the "next version" into your code base right before pushing.\n' +
+        'Best practice is to create an app-specific "stamp" script for your app, and use it for every commit.\n' +
+        'Any type of app is supported, through a generic callback; npm module publishing is also supported.\n' +
+        'See rs-sync-cmd.js for a complete example that is used to publish rad-scripts itself.\n' +
+        '\n' +
+        'git-sync is the primary command.  It automates version stamping through a rebased push:\n' +
+        '\n' +
+        '  stash, pull --rebase, stash pop, determine "next" version, stamp, commit, tag, push, publish\n' +
+        '\n' +
+        'git-sync will drop you back to the command line on any conflicts.  Automating this workflow can save hours.\n' +
+        '\n' +
+        'Common commands:\n'
+    );
+}
 for (var i = 0;i < cmds.length;i++) {
     console.log('* '+su.string_pad('                           ',cmds[i].name)+cmds[i].desc);
-    if (cmds[i].name == 'rad') break
+
+    // Stop after 'list-commands' if we are not listing all commands.
+    if (cmds[i].name == 'list-commands') 
+        if (args[0] != 'list-commands')
+            break
+}
+
+if (args[0] == 'list-commands') {
+    console.log(
+        '\n'+
+        'Utilities include:\n'+
+        '\n'+
+        '* ' +su.string_pad('                    ','run-utils')        +'> run a command [sync/async] and get output; run an array of commands in specified folders\n'+
+        '* ' +su.string_pad('                    ','folder-utils')     +'> cd to the first found directory in an array (important for finding base folder of projects on different OSes/machines); walk files; walk folders\n'+
+        '* ' +su.string_pad('                    ','string-utils')     +'> string_pad, etc.\n'+
+        '* ' +su.string_pad('                    ','version-control')  +'> git semantic versioning via tags; sync git repos (auto commit+pull+push); extract svn revisions\n'
+    );
 }
 
 console.log(
-    '\n'+
-    'Utilities include:\n'+
-    '\n'+
-    '* ' +su.string_pad('                    ','run-utils')        +'> run a command [sync/async] and get output; run an array of commands in specified folders\n'+
-    '* ' +su.string_pad('                    ','folder-utils')     +'> cd to the first found directory in an array (important for finding base folder of projects on different OSes/machines); walk files; walk folders\n'+
-    '* ' +su.string_pad('                    ','string-utils')     +'> string_pad, etc.\n'+
-    '* ' +su.string_pad('                    ','version-control')  +'> git semantic versioning via tags; sync git repos (auto commit+pull+push); extract svn revisions\n'+
     '\n'+
     'See https://bitpost.com/news for more bloviating.  Devs don\'t need no stinkin ops.   Happy automating!  :-)\n\n'
 );

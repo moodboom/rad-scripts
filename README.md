@@ -51,9 +51,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-333525e   6 days ago Document git-log                                                  HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
-9536696   6 days ago Added distro()                                                      tag: 4.9.6 Michael Behrns-Miller [mbehrnsm-silver]
-9cbde54 6 months ago rad-scripts README small note                                       tag: 4.9.5 Michael Behrns-Miller [bitpost-gentoo]
-443c7ad 7 months ago Documentation cleanup                                               tag: 4.9.4 Michael Behrns-Miller [bitpost-gentoo]
+f294f36  4 weeks ago Added list-commands command Shortened README                      HEAD -> ma.. Michael Behrns-Miller [viper]
+333525e  5 weeks ago Document git-log                                                    tag: 4.9.7 Michael Behrns-Miller [mbehrnsm-silver]
+9536696  5 weeks ago Added distro()                                                      tag: 4.9.6 Michael Behrns-Miller [mbehrnsm-silver]
+9cbde54 7 months ago rad-scripts README small note                                       tag: 4.9.5 Michael Behrns-Miller [bitpost-gentoo]
 
-Version 4.9.8
+Version 4.9.9

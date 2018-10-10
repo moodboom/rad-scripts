@@ -194,6 +194,13 @@ var distro = function() {
     return distro
 }
 
+var ping_gw = function() {
+  return ru.run_command_sync("ping -q -w 1 -c 1 `ip r | grep default | head -n 1 | cut -d ' ' -f 3` > /dev/null && echo true || echo false")
+}
+var ping_google = function() {
+  return ru.run_command_sync("ping -q -w 1 -c 1 google.com > /dev/null && echo true || echo false")
+}
+  
 module.exports.run_command_sync = run_command_sync;
 module.exports.run_command_sync_to_console = run_command_sync_to_console;
 module.exports.run_command_async_to_console = run_command_async_to_console;
@@ -202,3 +209,5 @@ module.exports.run_command = run_command;
 module.exports.runsteps = runsteps;
 module.exports.combine_params = combine_params;
 module.exports.distro = distro;
+module.exports.ping_gw = ping_gw;
+module.exports.ping_google = ping_google;

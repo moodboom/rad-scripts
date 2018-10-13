@@ -195,10 +195,10 @@ var distro = function() {
 }
 
 var ping_gw = function() {
-  return ru.run_command_sync("ping -q -w 1 -c 1 `ip r | grep default | head -n 1 | cut -d ' ' -f 3` > /dev/null && echo true || echo false")
+  return run_command_sync("ping -q -w 1 -c 1 `ip r | grep default | head -n 1 | cut -d ' ' -f 3` > /dev/null && echo true || echo false")
 }
 var ping_google = function() {
-  return ru.run_command_sync("ping -q -w 1 -c 1 google.com > /dev/null && echo true || echo false")
+  return run_command_sync("ping -q -w 1 -c 1 google.com > /dev/null && echo true || echo false")
 }
   
 module.exports.run_command_sync = run_command_sync;

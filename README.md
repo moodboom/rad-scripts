@@ -51,9 +51,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-a6dc76a   2 days ago Added ping_gw() and ping_google() helpers                         HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
-f294f36  4 weeks ago Added list-commands command Shortened README                        tag: 4.9.8 Michael Behrns-Miller [viper]
-333525e  5 weeks ago Document git-log                                                    tag: 4.9.7 Michael Behrns-Miller [mbehrnsm-silver]
-9536696  5 weeks ago Added distro()                                                      tag: 4.9.6 Michael Behrns-Miller [mbehrnsm-silver]
+3404fdb   4 days ago Strip prefix from newly embedded ping functions                   HEAD -> ma.. Michael Behrns-Miller [viper]
+a6dc76a   6 days ago Added ping_gw() and ping_google() helpers                           tag: 4.9.9 Michael Behrns-Miller [mbehrnsm-silver]
+f294f36  5 weeks ago Added list-commands command Shortened README                        tag: 4.9.8 Michael Behrns-Miller [viper]
+333525e  6 weeks ago Document git-log                                                    tag: 4.9.7 Michael Behrns-Miller [mbehrnsm-silver]
 
-Version 4.9.10
+Version 4.9.11

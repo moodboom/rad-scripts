@@ -190,8 +190,8 @@ var combine_params = function(params) {
 }
 
 var distro = function() {
-    var distro = run_command_sync('lsb_release -i').split(":")[1].trim().toLowerCase();
-    return distro
+    var distroname = run_command_sync('lsb_release -i').split(":")[1].trim().toLowerCase();
+    return distroname
 }
 
 var ping_gw = function() {

@@ -385,12 +385,17 @@ var git_branchlog = function(tag_params) {
     // branches, prettified; see here:
     //     https://stackoverflow.com/questions/1838873/visualizing-branch-topology-in-git
 
-    var cmd = "git log --graph --oneline --all"
+    var cmd = "git log --graph --oneline"
 
     // by default we simplify
     // if any chars were typed after the command, then don't simplify (ie show all commits)
     if (tag_params.comment == null || tag_params.comment.length == 0)
         cmd += " --simplify-by-decoration"
+
+    // You can specify another branch
+    // NOTE we removed --all in order to support this, do we want that too still?
+    if (tag_params.branch != null && tag_params.branch.length)
+        cmd += tag_params.branch
 
     ru.run_command_sync_to_console(cmd);
 }
@@ -402,12 +407,15 @@ var git_log = function(tag_params) {
     var head = 10
     if (tag_params.comment != null && tag_params.comment.length)
         head = tag_params.comment
+    var branch = ""
+    if (tag_params.branch != null && tag_params.branch.length)
+        branch = tag_params.branch
 
     // get log, prettified; see here:
     //     http://stackoverflow.com/questions/1441010/the-shortest-possible-output-from-git-log-containing-author-and-date
     // ru.run_command_sync_to_console("git log --pretty=\"%C(auto,yellow)%h%C(auto,magenta)% G? %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(7,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D\" --date=relative|head "+tag_params.comment);
     // ru.run_command_sync_to_console("git log --pretty=\"%C(auto,blue)%>(12,trunc)%ad %C(auto,red)% gD% D %C(auto,reset)%s %C(auto,white)%aN\" --date=relative -"+head);
-    ru.run_command_sync_to_console("git log --pretty=\"%h %C(auto,blue)%>(12,trunc)%ad %C(auto,reset)%<(65,trunc)%s %C(auto,red)%>(12,trunc)%D %C(auto,white)%an\" --date=relative -"+head);
+    ru.run_command_sync_to_console("git log "+branch+" --pretty=\"%h %C(auto,blue)%>(12,trunc)%ad %C(auto,reset)%<(65,trunc)%s %C(auto,red)%>(12,trunc)%D %C(auto,white)%an\" --date=relative -"+head);
 }
 
 
@@ -461,6 +469,7 @@ var parse_tag_parameters = function(argv,noslice) {
     var major = 0;
     var minor = 0;
     var pull_only = 0;
+    var branch = "";
 
     // If there are no changes, don't bother with the version.
     // NOTE: This is actually important for new repos that have not been tagged yet.
@@ -468,9 +477,10 @@ var parse_tag_parameters = function(argv,noslice) {
     var changes = git_changes('.');
     if (changes.length)
     {
-             if (args[0] == '--major') { major = 1; args = args.slice(1); }
-        else if (args[0] == '--minor') { minor = 1; args = args.slice(1); }
+             if (args[0] == '--major'    ) { major = 1; args = args.slice(1); }
+        else if (args[0] == '--minor'    ) { minor = 1; args = args.slice(1); }
         else if (args[0] == '--pull-only') { pull_only = 1; args = args.slice(1); }
+        else if (args[0] == '--branch'   ) { branch = args[1]; args = args.slice(2); }
 
         // We used to actually get the version here.
         // The reason we CAN'T is that there may be newer REMOTE version tags that we haven't pulled at this time.
@@ -492,7 +502,8 @@ var parse_tag_parameters = function(argv,noslice) {
         "major" : major,
         "minor" : minor,
         "pull_only" : pull_only,
-        "comment" : comment
+        "comment" : comment,
+        "branch" : branch
     };
 }
 

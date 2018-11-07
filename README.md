@@ -51,9 +51,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-bbb3457  3 weeks ago Rename distrovar                                                  HEAD -> ma.. Michael Behrns-Miller [prada]
+405e70e  6 hours ago Added git-branchlog for an opinionated chopped pretty branch log  HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
+bbb3457  3 weeks ago Rename distrovar                                                   tag: 4.9.12 Michael Behrns-Miller [prada]
 a440d9f  3 weeks ago Get it all                                                         tag: 4.9.11 Michael Behrns-Miller [mbehrnsm-silver]
 3404fdb  4 weeks ago Strip prefix from newly embedded ping functions                    tag: 4.9.10 Michael Behrns-Miller [viper]
-a6dc76a  4 weeks ago Added ping_gw() and ping_google() helpers                           tag: 4.9.9 Michael Behrns-Miller [mbehrnsm-silver]
 
-Version 4.9.13
+Version 4.9.14

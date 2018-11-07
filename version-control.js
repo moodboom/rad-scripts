@@ -379,12 +379,29 @@ var git_tag_list = function(tag_params) {
 }
 
 
-// =========== git_tag_list: list tags, including 1 line from the annotaged tag's commit message ============
+// =========== git_branchlog: show a concise branch merge history ============
+var git_branchlog = function(tag_params) {
+
+    // branches, prettified; see here:
+    //     https://stackoverflow.com/questions/1838873/visualizing-branch-topology-in-git
+
+    var cmd = "git log --graph --oneline --all"
+
+    // by default we simplify
+    // if any chars were typed after the command, then don't simplify (ie show all commits)
+    if (tag_params.comment == null || tag_params.comment.length == 0)
+        cmd += " --simplify-by-decoration"
+
+    ru.run_command_sync_to_console(cmd);
+}
+
+
+// =========== git_log: concise pretty log ============
 var git_log = function(tag_params) {
 
     var head = 10
     if (tag_params.comment != null && tag_params.comment.length)
-	head = tag_params.comment
+        head = tag_params.comment
 
     // get log, prettified; see here:
     //     http://stackoverflow.com/questions/1441010/the-shortest-possible-output-from-git-log-containing-author-and-date
@@ -614,6 +631,7 @@ module.exports.git_clone = git_clone;
 module.exports.git_version = git_version;
 module.exports.git_version_clean = git_version_clean;
 module.exports.git_version_valid = git_version_valid;
+module.exports.git_branchlog = git_branchlog;
 module.exports.git_log = git_log;
 module.exports.git_tag_list = git_tag_list;
 module.exports.git_next_major = git_next_major;

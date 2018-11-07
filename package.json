@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "4.9.12",
+  "version": "4.9.13",
   "homepage": "https://bitpost.com/news/category/projects/rad-scripts/",
   "license": "MIT",
   "preferGlobal": true,
@@ -24,6 +24,7 @@
     "git-version": "git-version-cmd.js",
     "git-version-clean": "git-version-clean-cmd.js",
     "git-log": "git-log-cmd.js",
+    "git-branchlog": "git-branchlog-cmd.js",
     "git-tag-list": "git-tag-list-cmd.js",
     "git-next-build": "git-next-build-cmd.js",
     "git-next-major": "git-next-major-cmd.js",

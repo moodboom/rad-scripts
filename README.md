@@ -52,9 +52,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-46c77a0 21 minutes.. auto-sync                                                         HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
-41302bd 16 hours ago Support --branch in git-log and git-branchlog                      tag: 4.9.14 Michael Behrns-Miller [mbehrnsm-silver]
-405e70e 22 hours ago Added git-branchlog for an opinionated chopped pretty branch log   tag: 4.9.13 Michael Behrns-Miller [mbehrnsm-silver]
-bbb3457  3 weeks ago Rename distrovar                                                   tag: 4.9.12 Michael Behrns-Miller [prada]
+940e78e 79 minutes.. Opinionated git-log and git-logbranches commands                  HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
+46c77a0  2 hours ago auto-sync                                                          tag: 4.9.15 Michael Behrns-Miller [mbehrnsm-silver]
+41302bd 17 hours ago Support --branch in git-log and git-branchlog                      tag: 4.9.14 Michael Behrns-Miller [mbehrnsm-silver]
+405e70e 23 hours ago Added git-branchlog for an opinionated chopped pretty branch log   tag: 4.9.13 Michael Behrns-Miller [mbehrnsm-silver]
 
-Version 4.10.0
+Version 4.10.1

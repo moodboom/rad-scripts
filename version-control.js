@@ -474,27 +474,20 @@ var parse_tag_parameters = function(argv,noslice) {
     var all = 0;
     var branch = "";
 
-    // If there are no changes, don't bother with the version.
-    // NOTE: This is actually important for new repos that have not been tagged yet.
-    // We don't want to mess with them yet by trying to force the first tag.
-    var changes = git_changes('.');
-    if (changes.length)
-    {
-        // Check for "first" params.
-             if (args[0] == '--major'       ||args[0] == '-j' ) { major = 1; args = args.slice(1); }
-        else if (args[0] == '--minor'       ||args[0] == '-n' ) { minor = 1; args = args.slice(1); }
-        else if (args[0] == '--pull-only'   ||args[0] == '-p' ) { pull_only = 1; args = args.slice(1); }
+    // Check for "first" params.
+         if (args[0] == '--major'       ||args[0] == '-j' ) { major = 1; args = args.slice(1); }
+    else if (args[0] == '--minor'       ||args[0] == '-n' ) { minor = 1; args = args.slice(1); }
+    else if (args[0] == '--pull-only'   ||args[0] == '-p' ) { pull_only = 1; args = args.slice(1); }
 
-        // TODO update this to allow any order of parameters (right now they must come in this order).
-        // Prolly use a param module, big boy...
-        if (args[0] == '--branch'      ||args[0] == '-b' ) { branch = args[1]; args = args.slice(2); }
-        if (args[0] == '--with-commits'||args[0] == '-c' ) { with_commits = 1; args = args.slice(1); }
-        if (args[0] == '--all'         ||args[0] == '-a' ) { all = 1; args = args.slice(1); }
+    // TODO update this to allow any order of parameters (right now they must come in this order).
+    // Prolly use a param module, big boy...
+    if (args[0] == '--branch'      ||args[0] == '-b' ) { branch = args[1]; args = args.slice(2); }
+    if (args[0] == '--with-commits'||args[0] == '-c' ) { with_commits = 1; args = args.slice(1); }
+    if (args[0] == '--all'         ||args[0] == '-a' ) { all = 1; args = args.slice(1); }
 
-        // We used to actually get the version here.
-        // The reason we CAN'T is that there may be newer REMOTE version tags that we haven't pulled at this time.
-        // We need to determine the actual next version LATER in git-sync.
-    }
+    // We used to actually get the version here.
+    // The reason we CAN'T is that there may be newer REMOTE version tags that we haven't pulled at this time.
+    // We need to determine the actual next version LATER in git-sync.
 
     var comment = ru.combine_params(args);
 

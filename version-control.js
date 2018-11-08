@@ -393,7 +393,7 @@ var git_branchlog = function(tag_params) {
         cmd += " --simplify-by-decoration"
 
     // You can specify another branch, OR you can specify --all
-    if (!tag_params.all)
+    if (tag_params.all)
         cmd += " --all"
     else if (tag_params.branch != null && tag_params.branch.length)
         cmd += " " + tag_params.branch

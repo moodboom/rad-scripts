@@ -17,7 +17,8 @@ var cmds = [
     { name: 'git-sync'                  , desc: '[--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push'       },
     { name: 'git-sync-notag'            , desc: '> a git-sync version to commit code without a tag; bad form perhaps, but up to you\n'      },
 
-    { name: 'git-log'                   , desc: '[count] > an opinionated pretty colored git log, 1-line-per-commit, clipped to ~110 chars' },
+    { name: 'git-log'                   , desc: '[--branch|-b name] [count] > an opinionated pretty colored git log, clipped to ~110 chars' },
+    { name: 'git-branchlog'             , desc: '[--branch|-b name] [--with-commits|-c] [-all|-a] > an opinionated branch summary log'      },
     { name: 'git-tag-list'              , desc: '> list tags, including one line from the annotaged tag\'s commit message\n'                },
 
     { name: 'git-skip'                  , desc: '[file] > tell git to start ignoring upstream and local changes to the given file'          },

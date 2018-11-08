@@ -388,14 +388,15 @@ var git_branchlog = function(tag_params) {
     var cmd = "git log --graph --oneline"
 
     // by default we simplify
-    // if any chars were typed after the command, then don't simplify (ie show all commits)
-    if (tag_params.comment == null || tag_params.comment.length == 0)
+    // if requested, don't simplify (ie show all commits)
+    if (!tag_params.with_commits)
         cmd += " --simplify-by-decoration"
 
-    // You can specify another branch
-    // NOTE we removed --all in order to support this, do we want that too still?
-    if (tag_params.branch != null && tag_params.branch.length)
-        cmd += tag_params.branch
+    // You can specify another branch, OR you can specify --all
+    if (!tag_params.all)
+        cmd += " --all"
+    else if (tag_params.branch != null && tag_params.branch.length)
+        cmd += " " + tag_params.branch
 
     ru.run_command_sync_to_console(cmd);
 }
@@ -469,6 +470,8 @@ var parse_tag_parameters = function(argv,noslice) {
     var major = 0;
     var minor = 0;
     var pull_only = 0;
+    var with_commits = 0;
+    var all = 0;
     var branch = "";
 
     // If there are no changes, don't bother with the version.
@@ -477,23 +480,20 @@ var parse_tag_parameters = function(argv,noslice) {
     var changes = git_changes('.');
     if (changes.length)
     {
-             if (args[0] == '--major'    ) { major = 1; args = args.slice(1); }
-        else if (args[0] == '--minor'    ) { minor = 1; args = args.slice(1); }
-        else if (args[0] == '--pull-only') { pull_only = 1; args = args.slice(1); }
-        else if (args[0] == '--branch'   ) { branch = args[1]; args = args.slice(2); }
+        // Check for "first" params.
+             if (args[0] == '--major'       ||args[0] == '-j' ) { major = 1; args = args.slice(1); }
+        else if (args[0] == '--minor'       ||args[0] == '-n' ) { minor = 1; args = args.slice(1); }
+        else if (args[0] == '--pull-only'   ||args[0] == '-p' ) { pull_only = 1; args = args.slice(1); }
+
+        // TODO update this to allow any order of parameters (right now they must come in this order).
+        // Prolly use a param module, big boy...
+        if (args[0] == '--branch'      ||args[0] == '-b' ) { branch = args[1]; args = args.slice(2); }
+        if (args[0] == '--with-commits'||args[0] == '-c' ) { with_commits = 1; args = args.slice(1); }
+        if (args[0] == '--all'         ||args[0] == '-a' ) { all = 1; args = args.slice(1); }
 
         // We used to actually get the version here.
         // The reason we CAN'T is that there may be newer REMOTE version tags that we haven't pulled at this time.
         // We need to determine the actual next version LATER in git-sync.
-        /*
-             if (args[0] == '--major') { version = git_next_major(); args = args.slice(1); }
-        else if (args[0] == '--minor') { version = git_next_minor(); args = args.slice(1); }
-        else if (args[0] == '--patch') { version = git_next_patch(); args = args.slice(1); }
-        else                           { version = git_next_patch()                        }
-        if (!git_version_valid(version)) {
-            process.exit(1);
-        }
-        */
     }
 
     var comment = ru.combine_params(args);
@@ -503,7 +503,9 @@ var parse_tag_parameters = function(argv,noslice) {
         "minor" : minor,
         "pull_only" : pull_only,
         "comment" : comment,
-        "branch" : branch
+        "branch" : branch,
+        "with_commits" : with_commits,
+        "all" : all
     };
 }
 

@@ -34,7 +34,8 @@ Common commands:
 * git-sync                   [--major|--minor|--patch] [msg msg...] > stash, pull, pop, stamp, commit, tag, push
 * git-sync-notag             > a git-sync version to commit code without a tag; bad form perhaps, but up to you
 
-* git-log                    [count] > an opinionated pretty colored git log, 1-line-per-commit, clipped to ~110 chars
+* git-log                    [--branch|-b name] [count] > an opinionated pretty colored git log, clipped to ~110 chars
+* git-branchlog              [--branch|-b name] [--with-commits|-c] [-all|-a] > an opinionated branch summary log
 * git-tag-list               > list tags, including one line from the annotaged tag's commit message
 
 * git-skip                   [file] > tell git to start ignoring upstream and local changes to the given file
@@ -51,9 +52,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-405e70e  6 hours ago Added git-branchlog for an opinionated chopped pretty branch log  HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
+41302bd 15 hours ago Support --branch in git-log and git-branchlog                     HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
+405e70e 21 hours ago Added git-branchlog for an opinionated chopped pretty branch log   tag: 4.9.13 Michael Behrns-Miller [mbehrnsm-silver]
 bbb3457  3 weeks ago Rename distrovar                                                   tag: 4.9.12 Michael Behrns-Miller [prada]
 a440d9f  3 weeks ago Get it all                                                         tag: 4.9.11 Michael Behrns-Miller [mbehrnsm-silver]
-3404fdb  4 weeks ago Strip prefix from newly embedded ping functions                    tag: 4.9.10 Michael Behrns-Miller [viper]
 
-Version 4.9.14
+Version 4.9.15

@@ -52,9 +52,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-cc7009b 20 minutes.. Always parse params                                               HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
-940e78e  2 hours ago Opinionated git-log and git-logbranches commands                   tag: 4.10.0 Michael Behrns-Miller [mbehrnsm-silver]
-46c77a0  2 hours ago auto-sync                                                          tag: 4.9.15 Michael Behrns-Miller [mbehrnsm-silver]
-41302bd 17 hours ago Support --branch in git-log and git-branchlog                      tag: 4.9.14 Michael Behrns-Miller [mbehrnsm-silver]
+d89bda4  3 weeks ago Fixed inverted bool                                               HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
+cc7009b  3 weeks ago Always parse params                                                tag: 4.10.1 Michael Behrns-Miller [mbehrnsm-silver]
+940e78e  3 weeks ago Opinionated git-log and git-logbranches commands                   tag: 4.10.0 Michael Behrns-Miller [mbehrnsm-silver]
+46c77a0  3 weeks ago auto-sync                                                          tag: 4.9.15 Michael Behrns-Miller [mbehrnsm-silver]
 
-Version 4.10.2
+Version 4.10.3

@@ -177,12 +177,12 @@ var runsteps = function (steps,verbosity,async) {
     });
 }
 
-var combine_params = function(params) {
+var combine_params = function(params,separator = " ") {
     var result = "";
     if (params.length > 0)
     {
         params.forEach(function(val,index,array){
-            if (index != 0) { result += " "; }
+            if (index != 0) { result += separator; }
             result += val;
         });
     }

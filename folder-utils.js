@@ -175,6 +175,17 @@ var walksubdirs = function(dir, done) {
   });
 };
 
+//=========== fileRegexReplace: find and replace the given regex in the file ============
+var fileRegexReplace = function(filename, regex, replacement, flags = "g") {
+  var file_as_string = fs.readFileSync(filename, 'utf8');
+  var reg = new RegExp(regex,flags);
+  file_as_string = file_as_string.replace(reg,replacement);
+  fs.writeFileSync(filename, file_as_string);
+}
+var fileRegexReplaceMultiline = function(filename, regex, replacement) {
+  return fileRegexReplace(filename,regex,replacement,"gm");
+}
+
 
 module.exports.cdfolder = cdfolder;
 module.exports.cdfirst = cdfirst;
@@ -185,3 +196,5 @@ module.exports.find_first_folder = find_first_folder;
 module.exports.get_files_in_one_dir = get_files_in_one_dir;
 module.exports.walk = walk;
 module.exports.walksubdirs = walksubdirs;
+module.exports.fileRegexReplace = fileRegexReplace;
+module.exports.fileRegexReplaceMultiline = fileRegexReplaceMultiline;

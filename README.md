@@ -52,9 +52,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-d89bda4  3 weeks ago Fixed inverted bool                                               HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
-cc7009b  3 weeks ago Always parse params                                                tag: 4.10.1 Michael Behrns-Miller [mbehrnsm-silver]
-940e78e  3 weeks ago Opinionated git-log and git-logbranches commands                   tag: 4.10.0 Michael Behrns-Miller [mbehrnsm-silver]
-46c77a0  3 weeks ago auto-sync                                                          tag: 4.9.15 Michael Behrns-Miller [mbehrnsm-silver]
+69e29b9  3 weeks ago Added optional non-space separator to ru.combine_params()         HEAD -> ma.. Michael Behrns-Miller [viper]
+d89bda4  6 weeks ago Fixed inverted bool                                                tag: 4.10.2 Michael Behrns-Miller [mbehrnsm-silver]
+cc7009b  6 weeks ago Always parse params                                                tag: 4.10.1 Michael Behrns-Miller [mbehrnsm-silver]
+940e78e  6 weeks ago Opinionated git-log and git-logbranches commands                   tag: 4.10.0 Michael Behrns-Miller [mbehrnsm-silver]
 
-Version 4.10.3
+Version 4.10.4

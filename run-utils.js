@@ -194,6 +194,11 @@ var distro = function() {
     return distroname
 }
 
+var hostname = function() {
+    var hostname = run_command_sync('hostname').trim().toLowerCase()
+    return hostname
+}
+
 var ping_gw = function() {
   return run_command_sync("ping -q -w 1 -c 1 `ip r | grep default | head -n 1 | cut -d ' ' -f 3` > /dev/null && echo true || echo false")
 }
@@ -209,5 +214,6 @@ module.exports.run_command = run_command;
 module.exports.runsteps = runsteps;
 module.exports.combine_params = combine_params;
 module.exports.distro = distro;
+module.exports.hostname = hostname;
 module.exports.ping_gw = ping_gw;
 module.exports.ping_google = ping_google;

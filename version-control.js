@@ -484,6 +484,9 @@ var parse_tag_parameters = function(argv,noslice) {
     if (args[0] == '--branch'      ||args[0] == '-b' ) { branch = args[1]; args = args.slice(2); }
     if (args[0] == '--with-commits'||args[0] == '-c' ) { with_commits = 1; args = args.slice(1); }
     if (args[0] == '--all'         ||args[0] == '-a' ) { all = 1; args = args.slice(1); }
+    if (args[1] == '--branch'      ||args[1] == '-b' ) { branch = args[1]; args = args.slice(2); }
+    if (args[1] == '--with-commits'||args[1] == '-c' ) { with_commits = 1; args = args.slice(1); }
+    if (args[1] == '--all'         ||args[1] == '-a' ) { all = 1; args = args.slice(1); }
 
     // We used to actually get the version here.
     // The reason we CAN'T is that there may be newer REMOTE version tags that we haven't pulled at this time.

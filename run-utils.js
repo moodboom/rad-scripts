@@ -209,7 +209,7 @@ var ping_google = function() {
 // Use await if you are in an async function, eg:
 //  await sleep(500);
 // See: https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
-var sleep = function() {
+var sleep = function(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
   

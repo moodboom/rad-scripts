@@ -52,9 +52,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-d221c09 10 months .. Better branchlog param order handling Fix                         HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
+0a8b466  2 hours ago Put in delay before tail using new sleep function                 HEAD -> ma.. Michael Behrns-Miller [viper]
+d221c09 10 months .. Better branchlog param order handling Fix                          tag: 4.10.7 Michael Behrns-Miller [mbehrnsm-silver]
 1daf185 10 months .. Better branchlog param order handling                              tag: 4.10.6 Michael Behrns-Miller [mbehrnsm-silver]
 ba05bd9 10 months .. Added ru hostname helper function                                  tag: 4.10.5 Michael Behrns-Miller [mbehrnsm-silver]
-0a0b169 11 months .. auto-sync                                                          tag: 4.10.4 Michael Behrns-Miller [mbehrnsm-silver]
 
-Version 4.10.8
+Version 4.10.9

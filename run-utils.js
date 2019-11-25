@@ -206,10 +206,10 @@ var ping_google = function() {
   return run_command_sync("ping -q -w 1 -c 1 google.com > /dev/null && echo true || echo false")
 }
   
-// Use await!
-// Run example: await sleep(500);
+// Use await if you are in an async function, eg:
+//  await sleep(500);
 // See: https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
-function sleep(ms) {
+var sleep = function() {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
   
@@ -224,3 +224,4 @@ module.exports.distro = distro;
 module.exports.hostname = hostname;
 module.exports.ping_gw = ping_gw;
 module.exports.ping_google = ping_google;
+module.exports.sleep = sleep;

@@ -206,6 +206,13 @@ var ping_google = function() {
   return run_command_sync("ping -q -w 1 -c 1 google.com > /dev/null && echo true || echo false")
 }
   
+// Use await!
+// Run example: await sleep(500);
+// See: https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+  
 module.exports.run_command_sync = run_command_sync;
 module.exports.run_command_sync_to_console = run_command_sync_to_console;
 module.exports.run_command_async_to_console = run_command_async_to_console;

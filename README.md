@@ -52,9 +52,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-1daf185 4 minutes .. Better branchlog param order handling                             HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
-ba05bd9   6 days ago Added ru hostname helper function                                  tag: 4.10.5 Michael Behrns-Miller [mbehrnsm-silver]
-0a0b169  6 weeks ago auto-sync                                                          tag: 4.10.4 Michael Behrns-Miller [mbehrnsm-silver]
-69e29b9  9 weeks ago Added optional non-space separator to ru.combine_params()          tag: 4.10.3 Michael Behrns-Miller [viper]
+d221c09 10 months .. Better branchlog param order handling Fix                         HEAD -> ma.. Michael Behrns-Miller [mbehrnsm-silver]
+1daf185 10 months .. Better branchlog param order handling                              tag: 4.10.6 Michael Behrns-Miller [mbehrnsm-silver]
+ba05bd9 10 months .. Added ru hostname helper function                                  tag: 4.10.5 Michael Behrns-Miller [mbehrnsm-silver]
+0a0b169 11 months .. auto-sync                                                          tag: 4.10.4 Michael Behrns-Miller [mbehrnsm-silver]
 
-Version 4.10.7
+Version 4.10.8

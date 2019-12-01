@@ -405,18 +405,36 @@ var git_branchlog = function(tag_params) {
 // =========== git_log: concise pretty log ============
 var git_log = function(tag_params) {
 
-    var head = 10
+    var head = ru.run_command_sync('tput lines').trim() - 2;
+    var cols = ru.run_command_sync('tput cols').trim() - 2;
+
     if (tag_params.comment != null && tag_params.comment.length)
         head = tag_params.comment
     var branch = ""
     if (tag_params.branch != null && tag_params.branch.length)
         branch = tag_params.branch
 
-    // get log, prettified; see here:
-    //     http://stackoverflow.com/questions/1441010/the-shortest-possible-output-from-git-log-containing-author-and-date
-    // ru.run_command_sync_to_console("git log --pretty=\"%C(auto,yellow)%h%C(auto,magenta)% G? %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(7,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D\" --date=relative|head "+tag_params.comment);
-    // ru.run_command_sync_to_console("git log --pretty=\"%C(auto,blue)%>(12,trunc)%ad %C(auto,red)% gD% D %C(auto,reset)%s %C(auto,white)%aN\" --date=relative -"+head);
-    ru.run_command_sync_to_console("git log "+branch+" --pretty=\"%h %C(auto,blue)%>(12,trunc)%ad %C(auto,reset)%<(65,trunc)%s %C(auto,red)%>(12,trunc)%D %C(auto,white)%an\" --date=relative -"+head);
+    if (cols < 70) {
+
+        var hash = time = tag = who = 6
+        var comm = cols - hash - time - tag - who - 3
+        ru.run_command_sync_to_console("git log "+branch+" --pretty=\"%h %C(auto,blue)%>("+time+",trunc)%ad %C(auto,reset)%<("+comm+",trunc)%s %C(auto,red)%>("+tag+",trunc)%D %C(auto,white)%>("+who+",trunc)%an\" --date=relative -"+head);
+
+    } else {
+
+        var hash = 7
+        var time = 12
+        var tag  = 12
+        var who  = 28
+        var comm = cols - hash - time - tag - who - 3
+
+        // get log, prettified; see here:
+        //     http://stackoverflow.com/questions/1441010/the-shortest-possible-output-from-git-log-containing-author-and-date
+        // ru.run_command_sync_to_console("git log --pretty=\"%C(auto,yellow)%h%C(auto,magenta)% G? %C(auto,blue)%>(12,trunc)%ad %C(auto,green)%<(7,trunc)%aN%C(auto,reset)%s%C(auto,red)% gD% D\" --date=relative|head "+tag_params.comment);
+        // ru.run_command_sync_to_console("git log --pretty=\"%C(auto,blue)%>(12,trunc)%ad %C(auto,red)% gD% D %C(auto,reset)%s %C(auto,white)%aN\" --date=relative -"+head);
+        // ru.run_command_sync_to_console("git log "+branch+" --pretty=\"%h %C(auto,blue)%>(12,trunc)%ad %C(auto,reset)%<(65,trunc)%s %C(auto,red)%>(12,trunc)%D %C(auto,white)%an\" --date=relative -"+head);
+        ru.run_command_sync_to_console("git log "+branch+" --pretty=\"%h %C(auto,blue)%>("+time+",trunc)%ad %C(auto,reset)%<("+comm+",trunc)%s %C(auto,red)%>("+tag+",trunc)%D %C(auto,white)%>("+who+",trunc)%an\" --date=relative -"+head);
+    }
 }
 
 

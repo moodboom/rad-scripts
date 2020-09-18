@@ -52,9 +52,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-29041b9   6 days ago Put in delay before tail using new sleep function Really I swear Dam.. HEAD -> ma.. Michael Behrns-Miller [vip..
-cbf43c8   6 days ago Javascript sleep function fixup in run-utils.js Third time a charm     tag: 4.10.10 Michael Behrns-Miller [vip..
-d0b1600   6 days ago Javascript sleep function fixup in run-utils.js                         tag: 4.10.9 Michael Behrns-Miller [vip..
-0a8b466   6 days ago Put in delay before tail using new sleep function                       tag: 4.10.8 Michael Behrns-Miller [vip..
+4f9c3dc 10 months .. git-log now nicely fills pretty much any size termina.. HEAD -> mas.. Michael Behrns-Miller [vip..
+29041b9 10 months .. Put in delay before tail using new sleep function Rea..  tag: 4.10.11 Michael Behrns-Miller [vip..
+cbf43c8 10 months .. Javascript sleep function fixup in run-utils.js Third..  tag: 4.10.10 Michael Behrns-Miller [vip..
+d0b1600 10 months .. Javascript sleep function fixup in run-utils.js           tag: 4.10.9 Michael Behrns-Miller [vip..
 
-Version 4.10.12
+Version 4.10.13

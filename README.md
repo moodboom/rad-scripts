@@ -52,9 +52,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-4f9c3dc 10 months .. git-log now nicely fills pretty much any size termina.. HEAD -> mas.. Michael Behrns-Miller [vip..
-29041b9 10 months .. Put in delay before tail using new sleep function Rea..  tag: 4.10.11 Michael Behrns-Miller [vip..
-cbf43c8 10 months .. Javascript sleep function fixup in run-utils.js Third..  tag: 4.10.10 Michael Behrns-Miller [vip..
-d0b1600 10 months .. Javascript sleep function fixup in run-utils.js           tag: 4.10.9 Michael Behrns-Miller [vip..
+4175ed1 11 months .. git-log widened tag by 1 char                                                                                                                                                                HEAD -> mas.. Michael Behrns-Miller [mel..
+4f9c3dc 1 year, 8 .. git-log now nicely fills pretty much any size terminal window using tput                                                                                                                      tag: 4.10.12 Michael Behrns-Miller [vip..
+29041b9 1 year, 9 .. Put in delay before tail using new sleep function Really I swear Dammit Stupidness Try again loser                                                                                            tag: 4.10.11 Michael Behrns-Miller [vip..
+cbf43c8 1 year, 9 .. Javascript sleep function fixup in run-utils.js Third time a charm                                                                                                                            tag: 4.10.10 Michael Behrns-Miller [vip..
 
-Version 4.10.13
+Version 4.10.14

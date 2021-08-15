@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+const { RSA_NO_PADDING } = require('constants');
 var fs = require('fs');
 var minimatch = require("minimatch");
 
@@ -71,12 +72,24 @@ var folder_exists = function (folder) {
 
 //=========== file_exists: returns true if the file exists ============
 var file_exists = function (file) {
-    try {
-        return fs.statSync(file).isFile();
-    }
-    catch (err) {
-        return false;
-    }
+  try {
+      return fs.statSync(file).isFile();
+  }
+  catch (err) {
+      return false;
+  }
+}
+
+//=========== file_diff: returns true if the two files differ ============
+var file_diff = function (file1, file2) {
+  try {
+    var file1_as_string = fs.readFileSync(file1, 'utf8');
+    var file2_as_string = fs.readFileSync(file2, 'utf8');
+    return file1_as_string != file2_as_string;
+  }
+  catch (err) {
+      return false;
+  }
 }
 
 // =========== find_first_folder: find and return first existing folder in a list of candidates ============
@@ -192,6 +205,7 @@ module.exports.cdfirst = cdfirst;
 module.exports.make_folder = make_folder;
 module.exports.folder_exists = folder_exists;
 module.exports.file_exists = file_exists;
+module.exports.file_diff = file_diff;
 module.exports.find_first_folder = find_first_folder;
 module.exports.get_files_in_one_dir = get_files_in_one_dir;
 module.exports.walk = walk;

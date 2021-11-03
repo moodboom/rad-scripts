@@ -60,7 +60,7 @@ var make_folder = function (target_path) {
   }
 }
 
-//=========== folder_exists: returns true if the folder or file exists ============
+//=========== folder_exists: returns true if the folder exists ============
 var folder_exists = function (folder) {
   try {
       return fs.statSync(folder).isDirectory();
@@ -70,10 +70,10 @@ var folder_exists = function (folder) {
   }
 }
 
-//=========== folder_exists: returns true if the folder or file exists ============
+//=========== folder_exists: returns true if the link exists ============
 var link_exists = function (folder) {
   try {
-      return fs.statSync(folder).isSymbolicLink();
+      return fs.lstatSync(folder).isSymbolicLink();
   }
   catch (err) {
       return false;

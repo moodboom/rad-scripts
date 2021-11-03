@@ -52,9 +52,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-a69bb61 3 months ago Added file diff function                                                                                                                                                                                                                                                                                                                                             HEAD -> mas.. Michael Behrns-Miller [cast]
-4175ed1 1 year, 2 .. git-log widened tag by 1 char                                                                                                                                                                                                                                                                                                                                         tag: 4.10.13 Michael Behrns-Miller [mel..
-4f9c3dc 1 year, 11.. git-log now nicely fills pretty much any size terminal window using tput                                                                                                                                                                                                                                                                                              tag: 4.10.12 Michael Behrns-Miller [vip..
-29041b9 1 year, 11.. Put in delay before tail using new sleep function Really I swear Dammit Stupidness Try again loser                                                                                                                                                                                                                                                                    tag: 4.10.11 Michael Behrns-Miller [vip..
+4e151ab 6 minutes .. Add link_exists                                              HEAD -> mas.. Michael Behrns-Miller [case]
+a69bb61 3 months ago Added file diff function                                      tag: 4.10.14 Michael Behrns-Miller [cast]
+4175ed1 1 year, 2 .. git-log widened tag by 1 char                                 tag: 4.10.13 Michael Behrns-Miller [mel..
+4f9c3dc 1 year, 11.. git-log now nicely fills pretty much any size terminal win..  tag: 4.10.12 Michael Behrns-Miller [vip..
 
-Version 4.10.15
+Version 4.10.16

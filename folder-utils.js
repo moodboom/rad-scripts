@@ -62,12 +62,22 @@ var make_folder = function (target_path) {
 
 //=========== folder_exists: returns true if the folder or file exists ============
 var folder_exists = function (folder) {
-    try {
-        return fs.statSync(folder).isDirectory();
-    }
-    catch (err) {
-        return false;
-    }
+  try {
+      return fs.statSync(folder).isDirectory();
+  }
+  catch (err) {
+      return false;
+  }
+}
+
+//=========== folder_exists: returns true if the folder or file exists ============
+var link_exists = function (folder) {
+  try {
+      return fs.statSync(folder).isSymbolicLink();
+  }
+  catch (err) {
+      return false;
+  }
 }
 
 //=========== file_exists: returns true if the file exists ============
@@ -204,6 +214,7 @@ module.exports.cdfolder = cdfolder;
 module.exports.cdfirst = cdfirst;
 module.exports.make_folder = make_folder;
 module.exports.folder_exists = folder_exists;
+module.exports.link_exists = link_exists;
 module.exports.file_exists = file_exists;
 module.exports.file_diff = file_diff;
 module.exports.find_first_folder = find_first_folder;

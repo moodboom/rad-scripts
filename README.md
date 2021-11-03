@@ -52,9 +52,9 @@ See https://bitpost.com/news for more bloviating.  Devs don't need no stinkin op
 
 
 Most recent commits...
-4175ed1 11 months .. git-log widened tag by 1 char                                                                                                                                                                HEAD -> mas.. Michael Behrns-Miller [mel..
-4f9c3dc 1 year, 8 .. git-log now nicely fills pretty much any size terminal window using tput                                                                                                                      tag: 4.10.12 Michael Behrns-Miller [vip..
-29041b9 1 year, 9 .. Put in delay before tail using new sleep function Really I swear Dammit Stupidness Try again loser                                                                                            tag: 4.10.11 Michael Behrns-Miller [vip..
-cbf43c8 1 year, 9 .. Javascript sleep function fixup in run-utils.js Third time a charm                                                                                                                            tag: 4.10.10 Michael Behrns-Miller [vip..
+a69bb61 3 months ago Added file diff function                                                                                                                                                                                                                                                                                                                                             HEAD -> mas.. Michael Behrns-Miller [cast]
+4175ed1 1 year, 2 .. git-log widened tag by 1 char                                                                                                                                                                                                                                                                                                                                         tag: 4.10.13 Michael Behrns-Miller [mel..
+4f9c3dc 1 year, 11.. git-log now nicely fills pretty much any size terminal window using tput                                                                                                                                                                                                                                                                                              tag: 4.10.12 Michael Behrns-Miller [vip..
+29041b9 1 year, 11.. Put in delay before tail using new sleep function Really I swear Dammit Stupidness Try again loser                                                                                                                                                                                                                                                                    tag: 4.10.11 Michael Behrns-Miller [vip..
 
-Version 4.10.14
+Version 4.10.15

@@ -12,7 +12,7 @@
 //      string_pad(padding,'abc,true);
 //      result: 255-byte string ending in 'abc'
 //
-function string_pad(pad, str, padLeft) {
+export function string_pad(pad, str, padLeft) {
   if (typeof str === 'undefined') 
     return pad;
   if (padLeft) {
@@ -21,6 +21,3 @@ function string_pad(pad, str, padLeft) {
     return (str + pad).substring(0, pad.length);
   }
 }
-
-
-module.exports.string_pad = string_pad;

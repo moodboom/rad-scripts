@@ -2,6 +2,7 @@
   "name": "rad-scripts",
   "description": "Easy semantic versioning of git repositories",
   "author": "Michael Behrns-Miller <moodboom@gmail.com>",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
@@ -19,24 +20,6 @@
   },
   "bin": {
     "rad": "rad-cmd.js",
-    "git-sync": "git-sync-cmd.js",
-    "git-sync-notag": "git-sync-notag-cmd.js",
-    "git-version": "git-version-cmd.js",
-    "git-version-clean": "git-version-clean-cmd.js",
-    "git-log": "git-log-cmd.js",
-    "git-branchlog": "git-branchlog-cmd.js",
-    "git-tag-list": "git-tag-list-cmd.js",
-    "git-next-build": "git-next-build-cmd.js",
-    "git-next-major": "git-next-major-cmd.js",
-    "git-next-minor": "git-next-minor-cmd.js",
-    "git-next-patch": "git-next-patch-cmd.js",
-    "git-skip": "git-skip-cmd.js",
-    "git-noskip": "git-noskip-cmd.js",
-    "git-skiplist": "git-skiplist-cmd.js",
-    "get-svn-rev": "get-svn-rev-cmd.js",
-    "get-svn-last-changed-rev": "get-svn-last-changed-rev-cmd.js",
-    "make-folder": "make-folder-cmd.js",
-    "npm-update-version": "npm-update-version-cmd.js",
-    "rs-sync": "rs-sync-cmd.js"
+    "make-folder": "make-folder-cmd.js"
   }
 }

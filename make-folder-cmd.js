@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-var fu = require('./folder-utils.js');
+import { make_folder } from './folder-utils.js';
 
 // 0 = node, 1 = script path, so we ignore those.
 // 2 = target path
 var target_path = process.argv[2];
-fu.make_folder(target_path);
+make_folder(target_path);

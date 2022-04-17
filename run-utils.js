@@ -1,18 +1,20 @@
 #!/usr/bin/env node
 
 
-var exec = require('child_process').exec;
-var spawn = require('child_process').spawn;
+import { exec, spawn, execSync, spawnSync } from 'child_process';
+import pkg from 'spawn-args';
+const { spawnargs } = pkg;
 
+// var exec = require('child_process').exec;
+// var spawn = require('child_process').spawn;
 // MDM NOTE that node v0.12 or higher is required for this.
-var execSync = require('child_process').execSync;
-var spawnSync = require('child_process').spawnSync;
-
-var spawnargs = require('spawn-args');
+// var execSync = require('child_process').execSync;
+// var spawnSync = require('child_process').spawnSync;
+// var spawnargs = require('spawn-args');
 
 
 //=========== run_command_sync_to_console: run one command and let output immediately flow to console ============
-var run_command_sync_to_console = function (cmd) {
+export const run_command_sync_to_console = function (cmd) {
     execSync(cmd, {stdio:[0,1,2]}, function(error, stdout, stderr) {
         if (error) {
             console.log('======= RUN ERROR =======');
@@ -24,7 +26,7 @@ var run_command_sync_to_console = function (cmd) {
 
 
 //=========== run_command_async_to_console: async run one command and dump output to console when complete ============
-var run_command_async_to_console = function (cmd) {
+export const run_command_async_to_console = function (cmd) {
     exec(cmd, function(error, stdout, stderr) {
         if (stdout.length > 0 ) console.log(stdout);
         if (stderr.length > 0 ) console.log(stderr);
@@ -33,7 +35,7 @@ var run_command_async_to_console = function (cmd) {
 
 
 //=========== run_command_quietly: runs without output unless error ============
-var run_command_quietly = function (cmd) {
+export const run_command_quietly = function (cmd) {
     execSync(cmd, function(error, stdout, stderr) {
         if (error) {
             console.log('======= RUN ERROR =======');
@@ -47,7 +49,7 @@ var run_command_quietly = function (cmd) {
 // Run a command asynchronously and get the output when it finishes in a callback.
 // Usage:
 // run_command( "ls -l", function(err,text) { console.log (text) });
-var run_command = function (cmd, callBack ) {
+export const run_command = function (cmd, callBack ) {
 
     // TODO convert to exec()
 
@@ -84,7 +86,7 @@ var run_command = function (cmd, callBack ) {
 // Run a command synchronously and get the output when it finishes.
 // Usage:
 // var lsout = run_command_sync("ls -l");
-var run_command_sync = function (cmd) {
+export const run_command_sync = function (cmd) {
 
     return execSync(cmd, function(error, stdout, stderr) {
         if (error) {
@@ -130,7 +132,7 @@ var run_command_sync = function (cmd) {
 //		undefined	normal output - the command output is logged to console
 //		"verbose"	more output - step name, folder, command output
 // Define async to get asynchronous execution.
-var runsteps = function (steps,verbosity,async) {
+export const runsteps = function (steps,verbosity,async) {
 
     var path = require('path');
 
@@ -177,7 +179,7 @@ var runsteps = function (steps,verbosity,async) {
     });
 }
 
-var combine_params = function(params,separator = " ") {
+export const combine_params = function(params,separator = " ") {
     var result = "";
     if (params.length > 0)
     {
@@ -189,39 +191,26 @@ var combine_params = function(params,separator = " ") {
     return result;
 }
 
-var distro = function() {
+export const distro = function() {
     var distroname = run_command_sync('lsb_release -i').split(":")[1].trim().toLowerCase();
     return distroname
 }
 
-var hostname = function() {
+export const hostname = function() {
     var hostname = run_command_sync('hostname').trim().toLowerCase()
     return hostname
 }
 
-var ping_gw = function() {
+export const ping_gw = function() {
   return run_command_sync("ping -q -w 1 -c 1 `ip r | grep default | head -n 1 | cut -d ' ' -f 3` > /dev/null && echo true || echo false")
 }
-var ping_google = function() {
+export const ping_google = function() {
   return run_command_sync("ping -q -w 1 -c 1 google.com > /dev/null && echo true || echo false")
 }
   
 // This is a sleep for when you are in an async function, called eg:
 //  await sleep(500);
 // See: https://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
-var sleep = function(ms) {
+export const sleep = function(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-  
-module.exports.run_command_sync = run_command_sync;
-module.exports.run_command_sync_to_console = run_command_sync_to_console;
-module.exports.run_command_async_to_console = run_command_async_to_console;
-module.exports.run_command_quietly = run_command_quietly;
-module.exports.run_command = run_command;
-module.exports.runsteps = runsteps;
-module.exports.combine_params = combine_params;
-module.exports.distro = distro;
-module.exports.hostname = hostname;
-module.exports.ping_gw = ping_gw;
-module.exports.ping_google = ping_google;
-module.exports.sleep = sleep;

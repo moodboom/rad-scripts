@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-const { RSA_NO_PADDING } = require('constants');
-var fs = require('fs');
-var minimatch = require("minimatch");
-
+import * as path from 'path';
+import * as fs from 'fs';
+import pkg from 'minimatch';
+const { minimatch } = pkg;
 
 //=========== exists: cd to folder, return false if the folder doesn't exist ============
-var cdfolder = function (folder) {
+export const cdfolder = function (folder) {
 
     // SYNCHRONOUS change wd and catch any error
     try {
@@ -19,7 +19,7 @@ var cdfolder = function (folder) {
 }
 
 // =========== cdfirst: change to first found folder ============
-var cdfirst = function (candidates) {
+export const cdfirst = function (candidates) {
 
     // NOTE that this is the way to get "home", cross-platform, if it is ever needed.
     // var homedir = (process.platform === 'win32') ? process.env.HOMEPATH : process.env.HOME;
@@ -39,12 +39,11 @@ var cdfirst = function (candidates) {
 
 
 // ========== make_folder : make the given folder (no matter how deep) =========
-var make_folder = function (target_path) {
+export const make_folder = function (target_path) {
 
   // We will catch EEXIST exceptions so we can return true if it already exists.
   try {
 
-      const path = require('path');
       const sep = path.sep;
       const initDir = path.isAbsolute(target_path) ? sep : '';
       target_path.split(sep).reduce((parentDir, childDir) => {
@@ -61,7 +60,7 @@ var make_folder = function (target_path) {
 }
 
 //=========== folder_exists: returns true if the folder exists ============
-var folder_exists = function (folder) {
+export const folder_exists = function (folder) {
   try {
       return fs.statSync(folder).isDirectory();
   }
@@ -71,7 +70,7 @@ var folder_exists = function (folder) {
 }
 
 //=========== folder_exists: returns true if the link exists ============
-var link_exists = function (folder) {
+export const link_exists = function (folder) {
   try {
       return fs.lstatSync(folder).isSymbolicLink();
   }
@@ -81,7 +80,7 @@ var link_exists = function (folder) {
 }
 
 //=========== file_exists: returns true if the file exists ============
-var file_exists = function (file) {
+export const file_exists = function (file) {
   try {
       return fs.statSync(file).isFile();
   }
@@ -91,7 +90,7 @@ var file_exists = function (file) {
 }
 
 //=========== file_diff: returns true if the two files differ ============
-var file_diff = function (file1, file2) {
+export const file_diff = function (file1, file2) {
   try {
     var file1_as_string = fs.readFileSync(file1, 'utf8');
     var file2_as_string = fs.readFileSync(file2, 'utf8');
@@ -103,7 +102,7 @@ var file_diff = function (file1, file2) {
 }
 
 // =========== find_first_folder: find and return first existing folder in a list of candidates ============
-var find_first_folder = function (candidates) {
+export const find_first_folder = function (candidates) {
 
     for (var i = 0;i < candidates.length;i++) {
         if (folder_exists(candidates[i])) {
@@ -139,8 +138,7 @@ function get_files_in_one_dir (dir, pattern, files_){
 
 // =========== walk: gather all files in a folder ============
 // TODO node-dir is probably more robust/feature-filled, check it out!
-var path = require('path');
-var walk = function(dir,pattern,done) {
+export const walk = function(dir,pattern,done) {
   var results = [];
 
 
@@ -175,7 +173,7 @@ var walk = function(dir,pattern,done) {
 };
 
 // Similar to previous, but only returns directories not files within them.
-var walksubdirs = function(dir, done) {
+export const walksubdirs = function(dir, done) {
   var results = [];
   fs.readdir(dir, function(err, list) {
     if (err) return done(err);
@@ -199,27 +197,12 @@ var walksubdirs = function(dir, done) {
 };
 
 //=========== fileRegexReplace: find and replace the given regex in the file ============
-var fileRegexReplace = function(filename, regex, replacement, flags = "g") {
+export const fileRegexReplace = function(filename, regex, replacement, flags = "g") {
   var file_as_string = fs.readFileSync(filename, 'utf8');
   var reg = new RegExp(regex,flags);
   file_as_string = file_as_string.replace(reg,replacement);
   fs.writeFileSync(filename, file_as_string);
 }
-var fileRegexReplaceMultiline = function(filename, regex, replacement) {
+export const fileRegexReplaceMultiline = function(filename, regex, replacement) {
   return fileRegexReplace(filename,regex,replacement,"gm");
 }
-
-
-module.exports.cdfolder = cdfolder;
-module.exports.cdfirst = cdfirst;
-module.exports.make_folder = make_folder;
-module.exports.folder_exists = folder_exists;
-module.exports.link_exists = link_exists;
-module.exports.file_exists = file_exists;
-module.exports.file_diff = file_diff;
-module.exports.find_first_folder = find_first_folder;
-module.exports.get_files_in_one_dir = get_files_in_one_dir;
-module.exports.walk = walk;
-module.exports.walksubdirs = walksubdirs;
-module.exports.fileRegexReplace = fileRegexReplace;
-module.exports.fileRegexReplaceMultiline = fileRegexReplaceMultiline;

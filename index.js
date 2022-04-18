@@ -1,8 +1,12 @@
 'use strict';
 
-import run_utils from 'run_utils.js';
-import folder_utils from 'folder-utils.js';
-import string_utils from 'string-utils.js';
+// import * as run_utils from './run-utils.js';
+// import * as folder_utils from './folder-utils.js';
+// import * as string_utils from './string-utils.js';
+
+export * from './run-utils.js';
+export * from './folder-utils.js';
+export * from './string-utils.js';
 
 /*
 // Here we define all the functions that should be available 

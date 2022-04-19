@@ -3,8 +3,11 @@
 
 import { normalize } from 'path';
 import { exec, spawn, execSync } from 'child_process';
-import pkg from 'spawn-args';
-const { spawnargs } = pkg;
+
+// To import spawnargs, we have to do some heavier lifting, because it is a "native" module.
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const spawnargs = require('spawn-args');
 
 
 //=========== run_command_sync_to_console: run one command and let output immediately flow to console ============

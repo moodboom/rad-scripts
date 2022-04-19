@@ -128,9 +128,6 @@ export const runsteps = function (steps,verbosity,async) {
                     console.log (text)
                 });
 
-                // Workaround during testing
-                // run_command_async_to_console(steps[i].cmd);
-
             } else if (verbosity != "quiet") {
 
                 if (verbosity == "verbose") {

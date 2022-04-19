@@ -32,7 +32,7 @@ if (args[0] != 'list-commands') {
         'Tools that allow you to easily use Javascript for all your scripting needs.\n\n' +
 
         'NOTE: previously embedded git semver commands have been moved to the git-semver module.\n' +
-        'Install the git-semver module instead of this to get that functionality.\n\n' +
+        'Install the @moodboom/git-semver module to get that functionality.\n\n' +
 
         'Common commands:\n'
     );

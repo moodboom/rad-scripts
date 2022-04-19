@@ -1,16 +1,10 @@
 #!/usr/bin/env node
 
 
-import { exec, spawn, execSync, spawnSync } from 'child_process';
+import { normalize } from 'path';
+import { exec, spawn, execSync } from 'child_process';
 import pkg from 'spawn-args';
 const { spawnargs } = pkg;
-
-// var exec = require('child_process').exec;
-// var spawn = require('child_process').spawn;
-// MDM NOTE that node v0.12 or higher is required for this.
-// var execSync = require('child_process').execSync;
-// var spawnSync = require('child_process').spawnSync;
-// var spawnargs = require('spawn-args');
 
 
 //=========== run_command_sync_to_console: run one command and let output immediately flow to console ============
@@ -68,8 +62,6 @@ export const run_command = function (cmd, callBack ) {
     // DEBUG:
     // console.log('cmd args: ' + cmd + ' ----- ' + args);
 
-    var spawn = require('child_process').spawn;
-
     var child = spawn(cmd, args);
     // var child = spawn(cmd, args, {stdio: "inherit"});
 
@@ -98,22 +90,6 @@ export const run_command_sync = function (cmd) {
             console.log(stderr);
         }
     }).toString();
-
-    // OLD spawn doesn't handle half the things exec does.
-    /*
-    var fullargs = spawnargs(cmd);
-    cmd = fullargs[0];
-    var args = fullargs.slice(1);
-
-    var spawnSync = require('child_process').spawnSync;
-    var outp = spawnSync(cmd, args, { encoding : 'utf8' });
-
-    // Return all output.  Put any error output last.
-    var result = '';
-    if (outp.stdout && outp.stdout.length > 0) { result += outp.stdout; }
-    if (outp.stderr && outp.stderr.length > 0) { result += '\n' + outp.stderr; }
-    return result;
-    */
 }
 
 
@@ -134,13 +110,11 @@ export const run_command_sync = function (cmd) {
 // Define async to get asynchronous execution.
 export const runsteps = function (steps,verbosity,async) {
 
-    var path = require('path');
-
     steps.forEach(function(step,i) {
 
         try {
 
-            process.chdir(path.normalize(step.folder));
+            process.chdir(normalize(step.folder));
 
             if (async) {
 

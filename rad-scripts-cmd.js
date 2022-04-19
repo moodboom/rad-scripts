@@ -13,6 +13,7 @@ import * as su from './string-utils.js';
 var args = process.argv.slice(2);
 
 var cmds = [
+    { name: 'rad-scripts-sync'          , desc: '> use git-sync from @moodboom/git-semver to commit and publish rad-scripts'   },
     { name: 'list-commands'             , desc: '> lists all available commands'   },
     { name: 'make-folder'               , desc: '[path] > makes the folder (even if deep), returns true if succeeds or already exists'    },
 ];

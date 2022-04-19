@@ -7,11 +7,12 @@
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "4.10.16",
+  "version": "4.10.18",
   "homepage": "https://bitpost.com/news/category/projects/rad-scripts/",
   "license": "MIT",
   "preferGlobal": true,
   "dependencies": {
+    "@moodboom/git-semver": "*",
     "minimatch": ">=3.0.4",
     "spawn-args": ">=0.2.0"
   },
@@ -19,7 +20,8 @@
     "test": "echo \"Error: no test specified.\" && exit 1"
   },
   "bin": {
-    "rad": "rad-cmd.js",
+    "rad-scripts": "rad-scripts-cmd.js",
+    "rad-scripts-sync": "rad-scripts-sync-cmd.js",
     "make-folder": "make-folder-cmd.js"
   }
 }

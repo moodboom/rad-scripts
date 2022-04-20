@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import pkg from 'minimatch';
 const { minimatch } = pkg;
 
-//=========== exists: cd to folder, return false if the folder doesn't exist ============
+//=========== cdfolder: cd to folder, return false if the folder doesn't exist ============
 export const cdfolder = function (folder) {
 
     // SYNCHRONOUS change wd and catch any error
@@ -69,7 +69,7 @@ export const folder_exists = function (folder) {
   }
 }
 
-//=========== folder_exists: returns true if the link exists ============
+//=========== link_exists: returns true if the link exists ============
 export const link_exists = function (folder) {
   try {
       return fs.lstatSync(folder).isSymbolicLink();

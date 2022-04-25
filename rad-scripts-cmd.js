@@ -25,6 +25,7 @@ const funcs = [
     { name: 'run_command', desc: 'Run a command asynchronously and get the output when it finishes in a callback' },
     { name: 'run_command_sync', desc: 'Run a command synchronously and get the output when it finishes' },
     { name: 'runsteps', desc: 'Run a specific set of commands in specific directories' },
+    { name: 'hasArg', desc: 'Check a set of args for a value; eg: hasArgs( args, \'--init\')' },
     { name: 'combine_params', desc: 'Combine an array of params with separator' },
     { name: 'distro', desc: 'Return distro name from lsb_release' },
     { name: 'hostname', desc: 'Return hostname' },

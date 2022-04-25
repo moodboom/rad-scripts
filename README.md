@@ -12,6 +12,7 @@ Common functions and commands:
 * run_command                Run a command asynchronously and get the output when it finishes in a callback
 * run_command_sync           Run a command synchronously and get the output when it finishes
 * runsteps                   Run a specific set of commands in specific directories
+* hasArg                     Check a set of args for a value; eg: hasArgs( args, '--init')
 * combine_params             Combine an array of params with separator
 * distro                     Return distro name from lsb_release
 * hostname                   Return hostname
@@ -37,9 +38,9 @@ Common functions and commands:
 
 
 Most recent commits...
-a52d710   4 days ago Typo                                                    HEAD -> mas.. Michael Behrns-Miller [cast]
-bd2c7c5   5 days ago Fix to spawnargs native module import                    tag: 4.10.22 Michael Behrns-Miller [cast]
-069af18   5 days ago Removed comment                                          tag: 4.10.21 Michael Behrns-Miller [cast]
-cbf7e61   5 days ago Fixed more imports                                       tag: 4.10.20 Michael Behrns-Miller [cast]
+7cfe2cd 30 hours ago LF in readme                                                                                                                                                                                        HEAD -> mas.. Michael Behrns-Miller [cob..
+a52d710   5 days ago Typo                                                                                                                                                                                                 tag: 4.10.23 Michael Behrns-Miller [cast]
+bd2c7c5   6 days ago Fix to spawnargs native module import                                                                                                                                                                tag: 4.10.22 Michael Behrns-Miller [cast]
+069af18   6 days ago Removed comment                                                                                                                                                                                      tag: 4.10.21 Michael Behrns-Miller [cast]
 
-Version 4.10.24
+Version 4.10.25

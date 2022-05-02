@@ -2,8 +2,7 @@
 
 import * as path from 'path';
 import * as fs from 'fs';
-import pkg from 'minimatch';
-const { minimatch } = pkg;
+import minimatch from 'minimatch';
 
 //=========== cdfolder: cd to folder, return false if the folder doesn't exist ============
 export const cdfolder = function (folder) {

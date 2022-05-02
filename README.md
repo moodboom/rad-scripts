@@ -38,9 +38,9 @@ Common functions and commands:
 
 
 Most recent commits...
-7cfe2cd 30 hours ago LF in readme                                                                                                                                                                                        HEAD -> mas.. Michael Behrns-Miller [cob..
-a52d710   5 days ago Typo                                                                                                                                                                                                 tag: 4.10.23 Michael Behrns-Miller [cast]
-bd2c7c5   6 days ago Fix to spawnargs native module import                                                                                                                                                                tag: 4.10.22 Michael Behrns-Miller [cast]
-069af18   6 days ago Removed comment                                                                                                                                                                                      tag: 4.10.21 Michael Behrns-Miller [cast]
+20c033b   6 days ago Add hasArgs                                                                                                                               HEAD -> mas.. Michael Behrns-Miller [cast]
+7cfe2cd   8 days ago LF in readme                                                                                                                               tag: 4.10.24 Michael Behrns-Miller [cob..
+a52d710  11 days ago Typo                                                                                                                                       tag: 4.10.23 Michael Behrns-Miller [cast]
+bd2c7c5  12 days ago Fix to spawnargs native module import                                                                                                      tag: 4.10.22 Michael Behrns-Miller [cast]
 
-Version 4.10.25
+Version 4.10.26

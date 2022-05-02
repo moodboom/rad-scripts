@@ -116,7 +116,7 @@ export const find_first_folder = function (candidates) {
 };
 
 
-function get_files_in_one_dir (dir, pattern, files_){
+export function get_files_in_one_dir (dir, pattern, files_) {
     files_ = files_ || [];
     var files = fs.readdirSync(dir);
     for (var i in files){

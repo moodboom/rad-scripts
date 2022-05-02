@@ -38,9 +38,9 @@ Common functions and commands:
 
 
 Most recent commits...
-f3cfd7a 10 minutes.. Add missing export on get_files_in_one_dir                                                                      HEAD -> mas.. Michael Behrns-Miller [bit..
+898e48d 3 minutes .. Import minimatch                                                                                                HEAD -> mas.. Michael Behrns-Miller [bit..
+f3cfd7a 13 minutes.. Add missing export on get_files_in_one_dir                                                                       tag: 4.10.26 Michael Behrns-Miller [bit..
 20c033b   6 days ago Add hasArgs                                                                                                      tag: 4.10.25 Michael Behrns-Miller [cast]
 7cfe2cd   8 days ago LF in readme                                                                                                     tag: 4.10.24 Michael Behrns-Miller [cob..
-a52d710  11 days ago Typo                                                                                                             tag: 4.10.23 Michael Behrns-Miller [cast]
 
-Version 4.10.27
+Version 4.10.28

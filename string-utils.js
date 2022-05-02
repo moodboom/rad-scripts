@@ -13,7 +13,7 @@
 //      result: 255-byte string ending in 'abc'
 //
 export function string_pad(pad, str, padLeft) {
-  if (typeof str === 'undefined') 
+  if (typeof str === 'undefined')
     return pad;
   if (padLeft) {
     return (pad + str).slice(-pad.length);

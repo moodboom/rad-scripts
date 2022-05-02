@@ -12,7 +12,7 @@ Common functions and commands:
 * run_command                Run a command asynchronously and get the output when it finishes in a callback
 * run_command_sync           Run a command synchronously and get the output when it finishes
 * runsteps                   Run a specific set of commands in specific directories
-* hasArg                     Check a set of args for a value; eg: hasArgs( args, '--init')
+* hasArg                     Check a set of args for a value; eg: hasArg( args, '--init')
 * combine_params             Combine an array of params with separator
 * distro                     Return distro name from lsb_release
 * hostname                   Return hostname
@@ -38,9 +38,9 @@ Common functions and commands:
 
 
 Most recent commits...
-898e48d 3 minutes .. Import minimatch                                                                                                HEAD -> mas.. Michael Behrns-Miller [bit..
-f3cfd7a 13 minutes.. Add missing export on get_files_in_one_dir                                                                       tag: 4.10.26 Michael Behrns-Miller [bit..
-20c033b   6 days ago Add hasArgs                                                                                                      tag: 4.10.25 Michael Behrns-Miller [cast]
-7cfe2cd   8 days ago LF in readme                                                                                                     tag: 4.10.24 Michael Behrns-Miller [cob..
+5545459 12 hours ago Import minimatch                                                                                                                                        HEAD -> mas.. Michael Behrns-Miller [bit..
+898e48d 12 hours ago Import minimatch                                                                                                                                         tag: 4.10.27 Michael Behrns-Miller [bit..
+f3cfd7a 12 hours ago Add missing export on get_files_in_one_dir                                                                                                               tag: 4.10.26 Michael Behrns-Miller [bit..
+20c033b   7 days ago Add hasArgs                                                                                                                                              tag: 4.10.25 Michael Behrns-Miller [cast]
 
-Version 4.10.28
+Version 4.10.29

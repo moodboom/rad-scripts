@@ -67,10 +67,10 @@ if (args[0] != 'list-commands') {
   );
 }
 for (var i = 0; i < funcs.length; i++) {
-  console.log('* ' + su.string_pad('                           ', funcs[i].name + ":") + funcs[i].desc);
+  console.log('* ' + su.string_pad('                             ', funcs[i].name + ":") + funcs[i].desc);
 }
 for (var i = 0; i < cmds.length; i++) {
-  console.log('* ' + su.string_pad('                           ', cmds[i].name + ":") + cmds[i].desc);
+  console.log('* ' + su.string_pad('                             ', cmds[i].name + ":") + cmds[i].desc);
 }
 
 // Getting the usage is important in scripts, don't error out.

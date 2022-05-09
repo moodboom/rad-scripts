@@ -61,16 +61,16 @@ if (args[0] != 'list-commands') {
     'Tools that allow you to easily use Javascript for all your scripting needs.\n\n' +
 
     'NOTE: previously embedded git semver commands have been moved to the git-semver module.\n' +
-    'Install the @moodboom/git-semver module to get that functionality.\n\n' +
+    'Install the [@moodboom/git-semver](https://www.npmjs.com/package/%40moodboom%2Fgit-semver) module to get that functionality.\n\n' +
 
     'Common functions and commands:\n'
   );
 }
 for (var i = 0; i < funcs.length; i++) {
-  console.log('* ' + su.string_pad('                           ', funcs[i].name) + funcs[i].desc);
+  console.log('* ' + su.string_pad('                           ', funcs[i].name + ":") + funcs[i].desc);
 }
 for (var i = 0; i < cmds.length; i++) {
-  console.log('* ' + su.string_pad('                           ', cmds[i].name) + cmds[i].desc);
+  console.log('* ' + su.string_pad('                           ', cmds[i].name + ":") + cmds[i].desc);
 }
 
 // Getting the usage is important in scripts, don't error out.

@@ -38,9 +38,9 @@ Common functions and commands:
 
 
 Most recent commits...
-1265619 86 minutes.. intsll                                                                                                    HEAD -> mas.. Michael Behrns-Miller [pos..
-767741a   3 days ago Readme fixin                                                                                               tag: 4.10.31 Michael Behrns-Miller [abt..
-f935801   3 days ago Readme fix                                                                                                 tag: 4.10.30 Michael Behrns-Miller [abt..
-4433c57  10 days ago Add hasArg Set indent to 2 spaces                                                                          tag: 4.10.29 Michael Behrns-Miller [cast]
+d65aa59 8 minutes .. Add main to package Add package-lock            HEAD -> mas.. Michael Behrns-Miller [abt..
+1265619  2 hours ago intsll                                           tag: 4.10.32 Michael Behrns-Miller [pos..
+767741a   3 days ago Readme fixin                                     tag: 4.10.31 Michael Behrns-Miller [abt..
+f935801   3 days ago Readme fix                                       tag: 4.10.30 Michael Behrns-Miller [abt..
 
-Version 4.10.33
+Version 4.10.34

@@ -38,9 +38,9 @@ Common functions and commands:
 
 
 Most recent commits...
-f935801 8 minutes .. Readme fix                               HEAD -> mas.. Michael Behrns-Miller [abt..
-4433c57   7 days ago Add hasArg Set indent to 2 spaces         tag: 4.10.29 Michael Behrns-Miller [cast]
-5545459   8 days ago Import minimatch                          tag: 4.10.28 Michael Behrns-Miller [bit..
-898e48d   8 days ago Import minimatch                          tag: 4.10.27 Michael Behrns-Miller [bit..
+767741a   3 days ago Readme fixin          HEAD -> mas.. Michael Behrns-Miller [abt..
+f935801   3 days ago Readme fix             tag: 4.10.30 Michael Behrns-Miller [abt..
+4433c57  10 days ago Add hasArg Set inde..  tag: 4.10.29 Michael Behrns-Miller [cast]
+5545459  11 days ago Import minimatch       tag: 4.10.28 Michael Behrns-Miller [bit..
 
-Version 4.10.31
+Version 4.10.32

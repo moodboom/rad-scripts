@@ -157,7 +157,7 @@ export const hasArg = (args, a) => args.some(ar => ar === a);
 
 export const combine_params = function (params, separator = " ") {
   var result = "";
-  if (params.length > 0) {
+  if (params?.length > 0) {
     params.forEach(function (val, index, array) {
       if (index != 0) { result += separator; }
       result += val;

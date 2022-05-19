@@ -153,7 +153,7 @@ export const runsteps = function (steps, verbosity, async) {
   });
 }
 
-export const hasArg = (args, a) => args.some(ar => ar === a);
+export const hasArg = (args, a) => args?.some(ar => ar === a);
 
 export const combine_params = function (params, separator = " ") {
   var result = "";

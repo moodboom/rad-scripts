@@ -8,14 +8,14 @@
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "4.10.42",
+  "version": "4.10.43",
   "homepage": "https://bitpost.com/news/category/projects/rad-scripts/",
   "license": "MIT",
   "preferGlobal": true,
   "dependencies": {
     "@moodboom/git-semver": "*",
-    "minimatch": "^5.0.1",
-    "spawn-args": ">=0.2.0"
+    "minimatch": "*",
+    "spawn-args": "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified.\" && exit 1"

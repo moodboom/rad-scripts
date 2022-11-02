@@ -38,9 +38,9 @@ Common functions and commands:
 
 
 Most recent commits...
-77192d9 33 hours ago Readme                                                  HEAD -> mas.. Michael Behrns-Miller [ban..
-1bdeb87 33 hours ago Updates                                                  tag: 4.10.40 Michael Behrns-Miller [ban..
-d5fce83  2 weeks ago Change url                                               tag: 4.10.39 Michael Behrns-Miller [mat..
-404ff99 4 months ago Update deps                                              tag: 4.10.38 Michael Behrns-Miller [glam]
+5514b03  3 weeks ago Dependencies                                            HEAD -> mas.. Michael Behrns-Miller [cob..
+77192d9  3 weeks ago Readme                                                   tag: 4.10.41 Michael Behrns-Miller [ban..
+1bdeb87  3 weeks ago Updates                                                  tag: 4.10.40 Michael Behrns-Miller [ban..
+d5fce83  5 weeks ago Change url                                               tag: 4.10.39 Michael Behrns-Miller [mat..
 
-Version 4.10.42
+Version 4.10.43

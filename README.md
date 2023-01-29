@@ -38,9 +38,9 @@ Common functions and commands:
 
 
 Most recent commits...
-4db55f1 14 minutes.. Install                                                 HEAD -> mas.. Michael Behrns-Miller [pos..
+6dc347d  2 hours ago Version bump                                            HEAD -> mas.. Michael Behrns-Miller [pos..
+4db55f1  2 hours ago Install                                                  tag: 4.10.44 Michael Behrns-Miller [pos..
 69f6558 3 months ago Update dependencies                                      tag: 4.10.43 Michael Behrns-Miller [cast]
 5514b03 4 months ago Dependencies                                             tag: 4.10.42 Michael Behrns-Miller [cob..
-77192d9 4 months ago Readme                                                   tag: 4.10.41 Michael Behrns-Miller [ban..
 
-Version 4.10.45
+Version 4.10.46

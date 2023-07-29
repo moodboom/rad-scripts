@@ -32,15 +32,15 @@ Common functions and commands:
 * fileRegexReplace:            find and replace the given regex in the file
 * fileRegexReplaceMultiline:   find and replace across lines (gm)
 * string_pad:                  Provide buffer and returns padded string
-* rad-scripts-sync:            use git-sync from @moodboom/git-semver to commit and publish rad-scripts
+* rad-scripts-sync:            (internal) commit and publish rad-scripts; uses git-sync from @moodboom/git-semver
 * list-commands:               lists all available commands
 * make-folder:                 [path] > makes the folder (even if deep), returns true if succeeds or already exists
 
 
 Most recent commits...
-4b104b2 3 months ago After some cleanup let us retry a circular dep usage .. HEAD -> mas.. Michael Behrns-Miller [cast]
+5de66e5 3 minutes .. Force minimatch ES6                                     HEAD -> mas.. Michael Behrns-Miller [abt..
+4b104b2 3 months ago After some cleanup let us retry a circular dep usage ..  tag: 4.10.51 Michael Behrns-Miller [cast]
 ca249c2 3 months ago Remove cyclical dep                                      tag: 4.10.50 Michael Behrns-Miller [cast]
 fcb17a7 4 months ago Update packages                                          tag: 4.10.49 Michael Behrns-Miller [cast]
-6e9cafe 4 months ago Update packages                                          tag: 4.10.48 Michael Behrns-Miller [cast]
 
-Version 4.10.52
+Version 4.10.53

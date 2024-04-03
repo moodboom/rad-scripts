@@ -38,9 +38,9 @@ Common functions and commands:
 
 
 Most recent commits...
-  3920670 6 months ago Add name                                              HEAD -> mas.. Michael Behrns-Miller [case]
+  68d622b 2 minutes .. Eslint flat file and formatting                       HEAD -> mas.. Michael Behrns-Miller [cast]
+  3920670 6 months ago Add name                                               tag: 4.10.57 Michael Behrns-Miller [case]
   ef5fa23 7 months ago Install                                                tag: 4.10.56 Michael Behrns-Miller [glam]
   1df62bf 8 months ago Update my dependencies                                 tag: 4.10.55 Michael Behrns-Miller [abt..
-  c9d285e 8 months ago Update deps                                            tag: 4.10.54 Michael Behrns-Miller [abt..
 
-Version 4.10.58
+Version 4.10.59

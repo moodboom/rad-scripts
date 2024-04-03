@@ -10,7 +10,7 @@
 import * as ru from './run-utils.js';
 import * as su from './string-utils.js';
 
-var args = process.argv.slice(2);
+var args = process.argv.slice( 2 );
 
 const cmds = [
   { name: 'rad-scripts-sync', desc: '(internal) commit and publish rad-scripts; uses git-sync from @moodboom/git-semver' },
@@ -47,15 +47,15 @@ const funcs = [
   { name: 'string_pad', desc: 'Provide buffer and returns padded string' },
 ];
 
-for (var i = 0; i < cmds.length; i++) {
-  if (args[0] == cmds[i].name && cmds[i].name != 'list-commands') {
-    var steps = [{ name: cmds[i].name, folder: '.', cmd: cmds[i].name }];
-    ru.runsteps(steps);
+for ( var i = 0; i < cmds.length; i++ ) {
+  if ( args[ 0 ] == cmds[ i ].name && cmds[ i ].name != 'list-commands' ) {
+    var steps = [{ name: cmds[ i ].name, folder: '.', cmd: cmds[ i ].name }];
+    ru.runsteps( steps );
   }
 }
 
 // Generate usage, including a full app description, as this will be dynamically used to create README.md.  All docs in one place!  Cool.
-if (args[0] != 'list-commands') {
+if ( args[ 0 ] != 'list-commands' ) {
   console.log(
     '# rad-scripts\n' +
     'Tools that allow you to easily use Javascript for all your scripting needs.\n\n' +
@@ -63,15 +63,15 @@ if (args[0] != 'list-commands') {
     'NOTE: previously embedded git semver commands have been moved to the git-semver module.\n' +
     'Install the [@moodboom/git-semver](https://www.npmjs.com/package/%40moodboom%2Fgit-semver) module to get that functionality.\n\n' +
 
-    'Common functions and commands:\n'
+    'Common functions and commands:\n',
   );
 }
-for (var i = 0; i < funcs.length; i++) {
-  console.log('* ' + su.string_pad('                             ', funcs[i].name + ":") + funcs[i].desc);
+for ( var i = 0; i < funcs.length; i++ ) {
+  console.log( '* ' + su.string_pad( '                             ', funcs[ i ].name + ":" ) + funcs[ i ].desc );
 }
-for (var i = 0; i < cmds.length; i++) {
-  console.log('* ' + su.string_pad('                             ', cmds[i].name + ":") + cmds[i].desc);
+for ( var i = 0; i < cmds.length; i++ ) {
+  console.log( '* ' + su.string_pad( '                             ', cmds[ i ].name + ":" ) + cmds[ i ].desc );
 }
 
 // Getting the usage is important in scripts, don't error out.
-process.exit(0);
+process.exit( 0 );

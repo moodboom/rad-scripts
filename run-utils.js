@@ -176,14 +176,23 @@ export const hostname = function () {
 }
 
 export const ping = host => {
-  // NOTE that bash will puke on errors.  We just have to make the call.
-  run_command_sync( `ping -q -w 1 -c 1 ${host} > /dev/null && echo true || echo false` );
+  try {
+    run_command_sync( `ping -q -w 1 -c 1 ${host} > /dev/null && echo true || echo false` );
+  } catch ( e ) {
+    return false;
+  }
+  return true;
 }
 export const ping_google = () => {
-  ping( 'google.com' );
+  return ping( 'google.com' );
 }
 export const ping_gw = () => {
-  run_command_sync( "ping -q -w 1 -c 1 `ip r | grep default | head -n 1 | cut -d ' ' -f 3` > /dev/null && echo true || echo false" );
+  try {
+    run_command_sync( "ping -q -w 1 -c 1 `ip r | grep default | head -n 1 | cut -d ' ' -f 3` > /dev/null && echo true || echo false" );
+  } catch ( e ) {
+    return false;
+  }
+  return true;
 }
 
 // This is a sleep for when you are in an async function, called eg:

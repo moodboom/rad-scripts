@@ -16,8 +16,9 @@ Common functions and commands:
 * combine_params:              Combine an array of params with separator
 * distro:                      Return distro name from lsb_release
 * hostname:                    Return hostname
-* ping_gw:                     Ping local gateway
-* ping_google:                 Ping google.com
+* ping:                        Ping the specified host and return true/false
+* ping_google:                 Ping google.com and return true/false
+* ping_gw:                     Ping local gateway and return true/false
 * cdfolder:                    cd to folder, return false if the folder doesn't exist
 * cdfirst:                     change to first found folder from list of candidates
 * make_folder:                 make the given folder (no matter how deep)
@@ -38,9 +39,9 @@ Common functions and commands:
 
 
 Most recent commits...
-  68d622b 2 minutes .. Eslint flat file and formatting                       HEAD -> mas.. Michael Behrns-Miller [cast]
-  3920670 6 months ago Add name                                               tag: 4.10.57 Michael Behrns-Miller [case]
-  ef5fa23 7 months ago Install                                                tag: 4.10.56 Michael Behrns-Miller [glam]
-  1df62bf 8 months ago Update my dependencies                                 tag: 4.10.55 Michael Behrns-Miller [abt..
+  f9bbf03 8 months ago Eslint flat file and formatting fix                   HEAD -> mas.. Michael Behrns-Miller [cast]
+  68d622b 8 months ago Eslint flat file and formatting                        tag: 4.10.58 Michael Behrns-Miller [cast]
+  3920670 1 year, 2 .. Add name                                               tag: 4.10.57 Michael Behrns-Miller [case]
+  ef5fa23 1 year, 2 .. Install                                                tag: 4.10.56 Michael Behrns-Miller [glam]
 
-Version 4.10.59
+Version 4.10.60

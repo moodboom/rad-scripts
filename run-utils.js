@@ -175,11 +175,17 @@ export const hostname = function () {
   return hostname
 }
 
-export const ping_gw = function () {
-  return run_command_sync( "ping -q -w 1 -c 1 `ip r | grep default | head -n 1 | cut -d ' ' -f 3` > /dev/null && echo true || echo false" )
+export const ping = host => {
+  const textResult = run_command_sync( `ping -q -w 1 -c 1 ${host} > /dev/null && echo true || echo false` );
+  return textResult === "true";
 }
-export const ping_google = function () {
-  return run_command_sync( "ping -q -w 1 -c 1 google.com > /dev/null && echo true || echo false" )
+export const ping_google = () => {
+  const textResult = run_command_sync( "ping -q -w 1 -c 1 google.com > /dev/null && echo true || echo false" );
+  return ping( 'google.com' );
+}
+export const ping_gw = () => {
+  const textResult = run_command_sync( "ping -q -w 1 -c 1 `ip r | grep default | head -n 1 | cut -d ' ' -f 3` > /dev/null && echo true || echo false" );
+  return textResult === "true";
 }
 
 // This is a sleep for when you are in an async function, called eg:

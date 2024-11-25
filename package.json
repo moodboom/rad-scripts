@@ -8,25 +8,24 @@
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "4.10.63",
+  "version": "4.10.67",
   "homepage": "https://bitpost.com/news/category/projects/rad-scripts/",
   "license": "MIT",
   "preferGlobal": true,
   "dependencies": {
-    "@moodboom/git-semver": ">=0.0.30",
-    "minimatch": ">=9.0.3",
+    "@moodboom/git-semver": "*",
+    "minimatch": "^10.0.1",
     "spawn-args": "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified.\" && exit 1"
   },
   "bin": {
-    "rad-scripts": "rad-scripts-cmd.js",
-    "rad-scripts-sync": "rad-scripts-sync-cmd.js",
+    "rad": "rad-cmd.js",
     "make-folder": "make-folder-cmd.js"
   },
   "devDependencies": {
-    "eslint": "^8.57.0",
-    "eslint-config-standard": "^17.1.0"
+    "eslint": "*",
+    "eslint-config-standard": "*"
   }
 }

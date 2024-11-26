@@ -8,12 +8,12 @@
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "4.10.67",
+  "version": "5.0.4",
   "homepage": "https://bitpost.com/news/category/projects/rad-scripts/",
   "license": "MIT",
   "preferGlobal": true,
   "dependencies": {
-    "@moodboom/git-semver": "*",
+    "@moodboom/git-semver": "^0.0.37",
     "minimatch": "^10.0.1",
     "spawn-args": "*"
   },

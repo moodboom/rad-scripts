@@ -7,8 +7,10 @@
 // NOTE: Substeps can typically be run directly, via binaries defined in package.json that call the corresponding '-cmd.js' scripts.
 // But we always provide access to all available substeps here too, to stay organized, centralized and documented.
 
+import { writeFileSync } from 'fs';
 import {
   run_command_sync_to_console,
+  run_command_sync,
   run_command_quietly,
   runsteps,
 } from './run-utils.js';
@@ -18,6 +20,7 @@ import {
   parse_tag_parameters,
   git_changes,
   git_sync,
+  npm_update_version,
 } from '@moodboom/git-semver'; // ugg, circular, we gonna be ok?  :-)
 
 const cmds = [
@@ -70,18 +73,18 @@ export const rad = ( target, args ) => {
       exit( 1 );
     }
 
-    const tagParams = parse_tag_parameters( process.argv );
+    const tagParams = parse_tag_parameters( args, 1 ); // noslice = 1
 
     // git_sync to commit and tag a new version as appropriate.
     const stampCallbackFunction = ( err, version ) => {
       if ( err ) throw err;
-      npm_update_version( version );
+      const adjustedVersion = npm_update_version( version );
 
       // Quietly reinstall, so we get any recently-made changes to usage.
       run_command_quietly( 'npm install -g' );
 
       // Directly update README.md with usage, whoop
-      const readme = run_command_sync( 'csd' );
+      let readme = run_command_sync( 'rad' );
 
       // Let's add the version, and the most recent commits, to the readme, for fun.
       // Note that usage will not include this, only the README.md file.
@@ -93,6 +96,7 @@ export const rad = ( target, args ) => {
 
       const filename = 'README.md';
       writeFileSync( filename, readme, 'utf-8' );
+      return adjustedVersion;
     };
 
     // SYNC and PUBLISH CHANGES
@@ -100,7 +104,7 @@ export const rad = ( target, args ) => {
     git_sync( process.cwd(), tagParams, stampCallbackFunction );
     if ( changes ) {
       // There were changes, so let's publish now.
-      run_command_sync_to_console( 'npm publish' );
+      run_command_sync_to_console( 'npm publish --access public' );
     }
 
     // Quietly reinstall, so we get any recently-made remote changes.
@@ -118,8 +122,12 @@ export const rad = ( target, args ) => {
     if ( target !== 'list-commands' ) {
       console.log(
         '# rad-scripts\n' +
-        'Tools that allow you to easily use Javascript for all your scripting needs.\n\n' +
-    
+        'Robust tooling for node-based command line scripting.\n\n' +
+        
+        'Stop (re-)learning cryptic unintuitive bash.  ' +
+        'Tap the full power of node modules on the command line.  ' +
+        'This is all you need to write quick scripts, or deep cut async multi-stage programs.\n\n' +
+
         'NOTE that there are other tools that leverage this toolset, for example, see:\n' +
         '[@moodboom/git-semver](https://www.npmjs.com/package/%40moodboom%2Fgit-semver)\n\n' +
     

@@ -1,8 +1,10 @@
 # rad-scripts
-Tools that allow you to easily use Javascript for all your scripting needs.
+Robust tooling for node-based command line scripting.
 
-NOTE: previously embedded git semver commands have been moved to the git-semver module.
-Install the [@moodboom/git-semver](https://www.npmjs.com/package/%40moodboom%2Fgit-semver) module to get that functionality.
+Stop (re-)learning cryptic unintuitive bash.  Tap the full power of node modules on the command line.  This is all you need to write quick scripts, or deep cut async multi-stage programs.
+
+NOTE that there are other tools that leverage this toolset, for example, see:
+[@moodboom/git-semver](https://www.npmjs.com/package/%40moodboom%2Fgit-semver)
 
 Common functions and commands:
 
@@ -33,15 +35,16 @@ Common functions and commands:
 * fileRegexReplace:            find and replace the given regex in the file
 * fileRegexReplaceMultiline:   find and replace across lines (gm)
 * string_pad:                  Provide buffer and returns padded string
-* rad-scripts-sync:            (internal) commit and publish rad-scripts; uses git-sync from @moodboom/git-semver
+* sync:                        used to publish rad-scripts, using git-sync from @moodboom/git-semver
+* update:                      used to publish rad-scripts, using git-sync from @moodboom/git-semver
 * list-commands:               lists all available commands
 * make-folder:                 [path] > makes the folder (even if deep), returns true if succeeds or already exists
 
 
 Most recent commits...
-  4dd9dec 10 minutes.. Fix ping results                                      HEAD -> mas.. Michael Behrns-Miller [cob..
-  7edebb3 39 minutes.. Add generic ping of any host                           tag: 4.10.61 Michael Behrns-Miller [cob..
-  f178ae8 41 minutes.. Add generic ping of any host                           tag: 4.10.60 Michael Behrns-Miller [cob..
-  f9bbf03 8 months ago Eslint flat file and formatting fix                    tag: 4.10.59 Michael Behrns-Miller [cast]
+  e8c9fa1   5 days ago Bump to fix circular dep                              HEAD -> mas.. Michael Behrns-Miller [cob..
+  2e68c08   5 days ago Fix minimap version                                                 Michael Behrns-Miller [cob..
+  0385d7e   8 days ago Fix ping results moa                                   tag: 4.10.63 Michael Behrns-Miller [cob..
+  4dd9dec   8 days ago Fix ping results                                       tag: 4.10.62 Michael Behrns-Miller [cob..
 
-Version 4.10.63
+Version 4.10.64

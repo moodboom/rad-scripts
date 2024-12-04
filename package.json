@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "5.0.13",
+  "version": "5.0.14",
   "homepage": "https://bitpost.com/news/category/projects/rad-scripts/",
   "license": "MIT",
   "preferGlobal": true,
@@ -25,7 +25,6 @@
     "make-folder": "make-folder-cmd.js"
   },
   "devDependencies": {
-    "eslint": "*",
-    "eslint-config-standard": "*"
+    "eslint": "^9.0.0"
   }
 }

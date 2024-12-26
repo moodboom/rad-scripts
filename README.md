@@ -42,9 +42,9 @@ Common functions and commands:
 
 
 Most recent commits...
-  dc2fbd9   4 days ago Update eslint dev dep                                 HEAD -> mai.. Michael Behrns-Miller [cob..
-  8d65f53   8 days ago Npm update                                              tag: 5.0.13 Michael Behrns-Miller [cob..
-  f894bd5   8 days ago Import fixes                                             tag: 0.0.0 Michael Behrns-Miller [cob..
-  e8c9fa1  13 days ago Bump to fix circular dep                                            Michael Behrns-Miller [cob..
+  7958888  3 weeks ago Get latest git-semver fixes                           HEAD -> mai.. Michael Behrns-Miller [cob..
+  dc2fbd9  3 weeks ago Update eslint dev dep                                   tag: 5.0.14 Michael Behrns-Miller [cob..
+  8d65f53  4 weeks ago Npm update                                              tag: 5.0.13 Michael Behrns-Miller [cob..
+  f894bd5  4 weeks ago Import fixes                                             tag: 0.0.0 Michael Behrns-Miller [cob..
 
-Version 5.0.15
+Version 5.0.16

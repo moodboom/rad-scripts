@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { normalize } from 'path';
-import { exec, spawn, execSync } from 'child_process';
+import { exec, spawn, execSync, execFileSync } from 'child_process';
 
 // To import spawnargs, we have to do some heavier lifting, because it is a "native" module.
 import { createRequire } from 'module';
@@ -177,22 +177,22 @@ export const hostname = function () {
 
 export const ping = host => {
   try {
-    run_command_sync( `ping -q -w 1 -c 1 ${host} > /dev/null && echo true || echo false` );
+    execFileSync( 'ping', [ '-q', '-w', '1', '-c', '1', host ], { stdio: 'ignore' });
+    return true;
   } catch ( e ) {
     return false;
   }
-  return true;
 }
 export const ping_google = () => {
   return ping( 'google.com' );
 }
 export const ping_gw = () => {
   try {
-    run_command_sync( "ping -q -w 1 -c 1 `ip r | grep default | head -n 1 | cut -d ' ' -f 3` > /dev/null && echo true || echo false" );
+    const gw = run_command_sync( "ip r | grep default | head -n 1 | cut -d ' ' -f 3" ).trim();
+    return ping( gw );
   } catch ( e ) {
     return false;
   }
-  return true;
 }
 
 // This is a sleep for when you are in an async function, called eg:

@@ -21,7 +21,7 @@ import {
   git_changes,
   git_sync,
   npm_update_version,
-} from '@moodboom/git-semver'; // ugg, circular, we gonna be ok?  :-)
+} from '@moodboom/git-semver';
 
 const cmds = [
   { name: 'sync', desc: 'used to publish rad-scripts, using git-sync from @moodboom/git-semver' },

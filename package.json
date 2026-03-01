@@ -1,14 +1,28 @@
 {
   "name": "rad-scripts",
-  "description": "Easy semantic versioning of git repositories",
+  "description": "Robust tooling for node-based command line scripting",
   "author": "Michael Behrns-Miller <moodboom@gmail.com>",
   "type": "module",
   "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "rad.js",
+    "run-utils.js",
+    "folder-utils.js",
+    "string-utils.js",
+    "rad-cmd.js",
+    "make-folder-cmd.js",
+    "LICENSE",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/moodboom/rad-scripts.git"
   },
-  "version": "5.0.17",
+  "version": "5.0.18",
   "homepage": "https://bitpost.com/news/category/projects/rad-scripts/",
   "license": "MIT",
   "preferGlobal": true,
@@ -18,13 +32,10 @@
     "spawn-args": "^0.2.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified.\" && exit 1"
+    "test": "node test.js"
   },
   "bin": {
     "rad": "rad-cmd.js",
     "make-folder": "make-folder-cmd.js"
-  },
-  "devDependencies": {
-    "eslint": "^9.0.0"
   }
 }

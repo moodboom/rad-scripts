@@ -42,9 +42,9 @@ Common functions and commands:
 
 
 Most recent commits...
-  9bb278f 12 months .. Update deps                                           HEAD -> mai.. Michael Behrns-Miller [glam]
-  7958888 12 months .. Get latest git-semver fixes                             tag: 5.0.15 Michael Behrns-Miller [cob..
-  dc2fbd9   1 year ago Update eslint dev dep                                   tag: 5.0.14 Michael Behrns-Miller [cob..
-  8d65f53   1 year ago Npm update                                              tag: 5.0.13 Michael Behrns-Miller [cob..
+  414a0f9 3 months ago Node package update                                   HEAD -> mai.. Michael Behrns-Miller [cast]
+  9bb278f 1 year, 2 .. Update deps                                             tag: 5.0.16 Michael Behrns-Miller [glam]
+  7958888 1 year, 3 .. Get latest git-semver fixes                             tag: 5.0.15 Michael Behrns-Miller [cob..
+  dc2fbd9 1 year, 3 .. Update eslint dev dep                                   tag: 5.0.14 Michael Behrns-Miller [cob..
 
-Version 5.0.17
+Version 5.0.18

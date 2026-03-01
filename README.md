@@ -42,9 +42,9 @@ Common functions and commands:
 
 
 Most recent commits...
-  414a0f9 3 months ago Node package update                                   HEAD -> mai.. Michael Behrns-Miller [cast]
+  a0778ae 16 minutes.. Vet fixes: fix ping command injection and return va.. HEAD -> mai..                   MDM [cast]
+  414a0f9 3 months ago Node package update                                     tag: 5.0.17 Michael Behrns-Miller [cast]
   9bb278f 1 year, 2 .. Update deps                                             tag: 5.0.16 Michael Behrns-Miller [glam]
   7958888 1 year, 3 .. Get latest git-semver fixes                             tag: 5.0.15 Michael Behrns-Miller [cob..
-  dc2fbd9 1 year, 3 .. Update eslint dev dep                                   tag: 5.0.14 Michael Behrns-Miller [cob..
 
-Version 5.0.18
+Version 5.0.19

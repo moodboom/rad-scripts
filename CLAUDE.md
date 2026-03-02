@@ -15,6 +15,10 @@ Public npm library: robust tooling for node-based command line scripting.
 - `minimatch` — glob pattern matching for `walk()` and `get_files_in_one_dir()`
 - `spawn-args` — CommonJS module, imported via `createRequire`
 
+## Git Workflow
+- Always commit and push with: `mh s <commit message>` (also publishes npm modules)
+- On commit: compress context, update CLAUDE.md with completed changes, then run `mh s <message>` to commit and push
+
 ## Publishing
 - Published to npm as `rad-scripts`
 - `mh s <comment>` commits, tags, pushes, and publishes in one step

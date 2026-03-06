@@ -42,9 +42,9 @@ Common functions and commands:
 
 
 Most recent commits...
-  190c010   4 days ago Claude context                                        HEAD -> mai..                   MDM [cast]
+  ecff5b4 3 minutes .. fix string_pad right-pad truncation when str is lon.. HEAD -> mai..                   MDM [cast]
+  190c010   4 days ago Claude context                                          tag: 5.0.20                   MDM [cast]
   7364108   5 days ago Complete verification and improvement by Claude Cod..   tag: 5.0.19                   MDM [cast]
   a0778ae   5 days ago Vet fixes: fix ping command injection and return va..   tag: 5.0.18                   MDM [cast]
-  414a0f9 3 months ago Node package update                                     tag: 5.0.17 Michael Behrns-Miller [cast]
 
-Version 5.0.21
+Version 5.0.22

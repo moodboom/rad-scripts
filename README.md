@@ -42,9 +42,9 @@ Common functions and commands:
 
 
 Most recent commits...
-  7364108 19 hours ago Complete verification and improvement by Claude Cod.. HEAD -> mai..                   MDM [cast]
-  a0778ae 19 hours ago Vet fixes: fix ping command injection and return va..   tag: 5.0.18                   MDM [cast]
+  190c010   4 days ago Claude context                                        HEAD -> mai..                   MDM [cast]
+  7364108   5 days ago Complete verification and improvement by Claude Cod..   tag: 5.0.19                   MDM [cast]
+  a0778ae   5 days ago Vet fixes: fix ping command injection and return va..   tag: 5.0.18                   MDM [cast]
   414a0f9 3 months ago Node package update                                     tag: 5.0.17 Michael Behrns-Miller [cast]
-  9bb278f 1 year, 2 .. Update deps                                             tag: 5.0.16 Michael Behrns-Miller [glam]
 
-Version 5.0.20
+Version 5.0.21

@@ -42,9 +42,9 @@ Common functions and commands:
 
 
 Most recent commits...
-  ecff5b4 3 minutes .. fix string_pad right-pad truncation when str is lon.. HEAD -> mai..                   MDM [cast]
-  190c010   4 days ago Claude context                                          tag: 5.0.20                   MDM [cast]
-  7364108   5 days ago Complete verification and improvement by Claude Cod..   tag: 5.0.19                   MDM [cast]
-  a0778ae   5 days ago Vet fixes: fix ping command injection and return va..   tag: 5.0.18                   MDM [cast]
+18f7053 [34m3 months ago[0m revert string_pad: always truncate to pad length                                [31m5.0.22[0m [37mMDM [cast][0m
+ecff5b4 [34m3 months ago[0m fix string_pad right-pad truncation when str is longer than pad buffer          [31m5.0.21[0m [37mMDM [cast][0m
+190c010 [34m3 months ago[0m Claude context                                                                  [31m5.0.20[0m [37mMDM [cast][0m
+7364108 [34m4 months ago[0m Complete verification and improvement by Claude Code Add CLAUDE.md and test.js  [31m5.0.19[0m [37mMDM [cast][0m
 
-Version 5.0.22
+Version 5.0.23
